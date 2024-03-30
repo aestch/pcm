@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Cabang Muhammadiyah Batam Kota</title>
+    <title>PCM Batam Kota | Official Website</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('pcm/img/favicon.ico') }}" rel="icon">
+    <link href="{{ asset('pcm/img/logopcm.png') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -39,8 +39,39 @@
                             <a class="nav-link text-body small" href="#">Sosial Media</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body small" href="#">Login</a>
+                            <a class="nav-link text-body small" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
                         </li>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Form untuk login -->
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="username">Username</label>
+                                                <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Password</label>
+                                                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </ul>
                 </nav>
             </div>
@@ -72,7 +103,7 @@
         <div class="row align-items-center py-3 px-lg-5" style="background: linear-gradient(to right, #2C368B, #0db871);">
             <div class="col-lg-4">
                 <a href="index.html" class="navbar-brand p-0 d-none d-lg-block">
-                    <img src="{{ asset('pcm/img/pcmbatamkota0.png') }}" alt="" width="400px">
+                    <img src="{{ asset('pcm/img/muhammadiiyah.png') }}" alt="" width="200px">
                 </a>
             </div>
             
@@ -83,16 +114,16 @@
 
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg navbar-dark py-2 py-lg-0 px-lg-5" style="background: linear-gradient(to right, #2C368B, #0db871); position: fixed; width: 100%; top: 130px; z-index: 9999; transition: top 0.5s;" id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-dark py-2 py-lg-0 px-lg-5" style="background: linear-gradient(to right, #2C368B, #0db871); position: fixed; width: 100%; top: 110px; z-index: 10; transition: top 0.5s;" id="navbar">
             <a href="index.html" class="navbar-brand d-block d-lg-none">
-                <img src="{{ asset('pcm/img/pcmbatamkota0.png') }}" alt="" width="290px">
+                <img src="{{ asset('pcm/img/muhammadiiyah.png') }}" alt="" width="190px">
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="index.html" class="nav-item nav-link active">Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Organisasi</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -742,11 +773,11 @@
     <!-- Footer Start -->
     <div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
         <div class="row py-4">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
-                <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+            <div class="col-lg-4 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Kontak Kami</h5>
+                <p class="font-weight-medium"><i class="fa fa-home mr-2"></i>PCM Batam Kota</p>
+                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>Telepon / HP : 0822 7308 3850</p>
+                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>pcm.batamkotaofficial@gmail.com</p>
                 <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
                 <div class="d-flex justify-content-start">
                     <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
@@ -756,33 +787,39 @@
                     <a class="btn btn-lg btn-secondary btn-lg-square" href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular News</h5>
+            <div class="col-lg-4 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Dashboard</h5>
                 <div class="mb-3">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Dashboard</a>
                 </div>
                 <div class="mb-3">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Tentang Persyarikatan</a>
                 </div>
-                <div class="">
-                    <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
-                    </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                <div class="mb-3">
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Berita Persyarikatan</a>
+                </div>
+                <div class="mb-3">
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Galeri Aktivitas</a>
+                </div>
+                <div class="mb-3">
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Alamat</a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
-                <div class="m-n1">
+            <div class="col-lg-4 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Lainnya</h5>
+                <div class="mb-3">
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Struktur Pimpinan</a>
+                </div>
+                <div class="mb-3">
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Pengumuman</a>
+                </div>
+                <div class="mb-3">
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Agenda</a>
+                </div>
+                <div class="mb-3">
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Direktori File</a>
+                </div>
+                {{-- <div class="m-n1">
                     <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
                     <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
                     <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
@@ -804,38 +841,16 @@
                     <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
                     <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
                     <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
-                </div>
+                </div> --}}
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Flickr Photos</h5>
-                <div class="row">
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="{{ asset('pcm/img/news-110x110-1.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="{{ asset('pcm/img/news-110x110-2.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="{{ asset('pcm/img/news-110x110-3.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="{{ asset('pcm/img/news-110x110-4.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="{{ asset('pcm/img/news-110x110-5.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <a href=""><img class="w-100" src="{{ asset('pcm/img/news-110x110-1.jpg') }}" alt=""></a>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
     <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
-        <p class="m-0 text-center">&copy; <a href="#">Muhammadiyah Cabang Batam Kota</a>. All Rights Reserved. 
+        <p class="m-0 text-center">&copy; <a href="#">Pimpinan Cabang Muhammadiyah Batam Kota</a>. All Rights Reserved. 
 		
 		<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-		Design by <a href="https://htmlcodex.com">HTML Codex</a></p>
+		
     </div>
     <!-- Footer End -->
 
@@ -854,40 +869,38 @@
     <script src="{{ asset('pcm/js/main.js') }}"></script>
 
     <script>
-        var lastScrollTop = 0;
         var navbar = document.getElementById('navbar');
-        var topbar = document.querySelector('.container-fluid.d-none.d-lg-block');
-        var initialTop = window.innerWidth >= 992 ? '130px' : '0'; // Top awal sesuai dengan lebar layar
-        var scrollThreshold = 50; // Ambang batas scroll sebelum kembali ke top awal
+        var isFloating = true; // Set isFloating ke true saat halaman pertama kali dimuat
     
+        // Fungsi untuk mengatur top berdasarkan ukuran layar
+        function setTopPosition() {
+            if (window.innerWidth < 768) { // Mode ponsel atau tablet
+                navbar.style.top = '0px';
+            } else {
+                navbar.style.top = isFloating ? '110px' : '0';
+            }
+        }
+    
+        // Panggil fungsi setTopPosition saat halaman dimuat dan saat ukuran layar berubah
+        window.addEventListener('load', function() {
+            setTopPosition();
+            // Pindahkan halaman ke bagian paling atas jika halaman tidak berada di paling atas saat dimuat
+            if (window.pageYOffset > 0) {
+                window.scrollTo(0, 0);
+                isFloating = true; // Set isFloating ke true jika halaman berada di posisi selain paling atas
+            }
+        });
+        window.addEventListener('resize', setTopPosition);
+    
+        // Event listener untuk mendeteksi pergerakan scroll
         window.addEventListener('scroll', function() {
             var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    
-            if (currentScroll > lastScrollTop && currentScroll > navbar.offsetHeight) {
-                // Scroll ke bawah
-                navbar.style.top = '0';
-            } else if (currentScroll <= scrollThreshold || (window.innerWidth < 992 && currentScroll <= topbar.offsetHeight)) {
-                // Scroll ke atas dan belum mencapai ambang batas scroll atau pada tampilan ponsel dan belum mencapai topbar
-                navbar.style.top = initialTop;
+            if (currentScroll > 0) {
+                isFloating = false;
+            } else {
+                isFloating = true;
             }
-    
-            lastScrollTop = currentScroll;
-        });
-    
-        window.addEventListener('resize', function() {
-            // Ketika ukuran layar berubah, perbarui nilai top sesuai dengan lebar layar
-            initialTop = window.innerWidth >= 992 ? '130px' : '0';
-            // Jika lebar layar >= 992px (desktop), pastikan navbar ditampilkan sesuai dengan nilai top awal
-            if (window.innerWidth >= 992) {
-                navbar.style.top = initialTop;
-            }
-        });
-    
-        window.addEventListener('DOMContentLoaded', function() {
-            // Ketika halaman dimuat, pastikan top navbar adalah 0 jika tampilan ponsel
-            if (window.innerWidth < 992) {
-                navbar.style.top = '0';
-            }
+            setTopPosition(); // Atur top berdasarkan kondisi terbaru
         });
     </script>
     
@@ -901,6 +914,8 @@
     
     
     
+    
+
     
 </body>
 

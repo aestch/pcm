@@ -56,7 +56,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.5;
   color: #9A9DA2;
@@ -152,13 +152,13 @@ sup {
 }
 
 a {
-  color: #FFCC00;
+  color: #ffffff;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #b38f00;
+  color: #245784;
   text-decoration: underline;
 }
 
@@ -2365,39 +2365,39 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #212529;
-  background-color: #FFCC00;
-  border-color: #FFCC00;
+  background-color: #13a076;
+  border-color: #13a076;
 }
 
 .btn-primary:hover {
   color: #212529;
-  background-color: #d9ad00;
-  border-color: #cca300;
+  background-color: #2C398B;
+  border-color: #2C398B;
 }
 
 .btn-primary:focus, .btn-primary.focus {
   color: #212529;
-  background-color: #d9ad00;
-  border-color: #cca300;
-  box-shadow: 0 0 0 0.2rem rgba(222, 179, 6, 0.5);
+  background-color: #2C398B;
+  border-color: #2C398B;
+  box-shadow: 0 0 0 0.2rem #2C398B;
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
   color: #212529;
-  background-color: #FFCC00;
-  border-color: #FFCC00;
+  background-color: #2C398B;
+  border-color: #2C398B;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #212529;
-  background-color: #cca300;
-  border-color: #bf9900;
+  background-color: #2C398B;
+  border-color: #2C398B;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(222, 179, 6, 0.5);
+  box-shadow: 0 0 0 0.2rem #2C398B;
 }
 
 .btn-secondary {
