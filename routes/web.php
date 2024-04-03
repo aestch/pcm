@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('dashboard');
 });
+Route::post('/login-proses', [LoginController ::class,'login_proses'])->name('login-proses');
 
 Route::get('/sejarah', function () {
     return view('organisasi.sejarah');
@@ -97,3 +99,12 @@ Route::get('/download-file', function () {
 Route::get('/admin', function () {
     return view('index');
 });
+
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', 'AdminController@index');
+});
+

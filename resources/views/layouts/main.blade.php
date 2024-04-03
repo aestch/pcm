@@ -40,7 +40,8 @@
                             <a class="nav-link text-body small" href="#">Sosial Media</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-body small" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                            <a class="nav-link text-body small" href="/login">Login</a>
+                            {{-- <a class="nav-link text-body small" href="/login" data-toggle="modal" data-target="#loginModal">Login</a> --}}
                         </li>
 
                         <!-- Modal -->
