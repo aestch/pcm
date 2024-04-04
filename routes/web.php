@@ -104,7 +104,5 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/dashboard', 'AdminController@index');
-});
 
+Route::resource('/admin/users', \App\Http\Controllers\UsersController::class);
