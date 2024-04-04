@@ -26,6 +26,7 @@
                                     <th scope="col">NAMA</th>
                                     <th scope="col">EMAIL</th>
                                     <th scope="col">PASSWORD</th>
+                                    <th scope="col">ROLE</th>
                                     <th scope="col" style="width: 20%">ACTIONS</th>
                                 </tr>
                             </thead>
@@ -37,7 +38,8 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->password }}</td>
-                                        <td class="text-center">
+                                        <td>{{ $user->role }}</td>
+                                        <td class="text-right">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('users.destroy', $user->id) }}" method="POST">
                                                 <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                                 @csrf
