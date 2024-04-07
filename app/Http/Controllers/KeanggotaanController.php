@@ -11,6 +11,9 @@ use Illuminate\View\View;
 // import type Redirect response
 use Illuminate\Http\RedirectResponse;
 
+// import facades storage
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Http\Request;
 
 class KeanggotaanController extends Controller
@@ -21,7 +24,7 @@ class KeanggotaanController extends Controller
         $keanggotaans = Keanggotaan::latest()->paginate(10);
 
         // render view with keanggotaan
-        return view('direktori.keanggotaan', compact('keanggotaans'));
+        return view('direktori.keanggotaan', compact('keanggotaans'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create(): View
@@ -43,8 +46,8 @@ class KeanggotaanController extends Controller
             'status_perkawinan' => 'required',
             'no_hp' => 'required',
             'pekerjaan' => 'required',
-            'foto_diri' => 'required',
-            'file_ktam' => 'required',
+            'foto_diri' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'file_ktam' => 'required|mimes:pdf,jpeg,jpg,png|max:2048'
         ]);
 
         // upload image
@@ -67,11 +70,20 @@ class KeanggotaanController extends Controller
             'email' => $request->email,
             'no_hp' => $request->no_hp,
             'pekerjaan' => $request->pekerjaan,
-            'foto_diri' => $request->foto_diri,
-            'file_ktam' => $request->file_ktam
+            'foto_diri' => $foto_diri->hashName(),
+            'file_ktam' => $file_ktam->hashName()
         ]);
 
         // redirect to index
         return redirect()->route('direktori-keanggotaan.index')->with(['success' => 'Pengajuan berhasil disimpan!']);
+    }
+
+    public function show(string $id): View
+    {
+        // get keanggotaan by ID
+        $keanggotaan = Keanggotaan::findOrFail($id);
+
+        // render view with keanggotaan
+        return view('direktori.showanggota', compact('keanggotaan'));
     }
 }
