@@ -21,7 +21,7 @@
                                 <th scope="col">Nama</th>
                                 <th scope="col">Cabang</th>
                                 <th scope="col">Ranting</th>
-                                <th scope="col" style="width: 20%">ACTIONS</th>
+                                <th scope="col" style="width: 20%">Action</th>
                             </tr>
                         </thead>
                         <tbody>
