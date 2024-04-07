@@ -32,9 +32,6 @@ Route::get('/pimpinan-cabang-aisyiah', function () {
     return view('ortom.pimpinancabang');
 });
 
-Route::get('/direktori-keanggotaan', function () {
-    return view('direktori.keanggotaan');
-});
 
 Route::get('/direktori-laporan-keuangan', function () {
     return view('direktori.laporankeuangan');
@@ -106,3 +103,5 @@ Route::get('/login', function () {
 
 
 Route::resource('/admin/users', \App\Http\Controllers\UsersController::class);
+Route::resource('/admin/keanggotaan', \App\Http\Controllers\UsersController::class);
+Route::resource('/direktori-keanggotaan', \App\Http\Controllers\KeanggotaanController::class);
