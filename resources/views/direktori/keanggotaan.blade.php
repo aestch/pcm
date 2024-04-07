@@ -32,9 +32,9 @@
                                     <td>{{ $keanggotaan->cabang}}</td>
                                     <td>{{ $keanggotaan->ranting }}</td>
                                     <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('products.destroy', $product->id) }}" method="POST">
-                                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('direktori-keanggotaan.destroy', $keanggotaan->id) }}" method="POST">
+                                            <a href="{{ route('direktori-keanggotaan.show', $keanggotaan->id) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                            <a href="{{ route('direktori-keanggotaan.edit', $keanggotaan->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
