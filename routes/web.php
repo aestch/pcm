@@ -1,107 +1,121 @@
 <?php
 
+use App\Http\Controllers\GaleriFotoController;
+use App\Http\Controllers\PenggunaLoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use Illuminate\Auth\Middleware\Authenticate;
 
 Route::get('/', function () {
-    return view('dashboard');
-});
-Route::post('/login-proses', [LoginController ::class,'login_proses'])->name('login-proses');
-
-Route::get('/sejarah', function () {
-    return view('organisasi.sejarah');
+    return view('home');
 });
 
-Route::get('/kata-sambutan', function () {
-    return view('organisasi.katasambutan');
+Route::get('/sejarah', function(){
+    return view('sejarah', [
+        "title" => "About",
+        "active" => "about",
+        "name" => "Mabrur Al Mutaqi",
+        "email" => "mabruralmutaqi@gmail.com",
+        "image" => "mrpictures.jpeg"
+    ]);
 });
 
-Route::get('/visi-misi', function () {
-    return view('organisasi.visimisi');
+Route::get('/kata-sambutan', function(){
+    return view('katasambutan');
 });
 
-Route::get('/struktur-pimpinan', function () {
-    return view('organisasi.strukturpimpinan');
+Route::get('/visi-dan-misi', function(){
+    return view('visimisi');
 });
 
-Route::get('/pimpinan-ranting-muhammadiyah', function () {
-    return view('ortom.pimpinanranting');
+Route::get('/struktur-pimpinan', function(){
+    return view('strukturpimpinan');
 });
 
-Route::get('/pimpinan-cabang-aisyiah', function () {
-    return view('ortom.pimpinancabang');
+Route::get('/pimpinan-ranting-muhammadiyah', function(){
+    return view('pimpinanrantingmuhammadiyah');
 });
 
-
-Route::get('/direktori-laporan-keuangan', function () {
-    return view('direktori.laporankeuangan');
+Route::get('/pimpinan-cabang-aisyiyah', function(){
+    return view('pimpinancabangaisyiyah');
 });
 
-Route::get('/direktori-arsip-administrasi', function () {
-    return view('direktori.arsipadministrasi');
+Route::get('/direktori-keanggotaan', function(){
+    return view('direktorikeanggotaan');
 });
 
-Route::get('/galeri-foto', function () {
-    return view('galeri.foto');
+Route::get('/direktori-laporan-keuangan', function(){
+    return view('direktorilaporankeuangan');
 });
 
-Route::get('/galeri-video', function () {
-    return view('galeri.video');
+Route::get('/direktori-arsip-administrasi', function(){
+    return view('direktoriarsipadministrasi');
 });
 
-Route::get('/bidang-aqidah', function () {
-    return view('kajian.bidangaqidah');
+// Route::get('/galeri-foto', function(){
+//     return view('galerifoto');
+// });
+Route::get('/galeri-foto', [GaleriFotoController::class, 'foto']);
+
+Route::get('/galeri-video', function(){
+    return view('galerivideo');
 });
 
-Route::get('/bidang-ibadah', function () {
-    return view('kajian.bidangibadah');
+Route::get('/bidang-aqidah', function(){
+    return view('bidangaqidah');
 });
 
-Route::get('/bidang-muamallah', function () {
-    return view('kajian.bidangmuamallah');
+Route::get('/bidang-ibadah', function(){
+    return view('bidangibadah');
 });
 
-Route::get('/tajuk', function () {
-    return view('artikel.tajuk');
+Route::get('/bidang-muamallah', function(){
+    return view('bidangmuamallah');
 });
 
-Route::get('/opini', function () {
-    return view('artikel.opini');
+Route::get('/tajuk', function(){
+    return view('tajuk');
 });
 
-Route::get('/berita-persyarikatan', function () {
-    return view('berita.persyarikatan');
+Route::get('/opini', function(){
+    return view('opini');
 });
 
-Route::get('/berita-nasional', function () {
-    return view('berita.nasional');
+Route::get('/berita-persyarikatan', function(){
+    return view('beritapersyarikatan');
 });
 
-Route::get('/berita-mancanegara', function () {
-    return view('berita.mancanegara');
+Route::get('/berita-nasional', function(){
+    return view('beritanasional');
 });
 
-Route::get('/pengumuman', function () {
-    return view('berita.pengumuman');
+Route::get('/berita-mancanegara', function(){
+    return view('beritamancanegara');
 });
 
-Route::get('/agenda', function () {
-    return view('berita.agenda');
+Route::get('/pengumuman', function(){
+    return view('pengumuman');
 });
 
-Route::get('/download-file', function () {
-    return view('download.downloadfile');
+Route::get('/agenda', function(){
+    return view('agenda');
 });
 
-Route::get('/admin', function () {
-    return view('index');
+Route::get('/download-file', function(){
+    return view('downloadfile');
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
-Route::resource('/admin/users', \App\Http\Controllers\UsersController::class);
-Route::resource('/admin/keanggotaan', \App\Http\Controllers\UsersController::class);
-Route::resource('/direktori-keanggotaan', \App\Http\Controllers\KeanggotaanController::class);
+Route::get('/dashboard', function(){
+    return view('dashboard.index');
+})->middleware('auth');
+
+Route::resource('/dashboard/pengguna-login', PenggunaLoginController::class)->middleware('auth');
+Route::resource('/dashboard/galeri-foto', GaleriFotoController::class)->middleware('auth');
