@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\GaleriFotoController;
 use App\Http\Controllers\PenggunaLoginController;
+use App\Http\Controllers\DirektorikeanggotaanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Direktorikeanggotaan;
 use Illuminate\Auth\Middleware\Authenticate;
 
 Route::get('/', function () {
@@ -119,3 +121,4 @@ Route::get('/dashboard', function(){
 
 Route::resource('/dashboard/pengguna-login', PenggunaLoginController::class)->middleware('auth');
 Route::resource('/dashboard/galeri-foto', GaleriFotoController::class)->middleware('auth');
+Route::resource('/dashboard/direktori-keanggotaan', DirektorikeanggotaanController::class)->middleware('auth');

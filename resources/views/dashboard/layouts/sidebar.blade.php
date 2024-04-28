@@ -25,6 +25,12 @@
                 Galeri Foto
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/direktori-keanggotaan*') ? 'active' : '' }}" href="/dashboard/direktori-keanggotaan">
+                <span data-feather="file-text"></span>
+                Direktori Keanggotaan
+                </a>
+            </li>
         </ul>
 
         @can('admin')
