@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->integer('nbm');
+            $table->string('jenis_kelamin');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('cabang');
             $table->string('ranting');
             $table->string('alamat');
+            $table->string('status_pernikahan');
             $table->string('email');
             $table->string('no_hp');
             $table->string('pekerjaan');
