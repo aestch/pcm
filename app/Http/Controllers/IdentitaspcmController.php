@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Identitaspcm;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 
 class IdentitaspcmController extends Controller
 {
@@ -45,11 +46,12 @@ class IdentitaspcmController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Identitaspcm $identitaspcm)
+    public function show($id)
     {
-       return view("dashboard.identitas-pcm.show", [
-            'identitaspcm' => $identitaspcm
-       ]);
+        $identitaspcm = Identitaspcm::findOrFail($id);
+        return view("dashboard.identitas-pcm.show", [
+                'identitaspcm' => $identitaspcm,
+        ]);
     }
 
     /**
