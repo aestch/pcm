@@ -6,7 +6,7 @@
 </div>
 
 <div class="col-lg-8">
-    <form action="/dashboard/direktori-keanggotaan" method="post" class="mb-5">
+    <form action="/dashboard/direktori-keanggotaan" method="post" class="mb-5" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="nama" class="form-label">Nama Lengkap</label>
@@ -73,7 +73,7 @@
         </div>
         <div class="mb-3">
             <label for="ranting" class="form-label">Ranting</label>
-            <select name="ranting" id="" class="form-control">
+            <select name="ranting" id="" class="form-control" required>
                 <option value="">--Pilih Ranting--</option>
                 <option value="Belian">Belian</option>
                 <option value="Baloi Permai">Baloi Permai</option>
@@ -96,7 +96,7 @@
         </div>
         <div class="mb-3">
             <label for="ranting" class="form-label">Status Pernikahan</label>
-            <select name="status_pernikahan" id="" class="form-control">
+            <select name="status_pernikahan" id="" class="form-control" required>
                 <option value="">--Pilih Status Pernikahan--</option>
                 <option value="Belum Menikah">Belum Menikah</option>
                 <option value="Menikah">Menikah</option>
@@ -130,7 +130,7 @@
 
         <div class="mb-3">
             <label for="ranting" class="form-label">Pekerjaan</label>
-            <select name="pekerjaan" id="" class="form-control">
+            <select name="pekerjaan" id="" class="form-control" required>
                 <option value="">--Pilih Jenis Pekerjaan--</option>
                 <option value="Belum Bekerja">Belum Bekerja/Tidak Bekerja</option>
                 <option value="Mengurus Rumah Tangga">Mengurus Rumah Tangga</option>
@@ -150,6 +150,27 @@
                 <option value="Atlit">Atlit </option>
             </select>
             @error('ranting')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="foto_diri" class="form-label">Foto Diri</label>
+            <img class="img-preview img-fluid mb-3 col-sm-5">
+            <input class="form-control @error('foto_diri') is-invalid @enderror" type="file" name="foto_diri" id="foto_diri" onchange="previewImage()" required>
+            @error('foto_diri')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="ktam" class="form-label">File/Foto KTAM</label>
+            <img class="img-preview img-fluid mb-3 col-sm-5">
+            <input class="form-control @error('ktam') is-invalid @enderror" type="file" name="ktam" id="ktam" onchange="previewImage()">
+            @error('ktam')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>

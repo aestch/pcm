@@ -57,6 +57,9 @@
 
                         <div class="col-md-6">
                             <div class="mb-3">
+                                <img src="{{ asset('storage/foto-diri/'. $direktorikeanggotaan->foto_diri) }}" style="max-width: 80%; border: 1px solid #ccc; padding: 5px;" alt="">
+                            </div>
+                            <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Nama :</label>
                                 <input type="text" class="form-control" id="recipient-name" value="{{ $direktorikeanggotaan->nama }}" readonly>
                             </div>
@@ -64,6 +67,9 @@
                                 <label for="recipient-name" class="col-form-label">NBM :</label>
                                 <input type="text" class="form-control" id="recipient-name" value="{{ $direktorikeanggotaan->nbm }}" readonly>
                             </div>
+                        </div>
+                        
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Tempat, Tanggal Lahir :</label>
                                 <input type="text" class="form-control" id="recipient-name" value="{{ $direktorikeanggotaan->tempat_lahir }}, {{ $direktorikeanggotaan->tanggal_lahir }}" readonly>
@@ -76,9 +82,6 @@
                                 <label for="recipient-name" class="col-form-label">Ranting :</label>
                                 <input type="text" class="form-control" id="recipient-name" value="{{ $direktorikeanggotaan->ranting }}" readonly>
                             </div>
-                        </div>
-        
-                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Alamat :</label>
                                 <input type="text" class="form-control" id="recipient-name" value="{{ $direktorikeanggotaan->alamat }}" readonly>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Direktorikeanggotaan;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class DirektorikeanggotaanController extends Controller
 {
@@ -44,12 +45,35 @@ class DirektorikeanggotaanController extends Controller
             'email' => 'required', 
             'no_hp' => 'required',
             'pekerjaan' => 'required|max:30',
+            'foto_diri' => 'image|mimes:jpeg,png,jpg|max:3096',
+            'ktam' => 'nullable|image|mimes:jpeg,jpg,png,pdf|max:3096',
         ]);
 
+        // upload image foto diri
+        if($request->hasFile('foto_diri')) {
+            $foto_diri = $request->file('foto_diri');
+            $foto_diriName = hash('sha256', $foto_diri->getClientOriginalName()) . '.' . $foto_diri->getClientOriginalExtension();
+            $foto_diri->storeAs('public/foto-diri', $foto_diriName);
+            $validateData['foto_diri'] = $foto_diriName;
+        }
+
+        // upload image KTAM
+        if($request->hasFile('ktam')) {
+            $ktam = $request->file('ktam');
+            $ktamName = hash('sha256', $ktam->getClientOriginalName()) . '.' . $ktam->getClientOriginalExtension();
+            $ktam->storeAs('public/ktam', $ktamName);
+            $validateData['ktam'] = $ktamName;
+        }
+
+        // create direktorikeanggotaan
         Direktorikeanggotaan::create($validateData);
 
         return redirect('/dashboard/direktori-keanggotaan')->with('success', 'Keanggotaan baru berhasil ditambahkan!');
     }
+
+
+
+        
 
     /**
      * Display the specified resource.
@@ -82,6 +106,17 @@ class DirektorikeanggotaanController extends Controller
     {
         $direktorikeanggotaan = Direktorikeanggotaan::findOrFail($id);
 
+        // Hapus file foto diri dari storage
+        if ($direktorikeanggotaan->foto_diri) {
+            Storage::delete('public/foto-diri/' . $direktorikeanggotaan->foto_diri);
+        }
+
+        // Hapus file KTAM dari storage
+        if ($direktorikeanggotaan->ktam) {
+            Storage::delete('public/ktam/' . $direktorikeanggotaan->ktam);
+        }
+
+        // Hapus entri dari tabel
         $direktorikeanggotaan->delete();
 
         return redirect('/dashboard/direktori-keanggotaan')->with('success', 'Keanggotaan telah dihapus!');

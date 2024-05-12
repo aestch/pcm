@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('no_hp');
             $table->string('pekerjaan');
+            $table->string('foto_diri');
+            $table->string('ktam');
             $table->timestamps();
         });
     }
