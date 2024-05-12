@@ -86,17 +86,60 @@ class DirektorikeanggotaanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Direktorikeanggotaan $direktorikeanggotaan)
+    public function edit($id)
     {
-        //
+        $direktorikeanggotaan = Direktorikeanggotaan::findOrFail($id);
+        return view('dashboard.direktori-keanggotaan.edit', [
+            'direktorikeanggotaan' => $direktorikeanggotaan
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Direktorikeanggotaan $direktorikeanggotaan)
+    public function update(Request $request, $id)
     {
-        //
+        $direktorikeanggotaan = Direktorikeanggotaan::findOrFail($id);
+
+        $validateData = $request->validate([
+            'nama' => 'required|max:255',
+            'nbm' => 'required|numeric|max:20',
+            'jenis_kelamin' => 'required|max:20',
+            'tempat_lahir' => 'required|max:30',
+            'tanggal_lahir' => 'required', 
+            'cabang' => 'required|max:15', 
+            'ranting' => 'required|max:15', 
+            'alamat' => 'required|max:50', 
+            'status_pernikahan' => 'required|max:50', 
+            'email' => 'required', 
+            'no_hp' => 'required',
+            'pekerjaan' => 'required|max:30',
+            'foto_diri' => 'image|mimes:jpeg,png,jpg|max:3096',
+            'ktam' => 'nullable|image|mimes:jpeg,jpg,png,pdf|max:3096',
+        ]);
+
+        // Hapus foto_diri lama jika ada foto baru yang diunggah
+        if($request->hasFile('foto_diri')) {
+            Storage::delete('public/foto-diri/' . $direktorikeanggotaan->foto_diri);
+            $foto_diri = $request->file('foto_diri');
+            $foto_diriName = hash('sha256', $foto_diri->getClientOriginalName()) . '.' . $foto_diri->getClientOriginalExtension();
+            $foto_diri->storeAs('public/foto-diri', $foto_diriName);
+            $validateData['foto_diri'] = $foto_diriName;
+        }
+
+        // Hapus ktam lama jika ada ktam baru yang diunggah
+        if($request->hasFile('ktam')) {
+            Storage::delete('public/ktam/' . $direktorikeanggotaan->ktam);
+            $ktam = $request->file('ktam');
+            $ktamName = hash('sha256', $ktam->getClientOriginalName()) . '.' . $ktam->getClientOriginalExtension();
+            $ktam->storeAs('public/ktam', $ktamName);
+            $validateData['ktam'] = $ktamName;
+        }
+
+        // Perbarui data direktorikeanggotaan
+        $direktorikeanggotaan->update($validateData);
+
+        return redirect('/dashboard/direktori-keanggotaan')->with('success', 'Data berhasil diupdate!');
     }
 
     /**

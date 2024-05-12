@@ -182,3 +182,24 @@
 </div>
 
 @endsection
+
+<script>
+    function previewImage() {
+        const image = document.querySelector('#foto_diri');
+        const imgPreview = document.querySelector('.img-preview');
+
+        // Cek apakah ada file yang dipilih
+        if (image.files && image.files[0]) {
+            const oFReader = new FileReader();
+
+            oFReader.onload = function (oFREvent) {
+                // Menampilkan gambar yang dipilih ke dalam img-preview
+                imgPreview.style.display = 'block';
+                imgPreview.src = oFREvent.target.result;
+            };
+
+            // Membaca file gambar yang dipilih
+            oFReader.readAsDataURL(image.files[0]);
+        }
+    }
+</script>
