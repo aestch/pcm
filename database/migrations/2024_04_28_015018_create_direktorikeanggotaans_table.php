@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('no_hp');
             $table->string('pekerjaan');
             $table->string('foto_diri');
-            $table->string('ktam');
+            $table->string('ktam')->nullable();
             $table->timestamps();
         });
     }

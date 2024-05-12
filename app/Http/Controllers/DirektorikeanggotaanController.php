@@ -115,7 +115,7 @@ class DirektorikeanggotaanController extends Controller
             'no_hp' => 'required',
             'pekerjaan' => 'required|max:30',
             'foto_diri' => 'image|mimes:jpeg,png,jpg|max:3096',
-            'ktam' => 'nullable|image|mimes:jpeg,jpg,png,pdf|max:3096',
+            'ktam' => 'nullable|mimes:jpeg,jpg,png,pdf|max:3096',
         ]);
 
         // Hapus foto_diri lama jika ada foto baru yang diunggah

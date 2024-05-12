@@ -14,9 +14,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/sejarah*') ? 'active' : '' }}" href="/dashboard/sejarah">
+                <a class="nav-link {{ Request::is('dashboard/identitas-pcm*') ? 'active' : '' }}" href="/dashboard/identitas-pcm">
                 <span data-feather="file-text"></span>
-                Sejarah
+                Identitas PCM
                 </a>
             </li>
             <li class="nav-item">

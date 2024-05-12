@@ -7,7 +7,7 @@
 </div>
 
 @if(session()->has('success'))
-    <div class="alert alert-success col-lg-6" role="alert">
+    <div class="alert alert-success col-lg-10" role="alert">
         {{ session('success') }}
     </div>
 @endif
@@ -97,6 +97,14 @@
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Pekerjaan :</label>
                                 <input type="text" class="form-control" id="recipient-name" value="{{ $direktorikeanggotaan->pekerjaan }}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">File KTAM :</label>
+                                @if(!empty($direktorikeanggotaan->ktam))
+                                    <a href="/storage/ktam/{{ $direktorikeanggotaan->ktam }}" class="btn btn-primary btn-sm" target="_blank"><span data-feather="download"> </span> Download</a>
+                                @else
+                                    <span class="alert alert-danger">Tidak ada KTAM yang diupload</span>
+                                @endif
                             </div>
                         </div>
                     </div>
