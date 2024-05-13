@@ -31,6 +31,12 @@
                 Direktori Keanggotaan
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/arsip-files*') ? 'active' : '' }}" href="/dashboard/arsip-files">
+                <span data-feather="file-text"></span>
+                Arsip Files
+                </a>
+            </li>
         </ul>
 
         @can('admin')

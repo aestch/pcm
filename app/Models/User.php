@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function arsipfile()
+    {
+        return $this->hasMany(Arsipfile::class);
+    }
 }
