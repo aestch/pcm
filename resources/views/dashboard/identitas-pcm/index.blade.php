@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.main')
-
 @section('container')
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css" />
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Identitas PCM</h1>
@@ -18,7 +18,10 @@
         <a href="/dashboard/identitas-pcm/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data</a>
     @endif
 
-    <table class="table table-striped table-sm">
+    <div class="card-body table-responsive p-0">
+       
+
+    <table class="table table-striped table-sm" id="serverside">
         <thead>
         <tr>
             <th scope="col">No</th>
@@ -61,3 +64,4 @@
 </div>
 
 @endsection
+

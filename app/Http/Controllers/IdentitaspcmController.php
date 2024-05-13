@@ -57,17 +57,28 @@ class IdentitaspcmController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Identitaspcm $identitaspcm)
+    public function edit($id)
     {
-        //
+        $identitaspcm = Identitaspcm::findOrFail($id);
+        return view('dashboard.identitas-pcm.edit',[
+            'identitaspcm' => $identitaspcm
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Identitaspcm $identitaspcm)
+    public function update(Request $request, $id)
     {
-        //
+        $identitaspcm = Identitaspcm::findOrFail($id);
+        $validateData = $request->validate([
+            'sejarah' => 'required',
+            'kata_sambutan' => 'required',
+            'visimisi' => 'required',
+        ]);
+
+        $identitaspcm->update($validateData);
+        return redirect('/dashboard/identitas-pcm')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
@@ -81,5 +92,24 @@ class IdentitaspcmController extends Controller
         $identitaspcm->delete();
 
         return redirect('/dashboard/identitas-pcm')->with('success', 'Identitas PCM Berhasil Dihapus!');
+    }
+
+    public function sejarah()
+    {
+        return view('sejarah', [
+            "identitaspcms" => Identitaspcm::all()
+        ]);
+    }
+    public function katasambutan()
+    {
+        return view('katasambutan', [
+            "identitaspcms" => Identitaspcm::all()
+        ]);
+    }
+    public function visimisi()
+    {
+        return view('visimisi', [
+            "identitaspcms" => Identitaspcm::all()
+        ]);
     }
 }

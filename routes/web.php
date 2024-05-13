@@ -14,23 +14,11 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/sejarah', function(){
-    return view('sejarah', [
-        "title" => "About",
-        "active" => "about",
-        "name" => "Mabrur Al Mutaqi",
-        "email" => "mabruralmutaqi@gmail.com",
-        "image" => "mrpictures.jpeg"
-    ]);
-});
+Route::get('/sejarah', [IdentitaspcmController::class, 'sejarah']);
 
-Route::get('/kata-sambutan', function(){
-    return view('katasambutan');
-});
+Route::get('/kata-sambutan', [IdentitaspcmController::class, 'katasambutan']);
 
-Route::get('/visi-dan-misi', function(){
-    return view('visimisi');
-});
+Route::get('/visi-dan-misi', [IdentitaspcmController::class, 'visimisi']);
 
 Route::get('/struktur-pimpinan', function(){
     return view('strukturpimpinan');
