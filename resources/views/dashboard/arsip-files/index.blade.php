@@ -33,7 +33,7 @@
             <td>{{ (($arsipfiles->currentPage() - 1) * $arsipfiles->perPage()) + $loop->index + 1 }}</td>
 
             <td>{{ $arsipfile->nama_file }}</td>            
-            <td>{{ $arsipfile->tgl_arsipfile }}</td>            
+            <td>{{ date('d/m/Y', strtotime($arsipfile->tgl_arsipfile)) }}</td>       
             <td>{{ $arsipfile->user->name }}</td>            
             <td>
                 <a href="{{ url('storage/arsip-files/'. $arsipfile->upload_arsipfile) }}" class="badge bg-dark" download="{{ $arsipfile->upload_arsipfile }}"><span data-feather="download"></span></a>
