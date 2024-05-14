@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Arsipadministrasi;
+use App\Models\Kategoriarsip;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ArsipadministrasiController extends Controller
@@ -22,7 +24,8 @@ class ArsipadministrasiController extends Controller
      */
     public function create()
     {
-        //
+        $kategoriarsips = Kategoriarsip::all();
+        return view('dashboard.arsip-administrasi.create', compact('kategoriarsips'));
     }
 
     /**
@@ -30,7 +33,15 @@ class ArsipadministrasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'tgl_arsip' => 'required',
+            'no_surat' => 'required',
+            'kategoriarsip_id' => 'required',
+        ]);
+
+        Arsipadministrasi::create($validateData);
+
+        return redirect('/dashboard/arsip-administrasi')->with('success', 'Arsip Administrasi Berhasil Ditambahkan!');
     }
 
     /**
@@ -44,24 +55,46 @@ class ArsipadministrasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Arsipadministrasi $arsipadministrasi)
+    public function edit($id)
     {
-        //
+        $arsipadministrasi = Arsipadministrasi::findOrFail($id);
+        return view('dashboard.arsip-administrasi.edit', [
+            'arsipadministrasi' => $arsipadministrasi,
+            'kategoriarsips' => Kategoriarsip::all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Arsipadministrasi $arsipadministrasi)
+    public function update(Request $request, $id)
     {
-        //
+        $arsipadministrasi = Arsipadministrasi::findOrFail($id);
+
+        $validateData = $request->validate([
+            'tgl_arsip' => 'required',
+            'no_surat' => 'required',
+            'kategoriarsip_id' => 'required',
+        ]);
+
+        // Perbarui data arsipadministrasi
+        $arsipadministrasi->update($validateData);
+
+        return redirect('/dashboard/arsip-administrasi')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Arsipadministrasi $arsipadministrasi)
+    public function destroy($id) : RedirectResponse
     {
-        //
+        //get arsipadministrasi by ID
+        $arsipadministrasi = Arsipadministrasi::findOrFail($id);
+
+        //delete administrasi
+        $arsipadministrasi->delete();
+
+        //redirect to index
+        return redirect('/dashboard/arsip-administrasi/')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }
