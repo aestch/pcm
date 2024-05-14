@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Arsipadministrasi extends Model
+class Kategoriarsip extends Model
 {
     use HasFactory;
 
@@ -13,8 +13,8 @@ class Arsipadministrasi extends Model
         'id'
     ];
 
-    public function kategoriarsip()
+    public function arsipadministrasi()
     {
-        return $this->belongsTo(Kategoriarsip::class);
+        return $this->hasMany(Arsipadministrasi::class);
     }
 }

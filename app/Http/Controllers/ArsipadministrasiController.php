@@ -12,7 +12,9 @@ class ArsipadministrasiController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.arsip-administrasi.index', [
+            'arsipadministrasis' => Arsipadministrasi::latest()->paginate(10)
+        ]);
     }
 
     /**

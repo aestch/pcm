@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArsipfileController;
+use App\Http\Controllers\ArsipadministrasiController;
 use App\Http\Controllers\GaleriFotoController;
 use App\Http\Controllers\PenggunaLoginController;
 use App\Http\Controllers\DirektorikeanggotaanController;
@@ -114,3 +115,4 @@ Route::resource('/dashboard/identitas-pcm', IdentitaspcmController::class)->midd
 Route::resource('/dashboard/galeri-foto', GaleriFotoController::class)->middleware('auth');
 Route::resource('/dashboard/direktori-keanggotaan', DirektorikeanggotaanController::class)->middleware('auth');
 Route::resource('/dashboard/arsip-files', ArsipfileController::class)->middleware('auth');
+Route::resource('/dashboard/arsip-administrasi', ArsipadministrasiController::class)->middleware('auth');

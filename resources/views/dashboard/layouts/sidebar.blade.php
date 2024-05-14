@@ -37,6 +37,12 @@
                 Arsip Files
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/arsip-administrasi*') ? 'active' : '' }}" href="/dashboard/arsip-administrasi">
+                <span data-feather="file-text"></span>
+                Arsip Administrasi
+                </a>
+            </li>
         </ul>
 
         @can('admin')
