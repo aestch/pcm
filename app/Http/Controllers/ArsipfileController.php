@@ -36,7 +36,7 @@ class ArsipfileController extends Controller
         $validateData = $request->validate([
             'nama_file' => 'required|max:50',
             'tgl_arsipfile' => 'required',
-            'upload_arsipfile' => 'required|file|mimes:jpeg,jpg,png,pdf|max:3096',
+            'upload_arsipfile' => 'required|file|mimes:pdf|max:3096',
             'user_id' => 'required',
         ]);
 
@@ -80,8 +80,18 @@ class ArsipfileController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Arsipfile $arsipfile)
+    public function destroy($id) : RedirectResponse
     {
-        //
+        //get arsipfile by ID
+        $arsipfile = Arsipfile::findOrFail($id);
+
+        //delete file
+        Storage::delete('public/arsip-files/'. $arsipfile->upload_arsipfile);
+
+        //delete file
+        $arsipfile->delete();
+
+        //redirect to index
+        return redirect('/dashboard/arsip-files/')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }

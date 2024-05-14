@@ -36,7 +36,8 @@
             <td>{{ $arsipfile->tgl_arsipfile }}</td>            
             <td>{{ $arsipfile->user->name }}</td>            
             <td>
-                <a href="/dashboard/arsip-files/{{ $arsipfile->id }}/show" class="badge bg-dark" data-bs-toggle="modal" data-bs-target="#detilAnggota{{ $arsipfile->id }}" data-bs-whatever="@mdo"><span data-feather="eye"></span></a>
+                <a href="{{ url('storage/arsip-files/'. $arsipfile->upload_arsipfile) }}" class="badge bg-dark" download="{{ $arsipfile->upload_arsipfile }}"><span data-feather="download"></span></a>
+                {{-- <a href="/dashboard/arsip-files/{{ $arsipfile->id }}/show" class="badge bg-dark"><span data-feather="download"></span></a> --}}
                 <a href="/dashboard/arsip-files/{{ $arsipfile->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
                 <form action="/dashboard/arsip-files/{{ $arsipfile->id }}" method="post" class="d-inline">
                     @method('delete')
