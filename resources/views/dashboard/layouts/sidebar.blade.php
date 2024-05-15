@@ -26,6 +26,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/galeri-video*') ? 'active' : '' }}" href="/dashboard/galeri-video">
+                <span data-feather="file-text"></span>
+                Galeri Video
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ Request::is('dashboard/direktori-keanggotaan*') ? 'active' : '' }}" href="/dashboard/direktori-keanggotaan">
                 <span data-feather="file-text"></span>
                 Direktori Keanggotaan
