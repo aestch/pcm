@@ -49,6 +49,12 @@
                 Arsip Administrasi
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/media-sosial*') ? 'active' : '' }}" href="/dashboard/media-sosial">
+                <span data-feather="file-text"></span>
+                Media Sosial
+                </a>
+            </li>
         </ul>
 
         @can('admin')

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MediasosialController;
 use App\Http\Controllers\ArsipfileController;
 use App\Http\Controllers\ArsipadministrasiController;
 use App\Http\Controllers\GaleriFotoController;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Direktorikeanggotaan;
+use App\Models\Mediasosial;
 use Illuminate\Auth\Middleware\Authenticate;
 
 Route::get('/', function () {
@@ -118,3 +120,4 @@ Route::resource('/dashboard/galeri-video', GalerivideoController::class)->middle
 Route::resource('/dashboard/direktori-keanggotaan', DirektorikeanggotaanController::class)->middleware('auth');
 Route::resource('/dashboard/arsip-files', ArsipfileController::class)->middleware('auth');
 Route::resource('/dashboard/arsip-administrasi', ArsipadministrasiController::class)->middleware('auth');
+Route::resource('/dashboard/media-sosial', MediasosialController::class)->middleware('auth');
