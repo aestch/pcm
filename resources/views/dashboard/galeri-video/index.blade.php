@@ -7,12 +7,12 @@
 </div>
 
 @if(session()->has('success'))
-    <div class="alert alert-success col-lg-6" role="alert">
+    <div class="alert alert-success col-lg-8" role="alert">
         {{ session('success') }}
     </div>
 @endif
 
-<div class="table-responsive col-lg-6">
+<div class="table-responsive col-lg-8">
 
     <a href="/dashboard/galeri-video/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data</a>
 
@@ -30,9 +30,10 @@
         <tr>
             <td>{{ (($galerivideos->currentPage() - 1) * $galerivideos->perPage()) + $loop->index + 1 }}</td>
 
-            <td>{{ $arsipvideo->judul_video }}</td>          
+            <td>{{ $galerivideo->judul_video }}</td>          
             <td>
-                <a href="/dashboard/galeri-video/{{ $galerivideo->id }}/edit" class="badge bg-warning"><span data-feather="eye"></span></a>
+                <a href="{{ $galerivideo->link_video }}" target="_blank" class="badge bg-dark"><span data-feather="eye"></span></a>
+                <a href="/dashboard/galeri-video/{{ $galerivideo->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
                 <form action="/dashboard/galeri-video/{{ $galerivideo->id }}" method="post" class="d-inline">
                     @method('delete')
                     @csrf

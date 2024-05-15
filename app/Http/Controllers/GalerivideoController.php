@@ -22,7 +22,7 @@ class GalerivideoController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.galeri-video.create');
     }
 
     /**
