@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Galerivideo;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class GalerivideoController extends Controller
@@ -30,7 +31,6 @@ class GalerivideoController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $validateData = $request->validate([
             'judul_video' => 'required',
             'link_video' => 'required',
@@ -52,17 +52,30 @@ class GalerivideoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Galerivideo $galerivideo)
+    public function edit($id)
     {
-        //
+        $galerivideo = Galerivideo::findOrFail($id);
+        return view('dashboard.galeri-video.edit', [
+            'galerivideo' => $galerivideo
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Galerivideo $galerivideo)
+    public function update(Request $request, $id): RedirectResponse
     {
-        //
+        $galerivideo = Galerivideo::findOrFail($id);
+
+        $validateData = $request->validate([
+            'judul_video' => 'required',
+            'link_video' => 'required',
+        ]);
+
+        // Perbarui data galerivideo
+        $galerivideo->update($validateData);
+
+        return redirect('/dashboard/galeri-video')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
