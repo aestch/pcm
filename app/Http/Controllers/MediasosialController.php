@@ -53,17 +53,27 @@ class MediasosialController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Mediasosial $mediasosial)
+    public function edit($id)
     {
-        //
+        $mediasosial = Mediasosial::findOrFail($id);
+        return view('dashboard.media-sosial.edit',[
+            'mediasosial' => $mediasosial
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Mediasosial $mediasosial)
+    public function update(Request $request, $id)
     {
-        //
+        $mediasosial = Mediasosial::findOrFail($id);
+        $validateData = $request->validate([
+            'nama_medsos' => 'required',
+            'link_medsos' => 'required',
+        ]);
+
+        $mediasosial->update($validateData);
+        return redirect('/dashboard/media-sosial')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
