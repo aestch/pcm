@@ -68,8 +68,16 @@ class GalerivideoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Galerivideo $galerivideo)
+    public function destroy($id)
     {
-        //
+        //get galerivideo by ID
+        $galerivideo = Galerivideo::findOrFail($id);
+
+
+        //delete file
+        $galerivideo->delete();
+
+        //redirect to index
+        return redirect('/dashboard/galeri-video/')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }
