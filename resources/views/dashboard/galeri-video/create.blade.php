@@ -6,7 +6,7 @@
 </div>
 
 <div class="col-lg-8">
-    <form action="/dashboard/arsip-files" method="post" class="mb-5" enctype="multipart/form-data">
+    <form action="/dashboard/galeri-video" method="post" class="mb-5" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="judul_video" class="form-label">Judul Video</label>

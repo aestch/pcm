@@ -30,7 +30,15 @@ class GalerivideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $validateData = $request->validate([
+            'judul_video' => 'required',
+            'link_video' => 'required',
+        ]);
+
+        Galerivideo::create($validateData);
+
+        return redirect('/dashboard/galeri-video')->with('success', 'Galeri video Berhasil Ditambahkan!');
     }
 
     /**
