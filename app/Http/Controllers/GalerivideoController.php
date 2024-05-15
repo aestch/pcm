@@ -38,15 +38,45 @@ class GalerivideoController extends Controller
 
         Galerivideo::create($validateData);
 
-        return redirect('/dashboard/galeri-video')->with('success', 'Galeri video Berhasil Ditambahkan!');
+        return redirect('/dashboard/galeri-video')->with('success', 'Galeri video berhasil ditambahkan!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Galerivideo $galerivideo)
+    public function show($id)
     {
-        //
+        $galerivideo = Galerivideo::findOrFail($id);
+
+        // Convert regular YouTube URL to embed URL
+        $galerivideo->link_video = $this->convertToEmbedUrl($galerivideo->link_video);
+
+        return view('dashboard.galeri-video.show', compact('galerivideo'));
+
+        // return view('dashboard.galeri-video.show', [
+        //     'galerivideo' => $galerivideo
+        // ]);
+    }
+
+    private function convertToEmbedUrl($url)
+    {
+        // Check if the URL is a YouTube URL
+        if (strpos($url, 'youtube.com') !== false || strpos($url, 'youtu.be') !== false) {
+            // Extract video ID from regular URL
+            parse_str(parse_url($url, PHP_URL_QUERY), $urlParams);
+            if (isset($urlParams['v'])) {
+                $videoId = $urlParams['v'];
+            } elseif (strpos($url, 'youtu.be') !== false) {
+                $videoId = basename(parse_url($url, PHP_URL_PATH));
+            } else {
+                return $url; // Return original URL if no video ID found
+            }
+
+            // Return embed URL
+            return "https://www.youtube.com/embed/{$videoId}";
+        }
+
+        return $url; // Return original URL if not a YouTube URL
     }
 
     /**

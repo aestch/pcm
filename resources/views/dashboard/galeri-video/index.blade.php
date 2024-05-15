@@ -32,7 +32,7 @@
 
             <td>{{ $galerivideo->judul_video }}</td>          
             <td>
-                <a href="{{ $galerivideo->link_video }}" target="_blank" class="badge bg-dark"><span data-feather="eye"></span></a>
+                <a href="/dashboard/galeri-video/{{ $galerivideo->id }}" target="_blank" class="badge bg-dark"><span data-feather="eye"></span></a>
                 <a href="/dashboard/galeri-video/{{ $galerivideo->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
                 <form action="/dashboard/galeri-video/{{ $galerivideo->id }}" method="post" class="d-inline">
                     @method('delete')
