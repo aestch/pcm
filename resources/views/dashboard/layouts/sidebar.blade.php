@@ -55,6 +55,12 @@
                 Media Sosial
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/amal-usaha*') ? 'active' : '' }}" href="/dashboard/amal-usaha">
+                <span data-feather="file-text"></span>
+                Amal Usaha Muhammaddiyah
+                </a>
+            </li>
         </ul>
 
         @can('admin')

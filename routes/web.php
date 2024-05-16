@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AmalusahaController;
 use App\Http\Controllers\MediasosialController;
 use App\Http\Controllers\ArsipfileController;
 use App\Http\Controllers\ArsipadministrasiController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\IdentitaspcmController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Amalusaha;
 use App\Models\Direktorikeanggotaan;
 use App\Models\Mediasosial;
 use Illuminate\Auth\Middleware\Authenticate;
@@ -121,3 +123,4 @@ Route::resource('/dashboard/direktori-keanggotaan', DirektorikeanggotaanControll
 Route::resource('/dashboard/arsip-files', ArsipfileController::class)->middleware('auth');
 Route::resource('/dashboard/arsip-administrasi', ArsipadministrasiController::class)->middleware('auth');
 Route::resource('/dashboard/media-sosial', MediasosialController::class)->middleware('auth');
+Route::resource('/dashboard/amal-usaha', AmalusahaController::class)->middleware('auth');
