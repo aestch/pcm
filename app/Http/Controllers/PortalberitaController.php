@@ -127,4 +127,24 @@ class PortalberitaController extends Controller
 
         return redirect('/dashboard/portal-berita')->with('success', 'Berita telah dihapus!');
     }
+
+    public function berita()
+    {
+        $title = '';
+        if(request('kategoriberita')){
+            $kategoriberita = Kategoriberita::firstWhere('judul', request('kategoriberita'));
+            $title = ' in ' . $kategoriberita->kategori_berita;
+        }
+
+        // if(request('author')){
+        //     $author = User::firstWhere('username', request('author'));
+        //     $title = ' by '. $author->name;
+        // }
+
+        return view('berita', [
+            "title" => "All News" . $title,
+            "active" => 'kategoriberitas',
+            "kategoriberitas" => Portalberita::latest()->paginate(7)->withQueryString()
+        ]);
+    }
 }

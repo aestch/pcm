@@ -55,7 +55,10 @@
               <a href="/opini" class="dropdown-item">Opini</a>
           </div>
         </div>
-        <div class="nav-item dropdown">
+        <li class="nav-item">
+          <a href="/berita" class="nav-link"> Berita</a>
+        </li>
+        {{-- <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Berita</a>
           <div class="dropdown-menu fade-up m-0">
               <a href="/berita-persyarikatan" class="dropdown-item">Berita Persyarikatan</a>
@@ -64,7 +67,7 @@
               <a href="/pengumuman" class="dropdown-item">Pengumuman</a>
               <a href="/agenda" class="dropdown-item">Agenda</a>
           </div>
-        </div>
+        </div> --}}
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Amal Usaha</a>
           <div class="dropdown-menu fade-up m-0">

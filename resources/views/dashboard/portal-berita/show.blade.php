@@ -6,7 +6,7 @@
     <div class="row my-5">
         <div class="col-lg-8">
             <h2 class="mb-3">{{ $portalberita->judul }}</h2><hr>
-
+            <p>{{ $portalberita->kategoriberita->kategori_berita }} | {{ $portalberita->created_at->diffForHumans()}}</p>
             <a href="/dashboard/portal-berita" class="btn btn-success btn-sm"><span data-feather="arrow-left"></span> Kembali</a>
             <a href="/dashboard/portal-berita/{{ $portalberita->id }}/edit" class="btn btn-warning btn-sm"><span data-feather="edit"></span> Edit</a>
             <form action="/dashboard/portal-berita/{{ $portalberita->id }}" method="post" class="d-inline">
