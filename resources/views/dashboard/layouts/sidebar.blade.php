@@ -61,6 +61,12 @@
                 Amal Usaha Muhammaddiyah
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/portal-berita*') ? 'active' : '' }}" href="/dashboard/portal-berita">
+                <span data-feather="file-text"></span>
+                Portal Berita
+                </a>
+            </li>
         </ul>
 
         @can('admin')

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PortalberitaController;
 use App\Http\Controllers\AmalusahaController;
 use App\Http\Controllers\MediasosialController;
 use App\Http\Controllers\ArsipfileController;
@@ -124,3 +125,4 @@ Route::resource('/dashboard/arsip-files', ArsipfileController::class)->middlewar
 Route::resource('/dashboard/arsip-administrasi', ArsipadministrasiController::class)->middleware('auth');
 Route::resource('/dashboard/media-sosial', MediasosialController::class)->middleware('auth');
 Route::resource('/dashboard/amal-usaha', AmalusahaController::class)->middleware('auth');
+Route::resource('/dashboard/portal-berita', PortalberitaController::class)->middleware('auth');
