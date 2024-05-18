@@ -126,3 +126,4 @@ Route::resource('/dashboard/arsip-administrasi', ArsipadministrasiController::cl
 Route::resource('/dashboard/media-sosial', MediasosialController::class)->middleware('auth');
 Route::resource('/dashboard/amal-usaha', AmalusahaController::class)->middleware('auth');
 Route::resource('/dashboard/portal-berita', PortalberitaController::class)->middleware('auth');
+// Route::resource('/dashboard/portal-berita', PortalberitaController::class)->middleware('auth');

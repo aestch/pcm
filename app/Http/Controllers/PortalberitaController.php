@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Komentarberita;
 use App\Models\Portalberita;
 use App\Models\Kategoriberita;
 use Illuminate\Http\RedirectResponse;
@@ -63,7 +64,10 @@ class PortalberitaController extends Controller
      */
     public function show($id)
     {
-        $portalberita = Portalberita::findOrFail($id);
+        // $portalberita = Portalberita::findOrFail($id);
+        $portalberita = Portalberita::with(['Komentarberita' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
         return view("dashboard.portal-berita.show", [
                 'portalberita' => $portalberita,
         ]);
@@ -147,4 +151,18 @@ class PortalberitaController extends Controller
             "kategoriberitas" => Portalberita::latest()->paginate(7)->withQueryString()
         ]);
     }
+
+    // public function comment(Request $request, $id)
+    // {
+    //     $komentarberitas = Komentarberita::findOrFail($id);
+    //     $validateData = $request->validate([
+    //         'komentar_berita' => 'required',
+    //         'portalberita_id' => 'required',
+    //     ]);
+
+    //     Komentarberita::create($validateData);
+
+    //     return redirect('/dashboard/portal-berita/')->with('success', 'Portal Berita berhasil ditambahkan!');
+    // }
+
 }

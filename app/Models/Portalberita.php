@@ -17,4 +17,9 @@ class Portalberita extends Model
     {
         return $this->belongsTo(Kategoriberita::class);
     }
+
+    public function komentarberita()
+    {
+        return $this->hasMany(Komentarberita::class);
+    }
 }
