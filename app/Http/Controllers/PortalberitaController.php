@@ -152,17 +152,39 @@ class PortalberitaController extends Controller
         ]);
     }
 
+    public function comment(Request $request, $id)
+    {
+
+        $validateData = $request->validate([
+            'komentar_berita' => 'required',
+            'portalberita_id' => 'required',
+        ]);
+
+        Komentarberita::create($validateData);
+        $portalberita = Portalberita::with(['Komentarberita' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
+        return view("dashboard.portal-berita.show", [
+                'portalberita' => $portalberita,
+        ]);
+
+        // return redirect('/dashboard/portal-berita/')->with('success', 'Komentar berhasil ditambahkan!');
+    }
+
     // public function comment(Request $request, $id)
     // {
-    //     $komentarberitas = Komentarberita::findOrFail($id);
     //     $validateData = $request->validate([
     //         'komentar_berita' => 'required',
     //         'portalberita_id' => 'required',
     //     ]);
 
-    //     Komentarberita::create($validateData);
+    //     // $validateData['user_id'] = auth()->user()->id; // Assuming you have a user_id column in your Komentarberita model
+    //     $comment = Komentarberita::create($validateData);
 
-    //     return redirect('/dashboard/portal-berita/')->with('success', 'Portal Berita berhasil ditambahkan!');
+    //     $comment->load('portalberita'); // Assuming Komentarberita has a relationship with User model
+
+    //     return response()->json(['success' => true, 'comment' => $comment]);
     // }
+
 
 }

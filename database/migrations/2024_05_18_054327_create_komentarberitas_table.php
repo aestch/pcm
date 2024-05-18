@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('komentarberitas', function (Blueprint $table) {
             $table->id();
-            $table->string('komentar_berita');
+            $table->text('komentar_berita');
             $table->unsignedBigInteger('portalberita_id'); // Menambahkan kolom portalberita_id
             $table->foreign('portalberita_id')->references('id')->on('portalberitas'); // Menambahkan foreign key constraint
             $table->timestamps();

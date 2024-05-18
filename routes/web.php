@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KomentarberitaController;
 use App\Http\Controllers\PortalberitaController;
 use App\Http\Controllers\AmalusahaController;
 use App\Http\Controllers\MediasosialController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Amalusaha;
 use App\Models\Direktorikeanggotaan;
+use App\Models\Komentarberita;
 use App\Models\Mediasosial;
 use Illuminate\Auth\Middleware\Authenticate;
 
@@ -126,4 +128,4 @@ Route::resource('/dashboard/arsip-administrasi', ArsipadministrasiController::cl
 Route::resource('/dashboard/media-sosial', MediasosialController::class)->middleware('auth');
 Route::resource('/dashboard/amal-usaha', AmalusahaController::class)->middleware('auth');
 Route::resource('/dashboard/portal-berita', PortalberitaController::class)->middleware('auth');
-// Route::resource('/dashboard/portal-berita', PortalberitaController::class)->middleware('auth');
+Route::post('/dashboard/portal-berita/{id}/comment', [PortalberitaController::class, 'comment']);

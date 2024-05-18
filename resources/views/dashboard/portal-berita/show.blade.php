@@ -32,19 +32,25 @@
             <form action="/dashboard/portal-berita/{{ $portalberita->id }}/comment" method="post">
                 @csrf
                 <div class="mb-3">
-                  <label for="comment" class="form-label">Tuliskan Komentar</label>
-                  <textarea class="form-control @error('comment') is-invalid @enderror" id="comment" name="comment" rows="3" placeholder="Tuliskan Komentar...."></textarea>
-                  @error('comment')
+                  <label for="komentar_berita" class="form-label">Tambahkan Komentar</label>
+                  <input type="hidden" name="portalberita_id" value="{{ $portalberita->id }}">
+                  <textarea class="form-control @error('komentar_berita') is-invalid @enderror" id="komentar_berita" name="komentar_berita" rows="3" placeholder="Tuliskan Komentar....">{{ old('komentar_berita') }}</textarea>
+                  @error('komentar_berita')
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
                 </div>
                 <button type="submit" class="btn btn-primary"><span data-feather="message-square"></span> Komentar</button>
             </form>
             <hr>
+            @if(session()->has('success'))
+                <div class="alert alert-success col-lg-10" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
 
             @if (count($portalberita->Komentarberita) > 0)
                 <ul class="list-group">
-                    @foreach ($portalberita->komentarberita as $comment)
+                    @foreach ($portalberita->komentarberita->sortByDesc('created_at') as $comment)
                         <li class="list-group-item">
                             <div class="comment-container">
                                 <span data-feather="user"></span>
@@ -54,6 +60,7 @@
                             </div>
                             {{-- <small>{{ $comment->created_at->diffForHumans() }}</small> --}}
                             <small>{{ $comment->created_at->locale('id')->diffForHumans() }}</small>
+                            <span data-feather="close"></span>
                         </li>
                     @endforeach
                 </ul>
@@ -64,5 +71,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection
