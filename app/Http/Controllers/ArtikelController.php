@@ -68,17 +68,42 @@ class ArtikelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Artikel $artikel)
+    public function edit($id)
     {
-        //
+        $artikel = Artikel::findOrFail($id);
+        return view('dashboard.artikel.edit', [
+            'artikel' => $artikel,
+            'kategoriartikels' => Kategoriartikel::all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Artikel $artikel)
+    public function update(Request $request, $id)
     {
-        //
+        $artikel = Artikel::findOrFail($id);
+
+        $validateData = $request->validate([
+            'judul' => 'required',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,heic|max:2048',
+            'body' => 'required',
+            'kategoriartikel_id' => 'required',
+        ]);
+
+        // Hapus image lama jika ada image baru yang diunggah
+        if($request->hasFile('image')) {
+            Storage::delete('public/artikel/' . $artikel->image);
+            $image = $request->file('image');
+            $imageName = hash('sha256', $image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/artikel', $imageName);
+            $validateData['image'] = $imageName;
+        }
+
+        // Perbarui data artikel
+        $artikel->update($validateData);
+
+        return redirect('/dashboard/artikel')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
