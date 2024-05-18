@@ -60,11 +60,10 @@
                             </div>
                             {{-- <small>{{ $comment->created_at->diffForHumans() }}</small> --}}
                             <small>{{ $comment->created_at->locale('id')->diffForHumans() }}</small>
-                            <span data-feather="close"></span>
                         </li>
                     @endforeach
                 </ul>
-            @else
+            @else 
                 <div class="alert alert-warning">Belum ada komentar. Jadilah yang pertama berkomentar!</div>
             @endif
             

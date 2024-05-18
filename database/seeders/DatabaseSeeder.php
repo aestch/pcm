@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Kategoriartikel;
 use App\Models\Role;
+use DateTime;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,7 +17,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-
 
         User::create([
             'name' => 'Mabrur Almutaqi',
