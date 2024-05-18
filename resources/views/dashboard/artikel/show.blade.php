@@ -51,7 +51,7 @@
             @if (count($artikel->Komentarartikel) > 0)
                 <ul class="list-group">
                     @foreach ($artikel->komentarartikel->sortByDesc('created_at') as $comment)
-                        <li class="list-group-item">
+                        <li class="list-group-item my-2">
                             <div class="comment-container">
                                 <span data-feather="user"></span>
                                 <span class="comment-content">
