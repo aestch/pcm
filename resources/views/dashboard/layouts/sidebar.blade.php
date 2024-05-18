@@ -67,6 +67,12 @@
                 Portal Berita
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/artikel*') ? 'active' : '' }}" href="/dashboard/artikel">
+                <span data-feather="file-text"></span>
+                Artikel
+                </a>
+            </li>
         </ul>
 
         @can('admin')

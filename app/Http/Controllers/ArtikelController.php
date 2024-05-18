@@ -12,7 +12,9 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.artikel.index', [
+            'artikels' => Artikel::latest()->paginate(10)
+        ]);
     }
 
     /**

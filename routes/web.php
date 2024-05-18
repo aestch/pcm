@@ -6,6 +6,7 @@ use App\Http\Controllers\AmalusahaController;
 use App\Http\Controllers\MediasosialController;
 use App\Http\Controllers\ArsipfileController;
 use App\Http\Controllers\ArsipadministrasiController;
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\GaleriFotoController;
 use App\Http\Controllers\GalerivideoController;
 use App\Http\Controllers\PenggunaLoginController;
@@ -129,3 +130,4 @@ Route::resource('/dashboard/media-sosial', MediasosialController::class)->middle
 Route::resource('/dashboard/amal-usaha', AmalusahaController::class)->middleware('auth');
 Route::resource('/dashboard/portal-berita', PortalberitaController::class)->middleware('auth');
 Route::post('/dashboard/portal-berita/{id}/comment', [PortalberitaController::class, 'comment']);
+Route::resource('/dashboard/artikel', ArtikelController::class)->middleware('auth');
