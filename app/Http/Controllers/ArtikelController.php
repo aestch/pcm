@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artikel;
 use App\Models\Kategoriartikel;
+use App\Models\Komentarartikel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -128,5 +129,24 @@ class ArtikelController extends Controller
         $artikel->delete();
 
         return redirect('/dashboard/artikel')->with('success', 'Artikel telah dihapus!');
+    }
+
+    public function comment(Request $request, $id)
+    {
+
+        $validateData = $request->validate([
+            'komentar_artikel' => 'required',
+            'artikel_id' => 'required',
+        ]);
+
+        Komentarartikel::create($validateData);
+        $artikel = Artikel::with(['komentarartikel' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
+        return view("dashboard.artikel.show", [
+                'artikel' => $artikel,
+        ]);
+
+        // return redirect('/dashboard/portal-berita/')->with('success', 'Komentar berhasil ditambahkan!');
     }
 }

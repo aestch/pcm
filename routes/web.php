@@ -131,3 +131,4 @@ Route::resource('/dashboard/amal-usaha', AmalusahaController::class)->middleware
 Route::resource('/dashboard/portal-berita', PortalberitaController::class)->middleware('auth');
 Route::post('/dashboard/portal-berita/{id}/comment', [PortalberitaController::class, 'comment']);
 Route::resource('/dashboard/artikel', ArtikelController::class)->middleware('auth');
+Route::post('/dashboard/artikel/{id}/comment', [ArtikelController::class, 'comment']);

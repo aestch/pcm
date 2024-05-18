@@ -27,15 +27,15 @@
                 {!! $artikel->body !!}
             </article>
 
-            {{-- <h4>Komentar </h4><hr>
+            <h4>Komentar </h4><hr>
 
-            <form action="/dashboard/portal-berita/{{ $portalberita->id }}/comment" method="post">
+            <form action="/dashboard/artikel/{{ $artikel->id }}/comment" method="post">
                 @csrf
                 <div class="mb-3">
-                  <label for="komentar_berita" class="form-label">Tambahkan Komentar</label>
-                  <input type="hidden" name="portalberita_id" value="{{ $portalberita->id }}">
-                  <textarea class="form-control @error('komentar_berita') is-invalid @enderror" id="komentar_berita" name="komentar_berita" rows="3" placeholder="Tuliskan Komentar....">{{ old('komentar_berita') }}</textarea>
-                  @error('komentar_berita')
+                  <label for="komentar_artikel" class="form-label">Tambahkan Komentar</label>
+                  <input type="hidden" name="artikel_id" value="{{ $artikel->id }}">
+                  <textarea class="form-control @error('komentar_artikel') is-invalid @enderror" id="komentar_artikel" name="komentar_artikel" rows="3" placeholder="Tuliskan Komentar....">{{ old('komentar_artikel') }}</textarea>
+                  @error('komentar_artikel')
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
                 </div>
@@ -48,14 +48,14 @@
                 </div>
             @endif
 
-            @if (count($portalberita->Komentarberita) > 0)
+            @if (count($artikel->Komentarartikel) > 0)
                 <ul class="list-group">
-                    @foreach ($portalberita->komentarberita->sortByDesc('created_at') as $comment)
+                    @foreach ($artikel->komentarartikel->sortByDesc('created_at') as $comment)
                         <li class="list-group-item">
                             <div class="comment-container">
                                 <span data-feather="user"></span>
                                 <span class="comment-content">
-                                    <strong>Anonym</strong> - {{ $comment->komentar_berita }}
+                                    <strong>Anonym</strong> - {{ $comment->komentar_artikel }}
                                 </span>
                             </div>
                             <small>{{ $comment->created_at->locale('id')->diffForHumans() }}</small>
@@ -64,7 +64,7 @@
                 </ul>
             @else 
                 <div class="alert alert-warning">Belum ada komentar. Jadilah yang pertama berkomentar!</div>
-            @endif --}}
+            @endif
             
         </div>
     </div>
