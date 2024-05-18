@@ -36,7 +36,7 @@
             <label for="image" class="form-label">Gambar</label>
             <input type="hidden" name="oldImage" value="{{ $artikel->image }}">
             @if($artikel->image)
-                <img class="img-preview img-fluid mb-3 col-sm-5 d-block" src="{{ asset('storage/portal-berita/'. $artikel->image) }}">
+                <img class="img-preview img-fluid mb-3 col-sm-5 d-block" src="{{ asset('storage/artikel/'. $artikel->image) }}">
             @else
                 <img class="img-preview img-fluid mb-3 col-sm-5">
             @endif

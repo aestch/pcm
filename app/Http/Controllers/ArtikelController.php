@@ -60,9 +60,15 @@ class ArtikelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Artikel $artikel)
+    public function show($id)
     {
-        //
+        // $artikel = Artikel::with(['Komentarartikel' => function($query) {
+        //     $query->orderBy('created_at', 'desc');
+        // }])->findOrFail($id);
+        $artikel = Artikel::findOrFail($id);
+        return view("dashboard.artikel.show", [
+            'artikel' => $artikel,
+        ]);
     }
 
     /**
