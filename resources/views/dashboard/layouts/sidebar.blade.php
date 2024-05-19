@@ -73,6 +73,12 @@
                 Artikel
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/agenda*') ? 'active' : '' }}" href="/dashboard/agenda">
+                <span data-feather="file-text"></span>
+                Agenda
+                </a>
+            </li>
         </ul>
 
         @can('admin')
