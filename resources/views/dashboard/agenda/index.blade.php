@@ -28,6 +28,7 @@
         <tr>
             <th scope="col">No</th>
             <th scope="col">Nama Agenda</th>
+            <th scope="col">Hari / Tanggal Agenda</th>
             <th scope="col">Waktu</th>
             <th scope="col">Action</th>
         </tr>
@@ -39,8 +40,9 @@
             <td>{{ (($agendas->currentPage() - 1) * $agendas->perPage()) + $loop->index + 1 }}</td>
 
             <td>{{ $agenda->nama_agenda }}</td>            
-            {{-- <td>{{ $agenda->start_datetime }} - {{ $agenda->end_datetime }}</td>        --}}
-            <td>{{ \Carbon\Carbon::parse($agenda->start_datetime)->format('d/m/Y H:i') }} - {{ \Carbon\Carbon::parse($agenda->end_datetime)->format('d/m/Y H:i') }}</td>
+            <td>{{ \Illuminate\Support\Carbon::parse($agenda->tgl_agenda)->locale('id')->isoFormat('dddd, DD/MM/YYYY') }}</td>
+            {{-- <td>{{ \Carbon\Carbon::parse($agenda->tgl_agenda)->locale('id')->format('l, d/m/Y') }}</td>           --}}
+            <td>{{ \Carbon\Carbon::parse($agenda->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($agenda->end_time)->format('H:i') }}</td>
 
             <td>
                 <a href="/dashboard/agenda/{{ $agenda->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>

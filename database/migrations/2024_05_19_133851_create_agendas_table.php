@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
             $table->string('nama_agenda');
-            $table->datetime('start_datetime');
-            $table->datetime('end_datetime');
+            $table->date('tgl_agenda');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->timestamps();
         });
     }
