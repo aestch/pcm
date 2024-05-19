@@ -21,6 +21,7 @@
         <tr>
             <th scope="col">No</th>
             <th scope="col">Gambar</th>
+            <th scope="col">Keterangan</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -32,9 +33,12 @@
 
             <td>
                 <div class="image-preview-container" style="width: 150px; height: 100px; overflow: hidden;">
-                    <img src="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" alt="" class="img-fluid" style="width: auto; height: 100%;">
+                    <img src="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" alt="" class="img-fluid" style="width: 100%; height: auto;">
                 </div>
-            </td>            
+            </td> 
+
+            <td>{{ $galerifoto->keterangan }}</td>
+
             <td>
                 <a href="/dashboard/galeri-foto/{{ $galerifoto->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
                 <form action="/dashboard/galeri-foto/{{ $galerifoto->id }}" method="post" class="d-inline">
