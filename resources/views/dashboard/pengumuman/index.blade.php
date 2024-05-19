@@ -7,12 +7,12 @@
 </div>
 
 @if(session()->has('success'))
-    <div class="alert alert-success col-lg-10" role="alert">
+    <div class="alert alert-success col-lg-12" role="alert">
         {{ session('success') }}
     </div>
 @endif
 
-<div class="table-responsive col-lg-10">
+<div class="table-responsive col-lg-12">
 
     <a href="/dashboard/pengumuman/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data</a>
 
@@ -42,8 +42,8 @@
 
             <td>{{ $pengumuman->judul_pengumuman }}</td>            
             <td>{{ $pengumuman->isi_pengumuman }}</td>            
-            <td>{{ \Illuminate\Support\Carbon::parse($pengumuman->tgl_pengumuman)->locale('id')->isoFormat('dddd, DD/MM/YYYY') }}</td>
-            <td>{{ \Carbon\Carbon::parse($pengumuman->waktu_pengumuman)->format('H:i') }}</td>
+            <td>{{ \Illuminate\Support\Carbon::parse($pengumuman->created_at)->locale('id')->isoFormat('dddd, DD/MM/YYYY') }}</td>
+            <td>{{ \Carbon\Carbon::parse($pengumuman->created_at)->format('H:i') }}</td>
 
             <td>
                 <a href="/dashboard/pengumuman/{{ $pengumuman->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>

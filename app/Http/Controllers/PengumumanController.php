@@ -22,7 +22,7 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.pengumuman.create');
     }
 
     /**
@@ -30,7 +30,14 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'judul_pengumuman' => 'required|max:255',
+            'isi_pengumuman' => 'required',
+        ]);
+
+        Pengumuman::create($validateData);
+
+        return redirect('/dashboard/pengumuman')->with('success', 'Pengumuman berhasil ditambahkan!');
     }
 
     /**
@@ -44,24 +51,38 @@ class PengumumanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pengumuman $pengumuman)
+    public function edit($id)
     {
-        //
+        $pengumuman = Pengumuman::findOrFail($id);
+        return view('dashboard.pengumuman.edit',[
+            'pengumuman' => $pengumuman
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pengumuman $pengumuman)
+    public function update(Request $request, $id)
     {
-        //
+        $pengumuman = Pengumuman::findOrFail($id);
+        $validateData = $request->validate([
+            'judul_pengumuman' => 'required|max:255',
+            'isi_pengumuman' => 'required',
+        ]);
+
+        $pengumuman->update($validateData);
+        return redirect('/dashboard/pengumuman')->with('success', 'Pengumuman berhasil diupdate!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pengumuman $pengumuman)
+    public function destroy($id)
     {
-        //
+        $pengumuman = Pengumuman::findOrFail($id);
+
+        $pengumuman->delete();
+
+        return redirect('/dashboard/pengumuman')->with('success', 'Pengumuman berhasil dihapus!');
     }
 }
