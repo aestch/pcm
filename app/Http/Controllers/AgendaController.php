@@ -22,7 +22,7 @@ class AgendaController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.agenda.create');
     }
 
     /**
@@ -30,7 +30,16 @@ class AgendaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'nama_agenda' => 'required|max:255',
+            'tgl_agenda' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+        ]);
+
+        Agenda::create($validateData);
+
+        return redirect('/dashboard/agenda')->with('success', 'Agenda berhasil ditambahkan!');
     }
 
     /**
@@ -60,8 +69,12 @@ class AgendaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Agenda $agenda)
+    public function destroy($id)
     {
-        //
+        $agenda = Agenda::findOrFail($id);
+
+        $agenda->delete();
+
+        return redirect('/dashboard/agenda')->with('success', 'Agenda berhasil dihapus!');
     }
 }
