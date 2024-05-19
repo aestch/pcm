@@ -7,17 +7,18 @@
 </div>
 
 @if(session()->has('success'))
-    <div class="alert alert-success col-lg-6" role="alert">
+    <div class="alert alert-success col-lg-10" role="alert">
         {{ session('success') }}
     </div>
 @endif
 
-<div class="table-responsive col-lg-6">
+<div class="table-responsive col-lg-10">
 
-    {{-- <a href="/dashboard/media-sosial/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data</a> --}}
-    @if($agendas->isEmpty())
+    <a href="/dashboard/agenda/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data</a>
+
+    {{-- @if($agendas->isEmpty())
         <a href="/dashboard/agenda/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data</a>
-    @endif
+    @endif --}}
     
     <div class="card-body table-responsive p-0">
        
@@ -38,7 +39,9 @@
             <td>{{ (($agendas->currentPage() - 1) * $agendas->perPage()) + $loop->index + 1 }}</td>
 
             <td>{{ $agenda->nama_agenda }}</td>            
-            <td>{{ $agenda->start_time }} - {{ $agenda->end_time }}</td>            
+            {{-- <td>{{ $agenda->start_datetime }} - {{ $agenda->end_datetime }}</td>        --}}
+            <td>{{ \Carbon\Carbon::parse($agenda->start_datetime)->format('d/m/Y H:i') }} - {{ \Carbon\Carbon::parse($agenda->end_datetime)->format('d/m/Y H:i') }}</td>
+
             <td>
                 <a href="/dashboard/agenda/{{ $agenda->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
                 <form action="/dashboard/agenda/{{ $agenda->id }}" method="post" class="d-inline">
