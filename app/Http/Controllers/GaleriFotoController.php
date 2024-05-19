@@ -37,6 +37,7 @@ class GaleriFotoController extends Controller
         // validate form
         $request->validate([
             'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'keterangan'=> 'required|max:50',
         ]);
 
         // upload image
@@ -45,7 +46,8 @@ class GaleriFotoController extends Controller
 
         // create galerifoto
         Galerifoto::create([
-            'image' => $image->hashName()
+            'image' => $image->hashName(),
+            'keterangan' => $request->input('keterangan'),
         ]);
 
         // redirect to index
@@ -81,6 +83,7 @@ class GaleriFotoController extends Controller
 
         $rules = [
             'image' => 'image|max:2048', // Validasi untuk gambar
+            
         ];
 
         $request->validate($rules);
