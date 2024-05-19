@@ -79,6 +79,12 @@
                 Agenda
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/pengumuman*') ? 'active' : '' }}" href="/dashboard/pengumuman">
+                <span data-feather="file-text"></span>
+                Pengumuman
+                </a>
+            </li>
         </ul>
 
         @can('admin')
