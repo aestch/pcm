@@ -53,17 +53,29 @@ class AgendaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Agenda $agenda)
+    public function edit($id)
     {
-        //
+        $agenda = Agenda::findOrFail($id);
+        return view('dashboard.agenda.edit',[
+            'agenda' => $agenda
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Agenda $agenda)
+    public function update(Request $request, $id)
     {
-        //
+        $agenda = Agenda::findOrFail($id);
+        $validateData = $request->validate([
+            'nama_agenda' => 'required|max:255',
+            'tgl_agenda' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+        ]);
+
+        $agenda->update($validateData);
+        return redirect('/dashboard/agenda')->with('success', 'Agenda berhasil diupdate!');
     }
 
     /**
