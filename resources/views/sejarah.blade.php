@@ -10,16 +10,10 @@
             <div class="container">
                 <div class="row">
                     @foreach($identitaspcms as $identitaspcm)
-                    <div class="col-md-12 bt-3 img-thumbnail">
-                        <div class="card">
-
-                            <article>
-                                {!! $identitaspcm->sejarah !!}
-                            </article>
-                        </div>
-                    </div>
-                    @endforeach
-                    
+                        <article>
+                            {!! $identitaspcm->sejarah !!}
+                        </article>
+                    @endforeach  
                 </div>
             </div>
         </div>
