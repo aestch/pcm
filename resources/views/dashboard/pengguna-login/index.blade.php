@@ -2,54 +2,130 @@
 
 @section('container')
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Pengguna Login</h1>
-</div>
-
-@if(session()->has('success'))
-    <div class="alert alert-success col-lg-11" role="alert">
-        {{ session('success') }}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Pengguna Login</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Pengguna Login</a></li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
-@endif
+    <!-- /.content-header -->
 
-<div class="table-responsive col-lg-11">
-
-    <a href="/dashboard/pengguna-login/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data</a>
-
-    <table class="table table-striped table-sm">
-        <thead>
-        <tr>
-            <th scope="col">No</th>
-            <th scope="col">Nama</th>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
-            <th scope="col">Password</th>
-            <th scope="col">Hak Akses</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        @foreach($users as $user)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->username }}</td>
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->password }}</td>
-            <td>{{ $user->role->name }}</td>
-            <td>
-                <a href="/dashboard/pengguna-login/{{ $user->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-                <form action="/dashboard/pengguna-login/{{ $user->id }}" method="post" class="d-inline">
-                    @method('delete')
-                    @csrf
-                    <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><span data-feather="x-circle"></span></button>
-                </form>
-            </td>
-        </tr> 
-        @endforeach
-        </tbody>
-    </table>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+  
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Data Akun Pengguna</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <a href="/dashboard/pengguna-login/create" class="btn btn-primary btn-sm mb-3"><i class="fas fa-plus"></i> Tambah data</a>
+                  <table id="example1" class="table table-bordered table-striped table-hover">
+                    <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Nama</th>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Hak Akses</th>
+                      <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($users as $user)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->username }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->role->name }}</td>
+                            <td>
+                                <a href="/dashboard/pengguna-login/{{ $user->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                <form action="/dashboard/pengguna-login/{{ $user->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $user->id }}">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" onclick="logoutConfirmation(event, {{ $user->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
+                                </form>
+                                
+                                <script>
+                                    function logoutConfirmation(event, userId) {
+                                        Swal.fire({
+                                            title: 'Konfirmasi',
+                                            text: 'Apakah Anda yakin ingin menghapus?',
+                                            icon: 'question',
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Ya',
+                                            cancelButtonText: 'Batal'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                // Cari form berdasarkan data-user-id
+                                                const form = document.querySelector(`.form-hapus[data-user-id='${userId}']`);
+                                                if (form) {
+                                                    form.submit();
+                                                }
+                                            }
+                                        });
+                                        // Cegah aksi default dari tombol submit
+                                        event.preventDefault();
+                                    }
+                                </script>
+                                
+                                {{-- <form id="hapusPengguna" action="/dashboard/pengguna-login/{{ $user->id }}" method="post" class="d-inline">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" onclick="logoutConfirmation(event)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
+                                    <script>
+                                        function logoutConfirmation(event) {
+                                            Swal.fire({
+                                                title: 'Konfirmasi',
+                                                text: 'Apakah Anda yakin ingin menghapus?',
+                                                icon: 'question',
+                                                showCancelButton: true,
+                                                confirmButtonText: 'Ya',
+                                                cancelButtonText: 'Batal'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    // Jika pengguna menekan "Ya", maka lakukan logout
+                                                    document.getElementById('hapusPengguna').submit();
+                                                }
+                                            });
+                                            // Cegah aksi default dari tombol submit
+                                            event.preventDefault();
+                                        }
+                                    </script>
+                                </form> --}}
+                            </td>
+                        </tr> 
+                        @endforeach
+                    
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </section>
+    <!-- /.content -->
 </div>
+
 
 @endsection
