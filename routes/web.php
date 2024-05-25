@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KomentarberitaController;
+use App\Http\Controllers\OrtomController;
 use App\Http\Controllers\KajianController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\PengumumanController;
@@ -24,6 +25,7 @@ use App\Models\Direktorikeanggotaan;
 use App\Models\Kajian;
 use App\Models\Komentarberita;
 use App\Models\Mediasosial;
+use App\Models\Ortom;
 use Illuminate\Auth\Middleware\Authenticate;
 
 Route::get('/', function () {
@@ -140,3 +142,4 @@ Route::post('/dashboard/artikel/{id}/comment', [ArtikelController::class, 'comme
 Route::resource('/dashboard/agenda', AgendaController::class)->middleware('auth');
 Route::resource('/dashboard/pengumuman', PengumumanController::class)->middleware('auth');
 Route::resource('/dashboard/kajian', KajianController::class)->middleware('auth');
+Route::resource('/dashboard/ortom', OrtomController::class)->middleware('auth');
