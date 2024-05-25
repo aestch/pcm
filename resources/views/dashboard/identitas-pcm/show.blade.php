@@ -31,7 +31,7 @@
                   <h3 class="card-title">Detail Identitas PCM</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body mx-5 my-2">
+                <div class="card-body mx-1 ">
                     <a href="/dashboard/identitas-pcm" class="btn btn-success btn-sm"><i class="fas fa-arrow-left"></i> Kembali</a>
                     <a href="/dashboard/identitas-pcm/{{ $identitaspcm->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
                     <form action="/dashboard/identitas-pcm/{{ $identitaspcm->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $identitaspcm->id }}">
@@ -63,7 +63,7 @@
                         }
                     </script>
 
-                    <center><h2 class="mb-3">Sejarah</h2></center>
+                    <center><h3 class="mb-0 mt-3">Sejarah</h3></center>
                     <hr>
                     <article class="my-3 fs-6" style="text-align: justify;">
                         {!! $identitaspcm->sejarah !!}
@@ -74,9 +74,9 @@
               </div>
               <div class="card">
                 <!-- /.card-header -->
-                <div class="card-body mx-5 my-2">
+                <div class="card-body mx-1">
 
-                    <center><h2 class="mb-3">Kata Sambutan Ketua PCM</h2></center>
+                    <center><h3 class="mb-0 mt-3">Kata Sambutan Ketua PCM</h3></center>
                     <hr>
                     <article class="my-3 fs-6" style="text-align: justify;">
                         {!! $identitaspcm->kata_sambutan !!}
@@ -87,9 +87,9 @@
               <!-- /.card -->
               <div class="card">
                 <!-- /.card-header -->
-                <div class="card-body mx-5 my-2">
+                <div class="card-body mx-1">
 
-                    <center><h2 class="mb-3">Visi dan Misi</h2></center>
+                    <center><h3 class="mb-0 mt-3">Visi dan Misi</h3></center>
                     <hr>
                     <article class="my-3 fs-6" style="text-align: justify;">
                         {!! $identitaspcm->visimisi !!}
