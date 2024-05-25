@@ -2,58 +2,104 @@
 
 @section('container')
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Arsip Administrasi</h1>
-</div>
-
-@if(session()->has('success'))
-    <div class="alert alert-success col-lg-10" role="alert">
-        {{ session('success') }}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Arsip Administrasi</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Arsip Administrasi</a></li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
-@endif
+    <!-- /.content-header -->
 
-<div class="table-responsive col-lg-10">
-
-    <a href="/dashboard/arsip-administrasi/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data</a>
-
-    <table class="table table-striped table-sm">
-        <thead>
-        <tr>
-            <th scope="col">No</th>
-            <th scope="col">Tanggal Arsip</th>
-            <th scope="col">No Surat</th>
-            <th scope="col">Kategori</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        @foreach($arsipadministrasis as $arsipadministrasi)
-        <tr>
-            <td>{{ (($arsipadministrasis->currentPage() - 1) * $arsipadministrasis->perPage()) + $loop->index + 1 }}</td>
-
-            <td>{{ date('d/m/Y', strtotime($arsipadministrasi->tgl_arsip)) }}</td>       
-            <td>{{ $arsipadministrasi->no_surat }}</td>            
-            <td>{{ $arsipadministrasi->kategoriarsip->kategori_arsip }}</td>            
-            <td>
-                {{-- <a href="{{ url('storage/arsip-administrasi/'. $arsipfile->upload_arsipfile) }}" class="badge bg-dark" download="{{ $arsipfile->upload_arsipfile }}"><span data-feather="download"></span></a> --}}
-                <a href="/dashboard/arsip-administrasi/{{ $arsipadministrasi->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-                <form action="/dashboard/arsip-administrasi/{{ $arsipadministrasi->id }}" method="post" class="d-inline">
-                    @method('delete')
-                    @csrf
-                    <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><span data-feather="x-circle"></span></button>
-                </form>
-            </td>
-        </tr> 
-
-        @endforeach
-        </tbody>
-    </table>
-</div>
-
-<div class="d-flex justify-content-center">
-    {{ $arsipadministrasis->links('pagination::bootstrap-5', ['items' => $arsipadministrasis]) }}
-
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+  
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Arsip Administrasi</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <a href="/dashboard/arsip-administrasi/create" class="btn btn-primary btn-sm mb-3"><i class="fas fa-plus"></i> Tambah data</a>
+                  <table id="example1" class="table table-bordered table-striped table-hover">
+                    <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Tanggal Arsip</th>
+                      <th>No Surat</th>
+                      <th>Kategori</th>
+                      <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($arsipadministrasis as $arsipadministrasi)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ date('d/m/Y', strtotime($arsipadministrasi->tgl_arsip)) }}</td>
+                            <td>{{ $arsipadministrasi->no_surat }}</td>
+                            <td>{{ $arsipadministrasi->kategoriarsip->kategori_arsip }}</td>
+                            <td>
+                                <a href="/dashboard/arsip-administrasi/{{ $arsipadministrasi->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                <form action="/dashboard/arsip-administrasi/{{ $arsipadministrasi->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $arsipadministrasi->id }}">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" onclick="konfirmasiHapus(event, {{ $arsipadministrasi->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
+                                </form>
+                                
+                                <script>
+                                    function konfirmasiHapus(event, userId) {
+                                        Swal.fire({
+                                            title: 'Konfirmasi',
+                                            text: 'Apakah Anda yakin ingin menghapus?',
+                                            icon: 'question',
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Ya',
+                                            cancelButtonText: 'Batal'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                // Cari form berdasarkan data-user-id
+                                                const form = document.querySelector(`.form-hapus[data-user-id='${userId}']`);
+                                                if (form) {
+                                                    form.submit();
+                                                }
+                                            }
+                                        });
+                                        // Cegah aksi default dari tombol submit
+                                        event.preventDefault();
+                                    }
+                                </script>
+                                
+                                
+                            </td>
+                        </tr> 
+                        @endforeach
+                    
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </section>
+    <!-- /.content -->
 </div>
 
 @endsection

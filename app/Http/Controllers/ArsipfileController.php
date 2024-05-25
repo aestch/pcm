@@ -50,7 +50,7 @@ class ArsipfileController extends Controller
 
         Arsipfile::create($validateData);
 
-        return redirect('/dashboard/arsip-files')->with('success', 'Arsip File Berhasil Ditambahkan!');
+        return redirect('/dashboard/arsip-files')->with('success', 'Arsip Berkas berhasil ditambahkan!');
     }
 
     /**
@@ -116,6 +116,6 @@ class ArsipfileController extends Controller
         $arsipfile->delete();
 
         //redirect to index
-        return redirect('/dashboard/arsip-files/')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect('/dashboard/arsip-files/')->with(['success' => 'Data berhasil dihapus!']);
     }
 }

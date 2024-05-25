@@ -41,7 +41,7 @@ class ArsipadministrasiController extends Controller
 
         Arsipadministrasi::create($validateData);
 
-        return redirect('/dashboard/arsip-administrasi')->with('success', 'Arsip Administrasi Berhasil Ditambahkan!');
+        return redirect('/dashboard/arsip-administrasi')->with('success', 'Arsip Administrasi berhasil ditambahkan!');
     }
 
     /**
@@ -95,6 +95,6 @@ class ArsipadministrasiController extends Controller
         $arsipadministrasi->delete();
 
         //redirect to index
-        return redirect('/dashboard/arsip-administrasi/')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect('/dashboard/arsip-administrasi/')->with(['success' => 'Data berhasil dihapus!']);
     }
 }
