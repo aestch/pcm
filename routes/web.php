@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KomentarberitaController;
+use App\Http\Controllers\KajianController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PortalberitaController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\RegisterController;
 use App\Models\Agenda;
 use App\Models\Amalusaha;
 use App\Models\Direktorikeanggotaan;
+use App\Models\Kajian;
 use App\Models\Komentarberita;
 use App\Models\Mediasosial;
 use Illuminate\Auth\Middleware\Authenticate;
@@ -137,3 +139,4 @@ Route::resource('/dashboard/artikel', ArtikelController::class)->middleware('aut
 Route::post('/dashboard/artikel/{id}/comment', [ArtikelController::class, 'comment']);
 Route::resource('/dashboard/agenda', AgendaController::class)->middleware('auth');
 Route::resource('/dashboard/pengumuman', PengumumanController::class)->middleware('auth');
+Route::resource('/dashboard/kajian', KajianController::class)->middleware('auth');

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Bidangkajian;
 use App\Models\User;
 use App\Models\Kategoriartikel;
 use App\Models\Role;
