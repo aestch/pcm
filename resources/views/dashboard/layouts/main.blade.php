@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="{{ asset('lte/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('lte/plugins/summernote/summernote-bs4.min.css') }}">
+  <!-- SimpleMDE -->
+  <link rel="stylesheet" href="{{ asset('lte/plugins/simplemde/simplemde.min.css') }}">
 
   {{-- Trix Editor --}}
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
@@ -176,6 +178,16 @@
 
 <!-- Tambahkan link ke file JavaScript SweetAlert di bagian bawah body -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<!-- Summernote -->
+<script src="{{ asset('lte/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+  })
+</script>
 
 <script>
   //message with sweetalert
