@@ -57,11 +57,11 @@
                                 <form action="/dashboard/pengguna-login/{{ $user->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $user->id }}">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" onclick="logoutConfirmation(event, {{ $user->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
+                                    <button type="submit" onclick="konfirmasiHapus(event, {{ $user->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
                                 </form>
                                 
                                 <script>
-                                    function logoutConfirmation(event, userId) {
+                                    function konfirmasiHapus(event, userId) {
                                         Swal.fire({
                                             title: 'Konfirmasi',
                                             text: 'Apakah Anda yakin ingin menghapus?',
@@ -83,30 +83,7 @@
                                     }
                                 </script>
                                 
-                                {{-- <form id="hapusPengguna" action="/dashboard/pengguna-login/{{ $user->id }}" method="post" class="d-inline">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" onclick="logoutConfirmation(event)" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
-                                    <script>
-                                        function logoutConfirmation(event) {
-                                            Swal.fire({
-                                                title: 'Konfirmasi',
-                                                text: 'Apakah Anda yakin ingin menghapus?',
-                                                icon: 'question',
-                                                showCancelButton: true,
-                                                confirmButtonText: 'Ya',
-                                                cancelButtonText: 'Batal'
-                                            }).then((result) => {
-                                                if (result.isConfirmed) {
-                                                    // Jika pengguna menekan "Ya", maka lakukan logout
-                                                    document.getElementById('hapusPengguna').submit();
-                                                }
-                                            });
-                                            // Cegah aksi default dari tombol submit
-                                            event.preventDefault();
-                                        }
-                                    </script>
-                                </form> --}}
+                                
                             </td>
                         </tr> 
                         @endforeach
