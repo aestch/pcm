@@ -87,7 +87,7 @@
             <a href="/dashboard/arsip-files" class="nav-link {{ Request::is('dashboard/arsip-files*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-folder-open"></i>
               <p>
-                Arsip File
+                Arsip Berkas
               </p>
             </a>
           </li>
