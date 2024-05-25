@@ -2,60 +2,155 @@
 
 @section('container')
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Galeri Foto</h1>
-</div>
-
-@if(session()->has('success'))
-    <div class="alert alert-success col-lg-6" role="alert">
-        {{ session('success') }}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Galeri Foto</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Galeri Foto</a></li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
-@endif
+    <!-- /.content-header -->
 
-<div class="table-responsive col-lg-6">
-
-    <a href="/dashboard/galeri-foto/create" class="btn btn-primary btn-sm mb-3"><span data-feather="plus"></span> Tambah data</a>
-
-    <table class="table table-striped table-sm">
-        <thead>
-        <tr>
-            <th scope="col">No</th>
-            <th scope="col">Gambar</th>
-            <th scope="col">Keterangan</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        @foreach($galerifotos as $galerifoto)
-        <tr>
-            <td>{{ (($galerifotos->currentPage() - 1) * $galerifotos->perPage()) + $loop->index + 1 }}</td>
-
-            <td>
-                <div class="image-preview-container" style="width: 150px; height: 100px; overflow: hidden;">
-                    <img src="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" alt="" class="img-fluid" style="width: 100%; height: auto;">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+  
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Galeri Foto</h3>
                 </div>
-            </td> 
-
-            <td>{{ $galerifoto->keterangan }}</td>
-
-            <td>
-                <a href="/dashboard/galeri-foto/{{ $galerifoto->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-                <form action="/dashboard/galeri-foto/{{ $galerifoto->id }}" method="post" class="d-inline">
-                    @method('delete')
-                    @csrf
-                    <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><span data-feather="x-circle"></span></button>
-                </form>
-            </td>
-        </tr> 
-        @endforeach
-        </tbody>
-    </table>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <a href="/dashboard/galeri-foto/create" class="btn btn-primary btn-sm mb-3"><i class="fas fa-plus"></i> Tambah data</a>
+                
+                    {{-- @foreach($galerifotos as $galerifoto)
+                    <div class="filter-container row row-cols-1 row-cols-md-6 overflow-auto">
+                        
+                            <div class="filtr-item col mb-4" data-category="1" data-sort="white sample">
+                                <a href="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" data-toggle="lightbox" data-title="{{ $galerifoto->keterangan }}">
+                                    <img src="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" class="img-fluid mb-2" alt="white sample"/>
+                                </a>
+                                <a href="/dashboard/galeri-foto/{{ $galerifoto->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                <form action="/dashboard/galeri-foto/{{ $galerifoto->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $galerifoto->id }}">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" onclick="konfirmasiHapus(event, {{ $galerifoto->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
+                                </form>
+                            
+                                <script>
+                                    function konfirmasiHapus(event, userId) {
+                                        Swal.fire({
+                                            title: 'Konfirmasi',
+                                            text: 'Apakah Anda yakin ingin menghapus?',
+                                            icon: 'question',
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Ya',
+                                            cancelButtonText: 'Batal'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                // Cari form berdasarkan data-user-id
+                                                const form = document.querySelector(`.form-hapus[data-user-id='${userId}']`);
+                                                if (form) {
+                                                    form.submit();
+                                                }
+                                            }
+                                        });
+                                        // Cegah aksi default dari tombol submit
+                                        event.preventDefault();
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                        @endforeach --}}
+                        <div class="container">
+                            <!-- Menampilkan Total Data -->
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h5>Total Data: {{ $totalData }}</h5>
+                                </div>
+                            </div>
+                        
+                            <div class="filter-container overflow-auto">
+                                @foreach($galerifotos as $index => $galerifoto)
+                                    <div class="filtr-item col-md-3 mb-4" data-category="1" data-sort="white sample">
+                                        <a href="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" data-toggle="lightbox" data-title="{{ $galerifoto->keterangan }}">
+                                            <img src="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" class="img-fluid img-thumbnail mb-2" style="object-fit: cover; width: 100%; height: 200px;" alt="white sample"/>
+                                        </a>
+                                        <a href="/dashboard/galeri-foto/{{ $galerifoto->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                        <form action="/dashboard/galeri-foto/{{ $galerifoto->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $galerifoto->id }}">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" onclick="konfirmasiHapus(event, {{ $galerifoto->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
+                                        </form>
+                                        <script>
+                                            function konfirmasiHapus(event, userId) {
+                                                Swal.fire({
+                                                    title: 'Konfirmasi',
+                                                    text: 'Apakah Anda yakin ingin menghapus?',
+                                                    icon: 'question',
+                                                    showCancelButton: true,
+                                                    confirmButtonText: 'Ya',
+                                                    cancelButtonText: 'Batal'
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        // Cari form berdasarkan data-user-id
+                                                        const form = document.querySelector(`.form-hapus[data-user-id='${userId}']`);
+                                                        if (form) {
+                                                            form.submit();
+                                                        }
+                                                    }
+                                                });
+                                                // Cegah aksi default dari tombol submit
+                                                event.preventDefault();
+                                            }
+                                        </script>
+                                    </div>
+                                    @if(($index + 1) % 4 == 0)
+                                        </div><div class="row mb-4">
+                                    @endif
+                                @endforeach
+                                @if($galerifotos->count() % 4 != 0)
+                                    @for($i = 0; $i < 4 - ($galerifotos->count() % 4); $i++)
+                                        <div class="filtr-item col-md-3"></div>
+                                    @endfor
+                                @endif
+                            </div>
+                        
+                            <!-- Pagination Links -->
+                            <div class="d-flex justify-content-center mt-4">
+                                {{ $galerifotos->links() }}
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+                    
+    
+                  </div>
+                <!-- /.card-body -->
+                </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </section>
+    <!-- /.content -->
 </div>
 
-<div class="d-flex justify-content-center">
-    {{ $galerifotos->links('pagination::bootstrap-5', ['items' => $galerifotos]) }}
-
-</div>
 
 @endsection

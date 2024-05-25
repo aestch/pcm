@@ -17,7 +17,8 @@ class GaleriFotoController extends Controller
     public function index()
     {
         return view('dashboard.galeri-foto.index', [
-            'galerifotos' => Galerifoto::latest()->paginate(10)
+            'galerifotos' => Galerifoto::latest()->paginate(12),
+            'totalData' => Galerifoto::count()
         ]);
     }
 
@@ -77,39 +78,43 @@ class GaleriFotoController extends Controller
      * Update the specified resource in storage.
      */
 
-    public function update(Request $request, $id): RedirectResponse
-    {
-        $galerifoto = Galerifoto::findOrFail($id);
-
-        $rules = [
-            'image' => 'image|max:2048', // Validasi untuk gambar
-            
-        ];
-
-        $request->validate($rules);
-
-        // Jika terdapat file gambar yang diunggah
-        if ($request->hasFile('image')) {
-            // Hapus gambar lama jika ada
-            if ($galerifoto->image) {
-                Storage::delete('public/galeri-foto/' . $galerifoto->image); // Ubah path penyimpanan gambar lama
-            }
-
-            // Simpan gambar yang diunggah ke direktori 'public'
-            $imagePath = $request->file('image')->store('public/galeri-foto');
-
-            // Ambil nama file tanpa direktori
-            $imageName = basename($imagePath);
-
-            // Simpan nama file ke dalam database
-            $galerifoto->image = $imageName;
-        }
-
-        // Simpan perubahan pada data galeri foto
-        $galerifoto->save();
-
-        return redirect('/dashboard/galeri-foto')->with('success', 'Data berhasil diupdate!');
-    }
+     public function update(Request $request, $id): RedirectResponse
+     {
+         $galerifoto = Galerifoto::findOrFail($id);
+     
+         $rules = [
+             'image' => 'image|max:2048', // Validasi untuk gambar
+             'keterangan'=> 'required|max:50',
+         ];
+     
+         $request->validate($rules);
+     
+         // Jika terdapat file gambar yang diunggah
+         if ($request->hasFile('image')) {
+             // Hapus gambar lama jika ada
+             if ($galerifoto->image) {
+                 Storage::delete('public/galeri-foto/' . $galerifoto->image); // Ubah path penyimpanan gambar lama
+             }
+     
+             // Simpan gambar yang diunggah ke direktori 'public'
+             $imagePath = $request->file('image')->store('public/galeri-foto');
+     
+             // Ambil nama file tanpa direktori
+             $imageName = basename($imagePath);
+     
+             // Simpan nama file ke dalam database
+             $galerifoto->image = $imageName;
+         }
+     
+         // Update keterangan
+         $galerifoto->keterangan = $request->keterangan;
+     
+         // Simpan perubahan pada data galeri foto
+         $galerifoto->save();
+     
+         return redirect('/dashboard/galeri-foto')->with('success', 'Data berhasil diupdate!');
+     }
+     
 
 
 

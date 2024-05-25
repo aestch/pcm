@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="{{ asset('lte/plugins/summernote/summernote-bs4.min.css') }}">
   <!-- SimpleMDE -->
   <link rel="stylesheet" href="{{ asset('lte/plugins/simplemde/simplemde.min.css') }}">
+  <!-- Ekko Lightbox -->
+  <link rel="stylesheet" href="{{ asset('lte/plugins/ekko-lightbox/ekko-lightbox.css') }}">
 
   {{-- Trix Editor --}}
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
@@ -209,6 +211,27 @@
       });
   @endif
 
+</script>
+
+<!-- Ekko Lightbox -->
+<script src="{{ asset('lte/plugins/ekko-lightbox/ekko-lightbox.min.js') }}"></script>
+<!-- Filterizr-->
+<script src="{{ asset('lte/plugins/filterizr/jquery.filterizr.min.js') }}"></script>
+<script>
+  $(function () {
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox({
+        alwaysShowClose: true
+      });
+    });
+
+    $('.filter-container').filterizr({gutterPixels: 3});
+    $('.btn[data-filter]').on('click', function() {
+      $('.btn[data-filter]').removeClass('active');
+      $(this).addClass('active');
+    });
+  })
 </script>
 
 </body>
