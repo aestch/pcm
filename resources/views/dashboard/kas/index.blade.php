@@ -33,7 +33,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a href="/dashboard/kas/create" class="btn btn-primary btn-sm mb-3"><i class="fas fa-plus"></i> Tambah data</a>
-                    <p>Total Saldo : Rp 0.00</p>
+                    <p>Total Saldo : <strong>{{ 'Rp ' . number_format($allsaldo, 2, ',', '.') }}</strong></p>
                   <table id="example1" class="table table-bordered table-striped table-hover">
                     <thead>
                     <tr>

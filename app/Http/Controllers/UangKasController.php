@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Saldo;
 use App\Models\UangKas;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -14,8 +15,10 @@ class UangKasController extends Controller
      */
     public function index()
     {
+        $allsaldo = Saldo::sum('total_saldo');
         return view('dashboard.kas.index', [
-            'kass' => UangKas::latest()->paginate(10)
+            'kass' => UangKas::latest()->paginate(10),
+            'allsaldo' => $allsaldo
         ]);
     }
 
