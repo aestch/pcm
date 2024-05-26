@@ -34,7 +34,7 @@ class DirektorikeanggotaanController extends Controller
     {
         $validateData = $request->validate([
             'nama' => 'required|max:255',
-            'nbm' => 'required|numeric|max:20',
+            'nbm' => 'required|numeric',
             'jenis_kelamin' => 'required|max:20',
             'tempat_lahir' => 'required|max:30',
             'tanggal_lahir' => 'required', 
@@ -103,7 +103,7 @@ class DirektorikeanggotaanController extends Controller
 
         $validateData = $request->validate([
             'nama' => 'required|max:255',
-            'nbm' => 'required|numeric|max:20',
+            'nbm' => 'required|numeric',
             'jenis_kelamin' => 'required|max:20',
             'tempat_lahir' => 'required|max:30',
             'tanggal_lahir' => 'required', 
