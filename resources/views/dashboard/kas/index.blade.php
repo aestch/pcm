@@ -50,7 +50,9 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ \Illuminate\Support\Carbon::parse($kas->tanggal_kas)->locale('id')->isoFormat('dddd, DD/MM/YYYY') }}</td>
-                            <td>{{ $kas->tipe }}</td>
+                            <td style="{{ $kas->tipe === 'Pendapatan' ? 'color: green;' : ($kas->tipe === 'Pengeluaran' ? 'color: red;' : '') }}">
+                                {{ $kas->tipe }}
+                            </td>
                             <td>{{ 'Rp ' . number_format($kas->jumlah, 2, ',', '.') }}</td>
                             <td>{{ $kas->deskripsi }}</td>
                             <td>
