@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\UangKas;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+
 
 class UangKasController extends Controller
 {
@@ -12,7 +14,9 @@ class UangKasController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.kas.index', [
+            'kass' => UangKas::latest()->paginate(10)
+        ]);
     }
 
     /**
@@ -20,7 +24,7 @@ class UangKasController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.kas.create');
     }
 
     /**
@@ -28,7 +32,17 @@ class UangKasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'tanggal_kas' => 'required|date',
+            'deskripsi' => 'required|max:100',
+            'tipe' => 'required',
+            'jumlah' => 'required|numeric',
+            'user_id' => 'required',
+        ]);
+
+        UangKas::create($validateData);
+
+        return redirect('/dashboard/kas')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -42,24 +56,41 @@ class UangKasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(UangKas $uangKas)
+    public function edit($id)
     {
-        //
+        $kas = UangKas::findOrFail($id);
+        return view('dashboard.kas.edit',[
+            'kas' => $kas
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, UangKas $uangKas)
+    public function update(Request $request, $id)
     {
-        //
+        $kas = UangKas::findOrFail($id);
+        $validateData = $request->validate([
+            'tanggal_kas' => 'required|date',
+            'deskripsi' => 'required|max:100',
+            'tipe' => 'required',
+            'jumlah' => 'required|numeric',
+            'user_id' => 'required',
+        ]);
+
+        $kas->update($validateData);
+        return redirect('/dashboard/kas')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UangKas $uangKas)
+    public function destroy($id): RedirectResponse
     {
-        //
+        $kas = UangKas::findOrFail($id);
+
+        $kas->delete();
+
+        return redirect('/dashboard/kas')->with('success', 'Data berhasil dihapus!');
     }
 }

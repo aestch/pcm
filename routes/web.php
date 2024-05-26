@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KomentarberitaController;
+use App\Http\Controllers\UangKasController;
 use App\Http\Controllers\OrtomController;
 use App\Http\Controllers\KajianController;
 use App\Http\Controllers\AgendaController;
@@ -26,6 +27,7 @@ use App\Models\Kajian;
 use App\Models\Komentarberita;
 use App\Models\Mediasosial;
 use App\Models\Ortom;
+use App\Models\UangKas;
 use Illuminate\Auth\Middleware\Authenticate;
 
 Route::get('/', function () {
@@ -143,3 +145,4 @@ Route::resource('/dashboard/agenda', AgendaController::class)->middleware('auth'
 Route::resource('/dashboard/pengumuman', PengumumanController::class)->middleware('auth');
 Route::resource('/dashboard/kajian', KajianController::class)->middleware('auth');
 Route::resource('/dashboard/ortom', OrtomController::class)->middleware('auth');
+Route::resource('/dashboard/kas', UangKasController::class)->middleware('auth');

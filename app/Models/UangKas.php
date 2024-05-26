@@ -10,6 +10,8 @@ class UangKas extends Model
     use HasFactory;
 
     protected $guarded = [
-        'id_kas'
+        'id'
     ];
+
+    
 }
