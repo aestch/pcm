@@ -17,6 +17,8 @@ use App\Http\Controllers\GalerivideoController;
 use App\Http\Controllers\PenggunaLoginController;
 use App\Http\Controllers\DirektorikeanggotaanController;
 use App\Http\Controllers\IdentitaspcmController;
+use App\Models\Artikel;
+use App\Models\Portalberita;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -27,6 +29,7 @@ use App\Models\Kajian;
 use App\Models\Komentarberita;
 use App\Models\Mediasosial;
 use App\Models\Ortom;
+use App\Models\Saldo;
 use App\Models\UangKas;
 use Illuminate\Auth\Middleware\Authenticate;
 
@@ -124,8 +127,16 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
+// Route::get('/dashboard', function(){
+//     return view('dashboard.index');
+// })->middleware('auth');
 Route::get('/dashboard', function(){
-    return view('dashboard.index');
+    // Ambil total_kas dari model Saldo
+    $total_kas = Saldo::sum('total_saldo'); 
+    $total_anggota = Direktorikeanggotaan::count();
+    $total_berita = Portalberita::count();
+    $total_artikel = Artikel::count();
+    return view('dashboard.index', compact('total_kas', 'total_anggota', 'total_berita', 'total_artikel'));
 })->middleware('auth');
 
 Route::resource('/dashboard/pengguna-login', PenggunaLoginController::class)->middleware('auth');

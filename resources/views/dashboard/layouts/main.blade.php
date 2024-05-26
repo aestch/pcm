@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PCM Batam Kota | Official Website</title>
+  <title>PCM Batam Kota | Situs Resmi Muhammadiyah Batam Kota</title>
   <link rel="icon" type="image/png" href="{{ asset('lte/dist/img/logopcm.png') }}">
 
   <!-- Google Font: Source Sans Pro -->
