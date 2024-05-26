@@ -112,7 +112,7 @@
                                                     @if(!empty($direktorikeanggotaan->ktam))
                                                         <a href="/storage/ktam/{{ $direktorikeanggotaan->ktam }}" class="btn btn-primary btn-sm" target="_blank"><span data-feather="download"> </span> Download</a>
                                                     @else
-                                                        <span class="text-danger">Tidak ada KTAM yang diupload</span>
+                                                        <span class="text-dangerz">Tidak ada KTAM yang diupload</span>
                                                     @endif
                                                 </div>
                                             </div>
