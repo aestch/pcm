@@ -4,16 +4,46 @@
 
 <div class="container">
     <div class="row justify-content-center mb-5">
-        <div class="col-lg-8">
-            <h1>Galeri Video</h1>
+        <div class="col-lg-10">
+            <h1 class="mt-2">Galeri Video</h1>
             <br>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis officiis tempore harum obcaecati dolore beatae reprehenderit mollitia accusantium, officia perspiciatis recusandae libero id aspernatur nam temporibus explicabo maiores voluptatibus itaque.
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore reiciendis soluta voluptas totam vero illo architecto facilis modi, alias explicabo exercitationem veniam corporis saepe dolores voluptatem magnam eaque animi natus! Similique perferendis consequatur atque. Odit sed beatae esse! Dolores, quibusdam deleniti commodi vero, consequatur maxime voluptates dolore praesentium sed adipisci, atque beatae nesciunt nostrum cumque sunt. Non iusto totam illo ea omnis quas voluptatem at aliquid illum aspernatur, optio praesentium autem cumque atque pariatur repudiandae laboriosam eum aperiam possimus aut voluptate ratione, inventore facere sint. Modi dolorem consequuntur, tempora minima architecto reiciendis nobis! Eum nemo recusandae vel consequatur, consectetur dolorem.
-
-            <br> <br>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti necessitatibus vel tempora, molestias esse reprehenderit ad. Natus magni, consequuntur cum maxime illo voluptate, rerum ea, eum accusantium consectetur nobis sapiente. <br>
+            <!-- Include DataTables CSS -->
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+            
+            <table id="videoTable" class="table table-responsive table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Judul Video</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($galerivideos as $galerivideo)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $galerivideo->judul_video }}</td>
+                        <td><a href="{{ $galerivideo->link_video }}" target="_blank"><i class="fas fa-link"></i> Lihat Video</a></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-   
+
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Include DataTables JS -->
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<!-- Include Font Awesome (for icons) -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<!-- Initialize DataTables -->
+<script>
+    $(document).ready(function() {
+        $('#videoTable').DataTable();
+    });
+</script>
+
 @endsection

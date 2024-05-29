@@ -71,10 +71,11 @@ Route::get('/direktori-arsip-administrasi', function(){
 //     return view('galerifoto');
 // });
 Route::get('/galeri-foto', [GaleriFotoController::class, 'foto']);
+Route::get('/galeri-video', [GalerivideoController::class, 'video']);
 
-Route::get('/galeri-video', function(){
-    return view('galerivideo');
-});
+// Route::get('/galeri-video', function(){
+//     return view('galerivideo');
+// });
 
 Route::get('/bidang-aqidah', function(){
     return view('bidangaqidah');

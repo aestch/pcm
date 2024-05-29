@@ -123,4 +123,11 @@ class GalerivideoController extends Controller
         //redirect to index
         return redirect('/dashboard/galeri-video/')->with(['success' => 'Data Berhasil Dihapus!']);
     }
+
+    public function video()
+    {
+        return view('galerivideo', [
+            'galerivideos' => Galerivideo::latest()->paginate(10)
+        ]);
+    }
 }
