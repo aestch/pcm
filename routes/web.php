@@ -22,6 +22,7 @@ use App\Models\Portalberita;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Middleware\RoleMiddleware;
 use App\Models\Agenda;
 use App\Models\Amalusaha;
 use App\Models\Direktorikeanggotaan;
@@ -138,7 +139,7 @@ Route::get('/dashboard', function(){
     $total_berita = Portalberita::count();
     $total_artikel = Artikel::count();
     return view('dashboard.index', compact('total_kas', 'total_anggota', 'total_berita', 'total_artikel'));
-})->middleware('auth');
+})->middleware(['auth', 'role']);
 
 Route::resource('/dashboard/pengguna-login', PenggunaLoginController::class)->middleware('auth');
 Route::resource('/dashboard/identitas-pcm', IdentitaspcmController::class)->middleware('auth');

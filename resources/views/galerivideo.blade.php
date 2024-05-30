@@ -10,7 +10,7 @@
             <!-- Include DataTables CSS -->
             <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
             
-            <table id="videoTable" class="table table-responsive table-bordered table-striped table-hover">
+            <table id="videoTable" class="table table-responsive table-bordered table-striped table-hoverphp">
                 <thead>
                     <tr>
                         <th>No</th>

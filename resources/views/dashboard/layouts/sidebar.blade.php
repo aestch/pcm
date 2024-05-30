@@ -108,6 +108,8 @@
               </p>
             </a>
           </li>
+
+          @if(auth()->user()->role_id=='2' || auth()->user()->role_id=='1')
           <li class="nav-item">
             <a href="/dashboard/amal-usaha" class="nav-link {{ Request::is('dashboard/amal-usaha*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-building"></i>
@@ -116,6 +118,8 @@
               </p>
             </a>
           </li>
+          @endif
+          
           <li class="nav-item">
             <a href="/dashboard/portal-berita" class="nav-link {{ Request::is('dashboard/portal-berita*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-newspaper"></i>
