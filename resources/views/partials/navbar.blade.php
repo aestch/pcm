@@ -95,7 +95,7 @@
           </li>
           @else
           <li class="nav-item">
-            <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            <a href="/login" class="nav-link"><i class="fas fa-user"></i> Login</a>
           </li>
           @endauth
         </ul>
