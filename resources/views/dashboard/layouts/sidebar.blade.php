@@ -44,6 +44,7 @@
               </p>
             </a>
           </li>
+          @if(auth()->user()->role_id=='1')
           <li class="nav-item">
             <a href="/dashboard/pengguna-login" class="nav-link {{ Request::is('dashboard/pengguna-login*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-user-plus"></i>
@@ -52,6 +53,7 @@
               </p>
             </a>
           </li>
+          
           <li class="nav-item">
             <a href="/dashboard/identitas-pcm" class="nav-link {{ Request::is('dashboard/identitas-pcm*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-chalkboard-teacher"></i>
@@ -76,6 +78,8 @@
               </p>
             </a>
           </li>
+          @endif
+          @if(auth()->user()->role_id=='2')
           <li class="nav-item">
             <a href="/dashboard/direktori-keanggotaan" class="nav-link {{ Request::is('dashboard/direktori-keanggotaan*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-users"></i>
@@ -84,6 +88,7 @@
               </p>
             </a>
           </li>
+        
           <li class="nav-item">
             <a href="/dashboard/arsip-files" class="nav-link {{ Request::is('dashboard/arsip-files*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-folder-open"></i>
@@ -100,6 +105,8 @@
               </p>
             </a>
           </li>
+          @endif
+          @if(auth()->user()->role_id=='1')
           <li class="nav-item">
             <a href="/dashboard/media-sosial" class="nav-link {{ Request::is('dashboard/media-sosial*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-share-alt"></i>
@@ -108,8 +115,8 @@
               </p>
             </a>
           </li>
-
-          @if(auth()->user()->role_id=='2' || auth()->user()->role_id=='1')
+          @endif
+          @if(auth()->user()->role_id=='1')
           <li class="nav-item">
             <a href="/dashboard/amal-usaha" class="nav-link {{ Request::is('dashboard/amal-usaha*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-building"></i>
@@ -119,7 +126,7 @@
             </a>
           </li>
           @endif
-          
+          @if(auth()->user()->role_id=='1')
           <li class="nav-item">
             <a href="/dashboard/portal-berita" class="nav-link {{ Request::is('dashboard/portal-berita*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-newspaper"></i>
@@ -160,6 +167,8 @@
               </p>
             </a>
           </li>
+          @endif
+          @if( auth()->user()->role_id=='3')
           <li class="nav-item">
             <a href="/dashboard/kas" class="nav-link {{ Request::is('dashboard/kas*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-credit-card"></i>
@@ -168,6 +177,8 @@
               </p>
             </a>
           </li>
+          @endif
+          @if(auth()->user()->role_id=='1')
           <li class="nav-item">
             <a href="/dashboard/kajian" class="nav-link {{ Request::is('dashboard/kajian*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-lightbulb"></i>
@@ -176,7 +187,7 @@
               </p>
             </a>
           </li>
-          
+          @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
