@@ -122,7 +122,7 @@ Route::get('/download-file', function(){
     return view('downloadfile');
 });
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware(['no_cache']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -139,9 +139,9 @@ Route::get('/dashboard', function(){
     $total_berita = Portalberita::count();
     $total_artikel = Artikel::count();
     return view('dashboard.index', compact('total_kas', 'total_anggota', 'total_berita', 'total_artikel'));
-})->middleware(['auth', 'role']);
+})->middleware(['auth', 'role', 'no_cache']);
 
-Route::resource('/dashboard/pengguna-login', PenggunaLoginController::class)->middleware('auth');
+Route::resource('/dashboard/pengguna-login', PenggunaLoginController::class)->middleware(['auth', 'no_cache']);
 Route::resource('/dashboard/identitas-pcm', IdentitaspcmController::class)->middleware('auth');
 Route::resource('/dashboard/galeri-foto', GaleriFotoController::class)->middleware('auth');
 Route::resource('/dashboard/galeri-video', GalerivideoController::class)->middleware('auth');
