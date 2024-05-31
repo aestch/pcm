@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -14,19 +15,31 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
-        if(Auth::attempt($credentials)){
-            $request->session()->regenerate();
+        $user = User::where('email', $request->email)->first();
 
-            return redirect()->intended('/dashboard');
+        if (!$user) {
+            return back()->withErrors([
+                'email' => 'Email tidak terdaftar.',
+                'password' => 'Password tidak valid.',
+
+            ])->withInput();
         }
 
-        return back()->with('loginError', 'Login Failed!');
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard')->with('success', 'Login Berhasil!');
+        }
+
+        return back()->withErrors([
+            'password' => 'Password tidak valid.',
+        ])->withInput();
     }
+
 
     public function logout()
     {

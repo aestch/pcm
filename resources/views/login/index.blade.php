@@ -6,16 +6,16 @@
   <title>PCM Batam Kota | Log in </title>
   <link rel="icon" type="image/png" href="{{ asset('lte/dist/img/logopcm.png') }}">
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{ asset('lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
-    <!-- Tambahkan link ke file CSS SweetAlert -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{ asset('lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -30,33 +30,34 @@
       <form action="/login" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email">
-            @error('email')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-            @enderror
+          <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email" value="{{ old('email') }}" required>
+          
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
-            @error('password')
+          @error('email')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
-            @enderror
+          @enderror
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" value="{{ old('password') }}" required>
+          
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
+          @error('password')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+          @enderror
         </div>
         <div class="row">
-
           <!-- /.col -->
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-sign-in-alt mr-2"></i> Masuk</button>
@@ -84,6 +85,8 @@
 <script src="{{ asset('lte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('lte/dist/js/adminlte.min.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
 
 <script>
     //message with sweetalert
@@ -95,16 +98,15 @@
             showConfirmButton: false,
             timer: 2000
         });
-    @elseif(session('error'))
+    @elseif($errors->any())
         Swal.fire({
             icon: "error",
             title: "GAGAL!",
-            text: "{{ session('error') }}",
+            text: "Login gagal, silakan periksa kembali email dan password Anda.",
             showConfirmButton: false,
             timer: 2000
         });
     @endif
-  
-  </script>
+</script>
 </body>
 </html>
