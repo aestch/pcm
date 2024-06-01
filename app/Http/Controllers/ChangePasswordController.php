@@ -10,12 +10,9 @@ class ChangePasswordController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index()
     {
-        $user = User::findOrFail($id);
-        return view('dashboard.change-password.index', [
-            'user' => $user
-        ]);
+        //
     }
 
     /**
@@ -59,17 +56,33 @@ class ChangePasswordController extends Controller
     public function update(Request $request, User $user,$id)
     {
         $user = User::findOrFail($id);
+
         $rules = [
-            'password' => 'required|min:6'
+            'password' => [
+                'required',
+                'string',
+                'min:8', // minimal 8 karakter
+                'regex:/[a-z]/', // harus mengandung huruf kecil
+                'regex:/[A-Z]/', // harus mengandung huruf besar
+                'regex:/[0-9]/', // harus mengandung angka
+                'regex:/[@$!%*?&#]/', // harus mengandung simbol
+            ],
         ];
 
-        $validateData = $request->validate($rules);
-    
+        $messages = [
+            'password.required' => 'Password harus diisi.',
+            'password.string' => 'Password harus berupa string.',
+            'password.min' => 'Password minimal harus terdiri dari 8 karakter.',
+            'password.regex' => 'Password harus terdiri dari minimal 8 karakter dan mengandung huruf besar, huruf kecil, angka, dan simbol.',
+        ];
+
+        $validateData = $request->validate($rules, $messages);
+
         $validateData['password'] = Hash::make($request->password);
-    
+
         // Perbarui data pengguna
         $user->update($validateData);
-    
+
         return redirect('/dashboard')->with('success', 'Kata Sandi berhasil diganti!');
     }
 
