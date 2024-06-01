@@ -47,7 +47,17 @@
                     @enderror
                   </div>
 
-                 
+                  <div class="form-group">
+                    <label for="password_confirmation">Konfirmasi Kata Sandi Baru</label>
+                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="Konfirmasi kata sandi baru" value="{{ old('password_confirmation') }}">
+
+                    @error('password_confirmation')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+
                 </div>
                 <!-- /.card-body -->
 

@@ -66,6 +66,7 @@ class ChangePasswordController extends Controller
                 'regex:/[A-Z]/', // harus mengandung huruf besar
                 'regex:/[0-9]/', // harus mengandung angka
                 'regex:/[@$!%*?&#]/', // harus mengandung simbol
+                'confirmed', // harus sesuai dengan password_confirmation
             ],
         ];
 
@@ -74,6 +75,7 @@ class ChangePasswordController extends Controller
             'password.string' => 'Password harus berupa string.',
             'password.min' => 'Password minimal harus terdiri dari 8 karakter.',
             'password.regex' => 'Password harus terdiri dari minimal 8 karakter dan mengandung huruf besar, huruf kecil, angka, dan simbol.',
+            'password.confirmed' => 'Konfirmasi kata sandi tidak cocok.',
         ];
 
         $validateData = $request->validate($rules, $messages);
