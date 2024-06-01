@@ -31,7 +31,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="/dashboard/pengguna-login/" method="post">
+              <form action="{{ route('change-password.update', $user->id) }}" method="post">
                 @method('put')
                 @csrf
                 <div class="card-body">

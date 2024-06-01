@@ -160,4 +160,9 @@ Route::resource('/dashboard/pengumuman', PengumumanController::class)->middlewar
 Route::resource('/dashboard/kajian', KajianController::class)->middleware('auth');
 Route::resource('/dashboard/ortom', OrtomController::class)->middleware('auth');
 Route::resource('/dashboard/kas', UangKasController::class)->middleware('auth');
-Route::get('/dashboard/change-password', [ChangePasswordController::class, 'index'])->middleware('auth');
+
+// Route::resource('/dashboard/{id}/change-password', ChangePasswordController::class)->middleware('auth');
+Route::middleware('auth')->group(function() {
+    Route::get('/dashboard/{id}/change-password', [ChangePasswordController::class, 'edit']);
+    Route::put('/dashboard/{id}/change-password', [ChangePasswordController::class, 'update'])->name('change-password.update');
+});

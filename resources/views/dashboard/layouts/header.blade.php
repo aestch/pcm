@@ -27,8 +27,11 @@
           <i class="far fa-user-circle fa-lg ml-2 mr-2"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a href="/dashboard/change-password" class="dropdown-item">
+          <a href="/dashboard/{{ auth()->user()->id }}/change-password" class="dropdown-item">
             <i class="fas fa-key mr-2"></i> Ganti Kata Sandi
+          </a>
+          <a href="/" class="dropdown-item">
+            <i class="fas fa-eye mr-2"></i> Lihat Sebagai Pengunjung
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item" id="logout-link">
