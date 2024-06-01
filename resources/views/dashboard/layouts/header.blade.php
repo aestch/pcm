@@ -27,12 +27,12 @@
           <i class="far fa-user-circle fa-lg ml-2 mr-2"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a href="dashboard/ganti-password" class="dropdown-item">
-            <i class="fas fa-key mr-2"></i> Ganti Password
+          <a href="/dashboard/change-password" class="dropdown-item">
+            <i class="fas fa-key mr-2"></i> Ganti Kata Sandi
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item" id="logout-link">
-            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            <i class="fas fa-sign-out-alt mr-2"></i> Keluar
           </a>
           <form id="logout-form" action="/logout" method="POST" style="display: none;">
             @csrf
@@ -50,7 +50,7 @@
           e.preventDefault();
           Swal.fire({
             title: 'Konfirmasi',
-            text: 'Apakah Anda yakin ingin logout?',
+            text: 'Apakah Anda yakin ingin keluar?',
             icon: 'question',
             showCancelButton: true,
             confirmButtonText: 'Ya',

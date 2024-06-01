@@ -32,7 +32,10 @@ class LoginController extends Controller
 
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard')->with('success', 'Login Berhasil!');
+
+             // Mengambil nama pengguna dari model User yang telah diautentikasi
+            $username = Auth::user()->name;
+            return redirect()->intended('/dashboard')->with('success', 'Login Berhasil! Selamat Datang '. $username . '!');
         }
 
         return back()->withErrors([
@@ -50,7 +53,7 @@ class LoginController extends Controller
     
         request()->session()->regenerateToken();
     
-        return redirect('/login')->with('success', 'Logout berhasil!');
+        return redirect('/login')->with('success', 'Anda akan diarahkan ke halaman login!');
 
     }
 }

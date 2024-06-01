@@ -57,8 +57,8 @@
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="username">Username </label>
-                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" placeholder="Masukkan username" value="{{ old('username', $user->username) }}" required>
+                    <label for="username">Nama Pengguna </label>
+                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" placeholder="Masukkan nama pengguna" value="{{ old('username', $user->username) }}" required>
 
                     @error('username')
                     <div class="invalid-feedback">
@@ -67,8 +67,8 @@
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="password">Password Baru</label>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan password baru" value="{{ old('password') }}">
+                    <label for="password">Kata Sandi Baru</label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan kata sandi baru" value="{{ old('password') }}">
 
                     @error('password')
                     <div class="invalid-feedback">

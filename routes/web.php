@@ -12,6 +12,7 @@ use App\Http\Controllers\MediasosialController;
 use App\Http\Controllers\ArsipfileController;
 use App\Http\Controllers\ArsipadministrasiController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\GaleriFotoController;
 use App\Http\Controllers\GalerivideoController;
 use App\Http\Controllers\PenggunaLoginController;
@@ -159,3 +160,4 @@ Route::resource('/dashboard/pengumuman', PengumumanController::class)->middlewar
 Route::resource('/dashboard/kajian', KajianController::class)->middleware('auth');
 Route::resource('/dashboard/ortom', OrtomController::class)->middleware('auth');
 Route::resource('/dashboard/kas', UangKasController::class)->middleware('auth');
+Route::get('/dashboard/change-password', [ChangePasswordController::class, 'index'])->middleware('auth');
