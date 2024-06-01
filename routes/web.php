@@ -34,6 +34,8 @@ use App\Models\Ortom;
 use App\Models\Saldo;
 use App\Models\UangKas;
 use Illuminate\Auth\Middleware\Authenticate;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 Route::get('/', function () {
     return view('home');
@@ -139,7 +141,11 @@ Route::get('/dashboard', function(){
     $total_anggota = Direktorikeanggotaan::count();
     $total_berita = Portalberita::count();
     $total_artikel = Artikel::count();
-    return view('dashboard.index', compact('total_kas', 'total_anggota', 'total_berita', 'total_artikel'));
+
+    $user = Auth::user();
+    $defaultPassword = '123456';
+    $isDefaultPassword = Hash::check($defaultPassword, $user->password);
+    return view('dashboard.index', compact('total_kas', 'total_anggota', 'total_berita', 'total_artikel', 'isDefaultPassword'));
 })->middleware(['auth', 'role', 'no_cache']);
 
 Route::resource('/dashboard/pengguna-login', PenggunaLoginController::class)->middleware(['auth', 'no_cache']);
