@@ -127,7 +127,7 @@ Route::get('/download-file', function(){
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [LoginController::class, 'logout'])->middleware(['auth', 'no_cache']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -167,7 +167,6 @@ Route::resource('/dashboard/kajian', KajianController::class)->middleware('auth'
 Route::resource('/dashboard/ortom', OrtomController::class)->middleware('auth');
 Route::resource('/dashboard/kas', UangKasController::class)->middleware('auth');
 
-// Route::resource('/dashboard/{id}/change-password', ChangePasswordController::class)->middleware('auth');
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard/{id}/change-password', [ChangePasswordController::class, 'edit']);
     Route::put('/dashboard/{id}/change-password', [ChangePasswordController::class, 'update'])->name('change-password.update');
