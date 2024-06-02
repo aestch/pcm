@@ -38,7 +38,7 @@
                   
                   <div class="form-group">
                     <label for="password">Kata Sandi Baru</label>
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan kata sandi baru" value="{{ old('password') }}">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan kata sandi baru" value="{{ old('password') }}" required>
 
                     @error('password')
                     <div class="invalid-feedback">
@@ -49,7 +49,7 @@
 
                   <div class="form-group">
                     <label for="password_confirmation">Konfirmasi Kata Sandi Baru</label>
-                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="Konfirmasi kata sandi baru" value="{{ old('password_confirmation') }}">
+                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="Konfirmasi kata sandi baru" value="{{ old('password_confirmation') }}" required>
 
                     @error('password_confirmation')
                     <div class="invalid-feedback">
