@@ -108,6 +108,15 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="alamat" class="form-label">Alamat</label>
+                        <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" value="{{ old('alamat') }}" placeholder="Alamat" required>
+                        @error('alamat')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label for="footer" class="form-label">Footer</label>
                         <input type="text" class="form-control @error('footer') is-invalid @enderror" id="footer" name="footer" value="{{ old('footer') }}" placeholder="Footer" required>
                         @error('footer')

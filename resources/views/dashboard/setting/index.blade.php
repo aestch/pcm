@@ -61,8 +61,8 @@
                             <td>{{ $pengaturan->email }}</td>
                             <td>{{ $pengaturan->footer }}</td>
                             <td>
-                                <a href="/dashboard/amal-usaha/{{ $pengaturan->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                <form action="/dashboard/amal-usaha/{{ $pengaturan->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $pengaturan->id }}">
+                                <a href="/dashboard/pengaturan/{{ $pengaturan->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                <form action="/dashboard/pengaturan/{{ $pengaturan->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $pengaturan->id }}">
                                     @method('delete')
                                     @csrf
                                     <button type="submit" onclick="konfirmasiHapus(event, {{ $pengaturan->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
