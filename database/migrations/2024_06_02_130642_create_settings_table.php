@@ -17,9 +17,8 @@ return new class extends Migration
             $table->string('favicon');
             $table->string('nama_website');
             $table->string('logo');
-            $table->string('carousel1');
-            $table->string('carousel2');
-            $table->string('carousel3');
+            $table->string('no_telp');
+            $table->string('email');
             $table->string('footer');
             $table->timestamps();
         });
