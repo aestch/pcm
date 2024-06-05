@@ -85,18 +85,75 @@ class SettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Setting $setting)
+    public function edit($id)
     {
-        //
+        $pengaturan = Setting::findOrFail($id);
+        return view('dashboard.setting.edit', [
+            'pengaturan' => $pengaturan
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Setting $setting)
+    public function update(Request $request, $id): RedirectResponse
     {
-        //
+        $pengaturan = Setting::findOrFail($id);
+
+        // Define validation rules
+        $rules = [
+            'title'=> 'required|max:100',
+            'favicon' => 'nullable|image|mimes:jpeg,jpg,png|max:2048', // Make favicon optional
+            'nama_website' => 'required|max:100',
+            'logo' => 'nullable|image|mimes:jpeg,jpg,png|max:2048', // Make logo optional
+            'no_telp'=> 'required|max:20',
+            'email'=> 'required|max:40',
+            'alamat'=> 'required|max:80',
+            'footer'=> 'required|max:80',
+        ];
+
+        $request->validate($rules);
+
+        // Handle favicon upload
+        if ($request->hasFile('favicon')) {
+            // Delete old favicon if it exists
+            if ($pengaturan->favicon) {
+                Storage::delete('public/favicon/' . $pengaturan->favicon);
+            }
+
+            // Store new favicon
+            $faviconPath = $request->file('favicon')->store('public/favicon');
+            $faviconName = basename($faviconPath);
+            $pengaturan->favicon = $faviconName;
+        }
+
+        // Handle logo upload
+        if ($request->hasFile('logo')) {
+            // Delete old logo if it exists
+            if ($pengaturan->logo) {
+                Storage::delete('public/logo/' . $pengaturan->logo);
+            }
+
+            // Store new logo
+            $logoPath = $request->file('logo')->store('public/logo');
+            $logoName = basename($logoPath);
+            $pengaturan->logo = $logoName;
+        }
+
+        // Update other fields
+        $pengaturan->title = $request->input('title');
+        $pengaturan->nama_website = $request->input('nama_website');
+        $pengaturan->no_telp = $request->input('no_telp');
+        $pengaturan->email = $request->input('email');
+        $pengaturan->alamat = $request->input('alamat');
+        $pengaturan->footer = $request->input('footer');
+        
+        // Save changes
+        $pengaturan->save();
+
+        return redirect('/dashboard/pengaturan')->with('success', 'Data berhasil diupdate!');
     }
+
 
     /**
      * Remove the specified resource from storage.
