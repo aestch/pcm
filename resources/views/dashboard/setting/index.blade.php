@@ -54,9 +54,21 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $pengaturan->title }}</td>
-                            <td>{{ $pengaturan->favicon }}</td>
+                            <td>
+                                @if ($pengaturan->favicon)
+                                    <img src="{{ asset('storage/favicon/' . $pengaturan->favicon) }}" alt="Favicon" style="width: 50px; height: 50px;">
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                             <td>{{ $pengaturan->nama_website }}</td>
-                            <td>{{ $pengaturan->logo }}</td>
+                            <td>
+                                @if ($pengaturan->logo)
+                                    <img src="{{ asset('storage/logo/' . $pengaturan->logo) }}" alt="Favicon" style="width: 50px; height: 50px;">
+                                @else
+                                    No Image
+                                @endif
+                            </td>
                             <td>{{ $pengaturan->no_telp }}</td>
                             <td>{{ $pengaturan->email }}</td>
                             <td>{{ $pengaturan->footer }}</td>
