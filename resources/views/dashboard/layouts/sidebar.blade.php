@@ -341,6 +341,13 @@
                     <p>Kajian</p>
                 </a>
             </li>
+            <li class="nav-header text-secondary text-bold">PENGATURAN</li>
+            <li class="nav-item">
+                <a href="/dashboard/pengaturan" class="nav-link {{ Request::is('dashboard/pengaturan*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-cog"></i>
+                    <p>Pengaturan</p>
+                </a>
+            </li>
             @endif
         </ul>
       </nav>

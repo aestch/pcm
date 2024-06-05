@@ -23,6 +23,7 @@ use App\Models\Portalberita;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SettingController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Models\Agenda;
 use App\Models\Amalusaha;
@@ -164,6 +165,7 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('/dashboard/pengumuman', PengumumanController::class);
         Route::resource('/dashboard/kajian', KajianController::class);
         Route::resource('/dashboard/ortom', OrtomController::class);
+        Route::resource('/dashboard/pengaturan', SettingController::class);
     });
 
     Route::middleware(['role:3'])->group(function() {
@@ -180,50 +182,3 @@ Route::middleware(['auth'])->group(function() {
     Route::put('/dashboard/{id}/change-password', [ChangePasswordController::class, 'update'])->name('change-password.update');
 });
 
-// Route::middleware(['auth'])->group(function() {
-//     Route::resource('/dashboard/pengguna-login', PenggunaLoginController::class)->middleware('no_cache');
-//     Route::resource('/dashboard/identitas-pcm', IdentitaspcmController::class);
-//     Route::resource('/dashboard/galeri-foto', GaleriFotoController::class);
-//     Route::resource('/dashboard/galeri-video', GalerivideoController::class);
-//     Route::resource('/dashboard/direktori-keanggotaan', DirektorikeanggotaanController::class);
-//     Route::resource('/dashboard/arsip-files', ArsipfileController::class);
-//     Route::resource('/dashboard/arsip-administrasi', ArsipadministrasiController::class);
-//     Route::resource('/dashboard/media-sosial', MediasosialController::class);
-//     Route::resource('/dashboard/amal-usaha', AmalusahaController::class);
-//     Route::resource('/dashboard/portal-berita', PortalberitaController::class);
-//     Route::post('/dashboard/portal-berita/{id}/comment', [PortalberitaController::class, 'comment']);
-//     Route::resource('/dashboard/artikel', ArtikelController::class);
-//     Route::post('/dashboard/artikel/{id}/comment', [ArtikelController::class, 'comment']);
-//     Route::resource('/dashboard/agenda', AgendaController::class);
-//     Route::resource('/dashboard/pengumuman', PengumumanController::class);
-//     Route::resource('/dashboard/kajian', KajianController::class);
-//     Route::resource('/dashboard/ortom', OrtomController::class);
-//     Route::resource('/dashboard/kas', UangKasController::class);
-
-//     Route::get('/dashboard/{id}/change-password', [ChangePasswordController::class, 'edit']);
-//     Route::put('/dashboard/{id}/change-password', [ChangePasswordController::class, 'update'])->name('change-password.update');
-// });
-
-// Route::resource('/dashboard/pengguna-login', PenggunaLoginController::class)->middleware(['auth', 'no_cache']);
-// Route::resource('/dashboard/identitas-pcm', IdentitaspcmController::class)->middleware('auth');
-// Route::resource('/dashboard/galeri-foto', GaleriFotoController::class)->middleware('auth');
-// Route::resource('/dashboard/galeri-video', GalerivideoController::class)->middleware('auth');
-// Route::resource('/dashboard/direktori-keanggotaan', DirektorikeanggotaanController::class)->middleware('auth');
-// Route::resource('/dashboard/arsip-files', ArsipfileController::class)->middleware('auth');
-// Route::resource('/dashboard/arsip-administrasi', ArsipadministrasiController::class)->middleware('auth');
-// Route::resource('/dashboard/media-sosial', MediasosialController::class)->middleware('auth');
-// Route::resource('/dashboard/amal-usaha', AmalusahaController::class)->middleware('auth');
-// Route::resource('/dashboard/portal-berita', PortalberitaController::class)->middleware('auth');
-// Route::post('/dashboard/portal-berita/{id}/comment', [PortalberitaController::class, 'comment']);
-// Route::resource('/dashboard/artikel', ArtikelController::class)->middleware('auth');
-// Route::post('/dashboard/artikel/{id}/comment', [ArtikelController::class, 'comment']);
-// Route::resource('/dashboard/agenda', AgendaController::class)->middleware('auth');
-// Route::resource('/dashboard/pengumuman', PengumumanController::class)->middleware('auth');
-// Route::resource('/dashboard/kajian', KajianController::class)->middleware('auth');
-// Route::resource('/dashboard/ortom', OrtomController::class)->middleware('auth');
-// Route::resource('/dashboard/kas', UangKasController::class)->middleware('auth');
-
-// Route::middleware('auth')->group(function() {
-//     Route::get('/dashboard/{id}/change-password', [ChangePasswordController::class, 'edit']);
-//     Route::put('/dashboard/{id}/change-password', [ChangePasswordController::class, 'update'])->name('change-password.update');
-// });
