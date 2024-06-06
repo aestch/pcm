@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-  <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+  <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
       {{-- <h2 class="m-0 text-primary">WooDY</h2> --}}
-      <img src="img/pcm.png" class="img-fluid img-thumbnail max-width" alt="" style="max-width: 230px;">
+      <img src="{{ asset('storage/logo/'. $pengaturan->logo) }}" class="img-fluid img-thumbnail max-width" alt="" style="max-width: 230px; padding: 20; border-radius: 0;">
   </a>
   <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
       <span class="navbar-toggler-icon"></span>

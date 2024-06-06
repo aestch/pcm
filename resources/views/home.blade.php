@@ -13,8 +13,8 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-12 col-lg-8 text-center">
-                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Selamat datang di Website</h5>
-                                <h1 class="display-3 text-white animated slideInDown mb-4">{{ $pengaturan->nama_website }}</h1>
+                                {{-- <h5 class="text-white text-uppercase mb-3 animated slideInDown">Selamat datang di Website</h5> --}}
+                                <h1 class="display-3 text-white animated slideInDown mb-4">{{ $carousel->judul }}</h1>
                             </div>
                         </div>
                     </div>
