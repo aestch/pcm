@@ -44,6 +44,8 @@
                                 <th>Nama</th>
                                 <th>Cabang</th>
                                 <th>Ranting</th>
+                                <th>Jabatan</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                                 </tr>
                                 </thead>
@@ -54,6 +56,19 @@
                                         <td>{{ $direktorikeanggotaan->nama }}</td>
                                         <td>{{ $direktorikeanggotaan->cabang }}</td>
                                         <td>{{ $direktorikeanggotaan->ranting }}</td>
+                                        <td>{{ $direktorikeanggotaan->jabatan }}</td>
+                                        {{-- <td>{{ $direktorikeanggotaan->status }}</td> --}}
+                                        <td class="
+                                            @if ($direktorikeanggotaan->status == 'Menunggu Persetujuan')
+                                                text-warning
+                                            @elseif ($direktorikeanggotaan->status == 'Disetujui')
+                                                text-success
+                                            @elseif ($direktorikeanggotaan->status == 'Ditolak')
+                                                text-danger
+                                            @endif
+                                        ">
+                                            {{ $direktorikeanggotaan->status }}
+                                        </td>
                                         <td>
                                             <a href="/dashboard/direktori-keanggotaan/{{ $direktorikeanggotaan->id }}/show" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detilAnggota{{ $direktorikeanggotaan->id }}" data-bs-whatever="@mdo"><i class="fas fa-eye"></i> Detail</a>
                                             <a href="/dashboard/direktori-keanggotaan/{{ $direktorikeanggotaan->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
@@ -94,7 +109,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Detail Anggota</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row">

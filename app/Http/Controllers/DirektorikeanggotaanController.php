@@ -42,11 +42,13 @@ class DirektorikeanggotaanController extends Controller
             'ranting' => 'required|max:15', 
             'alamat' => 'required|max:50', 
             'status_pernikahan' => 'required|max:50', 
-            'email' => 'required', 
+            'email' => 'required|email|unique:direktorikeanggotaans,email',
             'no_hp' => 'required',
             'pekerjaan' => 'required|max:30',
             'foto_diri' => 'image|mimes:jpeg,png,jpg|max:3096',
             'ktam' => 'nullable|file|mimes:jpeg,jpg,png,pdf|max:3096',
+            'jabatan' => 'required',
+            'status' => 'required',
         ]);
 
         // upload image foto diri
@@ -116,6 +118,8 @@ class DirektorikeanggotaanController extends Controller
             'pekerjaan' => 'required|max:30',
             'foto_diri' => 'image|mimes:jpeg,png,jpg|max:3096',
             'ktam' => 'nullable|mimes:jpeg,jpg,png,pdf|max:3096',
+            'jabatan' => 'required',
+            'status' => 'required',
         ]);
 
         // Hapus foto_diri lama jika ada foto baru yang diunggah

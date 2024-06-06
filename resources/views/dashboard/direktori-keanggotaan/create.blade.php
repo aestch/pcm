@@ -217,23 +217,35 @@
                         </div>
                         @enderror
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="kategoriarsip_id">Kategori Arsip</label>
-                        <select name="kategoriarsip_id" id="kategoriarsip_id" class="form-control">
-                            @foreach($kategoriarsips as $kategoriarsip)
-                                @if(old('kategoriarsip_id') == $kategoriarsip->id)
-                                    <option value="{{ $kategoriarsip->id }}" selected>{{ $kategoriarsip->kategori_arsip }}</option>
-                                @else
-                                    <option value="{{ $kategoriarsip->id }}">{{ $kategoriarsip->kategori_arsip }}</option>
-                                @endif
-                            @endforeach
+                    <div class="form-group">
+                        <label for="jabatan">Jabatan</label>
+                        <select name="jabatan" id="" class="form-control" required>
+                            <option value="">--Pilih Jabatan--</option>
+                            <option value="Ketua">Ketua</option>
+                            <option value="Wakil Ketua">Wakil Ketua</option>
+                            <option value="Sekretaris">Sekretaris</option>
+                            <option value="Anggota">Anggota</option>
                         </select>
-                        @error('kategoriarsip_id')
+                        @error('jabatan')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                         @enderror
-                      </div>  --}}
+                    </div>  
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select name="status" id="" class="form-control" required>
+                            <option value="">--Pilih Status--</option>
+                            <option value="Menunggu Persetujuan">Menunggu Persetujuan</option>
+                            <option value="Disetujui">Disetujui</option>
+                            <option value="Ditolak">Ditolak</option>
+                        </select>
+                        @error('status')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>  
 
                 </div>
                 <!-- /.card-body -->
