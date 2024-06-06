@@ -20,7 +20,7 @@ class PortalberitaController extends Controller
     {
         return view('dashboard.portal-berita.index', [
             'portalberitas' => Portalberita::latest()->paginate(10)
-        ]);
+        ]); 
     }
 
     /**

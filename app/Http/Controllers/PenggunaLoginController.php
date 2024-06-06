@@ -14,9 +14,12 @@ class PenggunaLoginController extends Controller
 {
     public function index()
     {
+        // return view('dashboard.pengguna-login.index', [
+        //     'users' => User::all()
+        // ]);
         return view('dashboard.pengguna-login.index', [
-            'users' => User::all()
-        ]);
+            'users' => User::latest()->paginate(10)
+        ]); 
     }
 
     public function create()
