@@ -4,8 +4,8 @@
             <div class="col-lg-4 col-md-6">
                 <h4 class="text-light mb-4">Alamat</h4>
                 <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Rexvin Newtown, Belian, Batam Kota, Kepulauan Riau 29465</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>0822 7308 3850</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>pcm.batamkotaofficial@gmail.com</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>{{ $pengaturan->no_telp }}</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>{{ $pengaturan->email }}</p>
                 <div class="d-flex pt-2">
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -32,7 +32,7 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">Pimpinan Cabang Muhamamdiyah Batam Kota</a>, All Right Reserved.
+                    &copy; <a class="border-bottom" href="#">{{ $pengaturan->footer }}</a>, All Right Reserved.
                 </div>
             </div>
         </div>

@@ -54,7 +54,7 @@
             <div class="col-lg-7 px-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center py-3 me-4">
                   <small class="fa fa-phone-alt text-primary me-2"></small>
-                    <small>Call : +62822 7308 3850 | Email : pcmbatamkota.official@gmail.com</small>
+                    <small>Telp : {{ $pengaturan->no_telp }} | Email : {{ $pengaturan->email }}</small>
                 </div>
             </div>
             <div class="col-lg-5 px-5 text-end">
