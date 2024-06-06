@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/dashboard" class="brand-link">
-      <img src="{{ asset('lte/dist/img/logopcm.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">PCM Batam Kota</span>
+      <img src="{{ asset('storage/favicon/'. $pengaturan->favicon) }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">{{ Str::limit($pengaturan->nama_website, 15, '..') }}</span>
     </a>
 
     <!-- Sidebar -->

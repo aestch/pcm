@@ -34,55 +34,20 @@
                 <div class="card-body">
                     <a href="/dashboard/galeri-foto/create" class="btn btn-primary btn-sm mb-3"><i class="fas fa-plus"></i> Tambah data</a>
                 
-                    {{-- @foreach($galerifotos as $galerifoto)
-                    <div class="filter-container row row-cols-1 row-cols-md-6 overflow-auto">
-                        
-                            <div class="filtr-item col mb-4" data-category="1" data-sort="white sample">
-                                <a href="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" data-toggle="lightbox" data-title="{{ $galerifoto->keterangan }}">
-                                    <img src="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" class="img-fluid mb-2" alt="white sample"/>
-                                </a>
-                                <a href="/dashboard/galeri-foto/{{ $galerifoto->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                <form action="/dashboard/galeri-foto/{{ $galerifoto->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $galerifoto->id }}">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" onclick="konfirmasiHapus(event, {{ $galerifoto->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
-                                </form>
-                            
-                                <script>
-                                    function konfirmasiHapus(event, userId) {
-                                        Swal.fire({
-                                            title: 'Konfirmasi',
-                                            text: 'Apakah Anda yakin ingin menghapus?',
-                                            icon: 'question',
-                                            showCancelButton: true,
-                                            confirmButtonText: 'Ya',
-                                            cancelButtonText: 'Batal'
-                                        }).then((result) => {
-                                            if (result.isConfirmed) {
-                                                // Cari form berdasarkan data-user-id
-                                                const form = document.querySelector(`.form-hapus[data-user-id='${userId}']`);
-                                                if (form) {
-                                                    form.submit();
-                                                }
-                                            }
-                                        });
-                                        // Cegah aksi default dari tombol submit
-                                        event.preventDefault();
-                                    }
-                                </script>
+                    <div class="container">
+                        <!-- Menampilkan Total Data -->
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <h5>Total Data: {{ $totalData }}</h5>
                             </div>
                         </div>
-                        @endforeach --}}
-                        <div class="container">
-                            <!-- Menampilkan Total Data -->
-                            <div class="row mb-4">
-                                <div class="col-md-12">
-                                    <h5>Total Data: {{ $totalData }}</h5>
-                                </div>
-                            </div>
-                        
-                            <div class="filter-container overflow-auto">
-                                @foreach($galerifotos as $index => $galerifoto)
+                    
+                        <div class="filter-container overflow-auto">
+                            @php $count = 0; @endphp
+                            @foreach($galerifotos as $index => $galerifoto)
+                                @if($count % 4 == 0)
+                                    <div class="row">
+                                @endif
                                     <div class="filtr-item col-md-3 mb-4" data-category="1" data-sort="white sample">
                                         <a href="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" data-toggle="lightbox" data-title="{{ $galerifoto->keterangan }}">
                                             <img src="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" class="img-fluid img-thumbnail mb-2" style="object-fit: cover; width: 100%; height: 200px;" alt="white sample"/>
@@ -93,51 +58,22 @@
                                             @csrf
                                             <button type="submit" onclick="konfirmasiHapus(event, {{ $galerifoto->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
                                         </form>
-                                        <script>
-                                            function konfirmasiHapus(event, userId) {
-                                                Swal.fire({
-                                                    title: 'Konfirmasi',
-                                                    text: 'Apakah Anda yakin ingin menghapus?',
-                                                    icon: 'question',
-                                                    showCancelButton: true,
-                                                    confirmButtonText: 'Ya',
-                                                    cancelButtonText: 'Batal'
-                                                }).then((result) => {
-                                                    if (result.isConfirmed) {
-                                                        // Cari form berdasarkan data-user-id
-                                                        const form = document.querySelector(`.form-hapus[data-user-id='${userId}']`);
-                                                        if (form) {
-                                                            form.submit();
-                                                        }
-                                                    }
-                                                });
-                                                // Cegah aksi default dari tombol submit
-                                                event.preventDefault();
-                                            }
-                                        </script>
                                     </div>
-                                    @if(($index + 1) % 4 == 0)
-                                        </div><div class="row mb-4">
-                                    @endif
-                                @endforeach
-                                @if($galerifotos->count() % 4 != 0)
-                                    @for($i = 0; $i < 4 - ($galerifotos->count() % 4); $i++)
-                                        <div class="filtr-item col-md-3"></div>
-                                    @endfor
+                                @php $count++; @endphp
+                                @if($count % 4 == 0 || $loop->last)
+                                    </div>
                                 @endif
-                            </div>
-                        
-                            <!-- Pagination Links -->
-                            <div class="d-flex justify-content-center mt-4">
-                                {{ $galerifotos->links() }}
-                            </div>
+                                @if($count >= 12)
+                                    @break
+                                @endif
+                            @endforeach
                         </div>
-                        
-                        
-                        
-                        
                     
-    
+                        <!-- Pagination Links -->
+                        <div class="d-flex justify-content-center mt-4">
+                            {{ $galerifotos->links() }}
+                        </div>
+                    </div>
                   </div>
                 <!-- /.card-body -->
                 </div>
@@ -151,6 +87,5 @@
       </section>
     <!-- /.content -->
 </div>
-
 
 @endsection
