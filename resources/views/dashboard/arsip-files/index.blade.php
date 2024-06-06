@@ -1,5 +1,9 @@
 @extends('dashboard.layouts.main')
 
+@section('css')
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
+@endsection
+
 @section('container')
 
 <div class="content-wrapper">
@@ -33,7 +37,7 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a href="/dashboard/arsip-files/create" class="btn btn-primary btn-sm mb-3"><i class="fas fa-plus"></i> Tambah data</a>
-                  <table id="example1" class="table table-bordered table-striped table-hover">
+                  <table id="clientside" class="table table-hover text-nowrap">
                     <thead>
                     <tr>
                       <th>No</th>
@@ -89,6 +93,9 @@
                     
                     </tbody>
                   </table>
+                  <div class="d-flex justify-content-left mt-2">
+                    {{ $arsipfiles->links() }}
+                  </div>
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -103,4 +110,19 @@
     <!-- /.content -->
 </div>
 
+@endsection
+@section('scripts')
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#clientside').DataTable({
+                "paging": false, // Nonaktifkan paginasi DataTables
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
+                "responsive": true
+            });
+        });
+    </script>
 @endsection
