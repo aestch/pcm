@@ -19,7 +19,7 @@
       </div>
 
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
+      {{-- <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
@@ -28,7 +28,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> --}}
 
       <!-- Sidebar Menu -->
       {{-- <nav class="mt-2">
@@ -347,7 +347,7 @@
                     <i class="nav-icon fas fa-cog"></i>
                     <p>Pengaturan</p>
                 </a>
-            </li>
+            </li><br><br>
             @endif
         </ul>
       </nav>
