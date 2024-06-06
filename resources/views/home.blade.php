@@ -2,49 +2,28 @@
 
 @section('container')
 <!-- Carousel Start -->
+
+<!-- carousel/index.blade.php -->
 <div class="container-fluid p-0 pb-5">
     <div class="owl-carousel header-carousel position-relative">
-        <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="img/carousel-1.jpg" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-lg-8 text-center">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Selamat datang di Official Website</h5>
-                            <h1 class="display-3 text-white animated slideInDown mb-4">Pimpinan Cabang Muhammadiyah Batam Kota</h1>
+        @foreach ($carousels as $carousel)
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="{{ asset('storage/carousel/'. $carousel->image) }}" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-8 text-center">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Selamat datang di Website</h5>
+                                <h1 class="display-3 text-white animated slideInDown mb-4">{{ $pengaturan->nama_website }}</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="img/carousel-1.jpg" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-lg-8 text-center">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Selamat datang di Official Website</h5>
-                            <h1 class="display-3 text-white animated slideInDown mb-4">Pimpinan Cabang Muhammadiyah Batam Kota</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="img/carousel-1.jpg" alt="">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(53, 53, 53, .7);">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-lg-8 text-center">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Selamat datang di Official Website</h5>
-                            <h1 class="display-3 text-white animated slideInDown mb-4">Pimpinan Cabang Muhammadiyah Batam Kota</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
+
 <!-- Carousel End -->
 
 

@@ -42,7 +42,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 Route::get('/', function () {
-    return view('home');
+    return view('home',[
+        'carousels' => Carousel::all(),
+        'pengaturan'=> Setting::first()
+    ]);
 });
 
 Route::get('/sejarah', [IdentitaspcmController::class, 'sejarah']);
