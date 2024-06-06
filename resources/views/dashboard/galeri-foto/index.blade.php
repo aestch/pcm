@@ -42,30 +42,26 @@
                             </div>
                         </div>
                     
-                        <div class="filter-container overflow-auto">
-                            @php $count = 0; @endphp
+                        <div class="row">
                             @foreach($galerifotos as $index => $galerifoto)
-                                @if($count % 4 == 0)
-                                    <div class="row">
-                                @endif
-                                    <div class="filtr-item col-md-3 mb-4" data-category="1" data-sort="white sample">
+                                <div class="col-md-3 mb-4">
+                                    <div class="card h-100">
                                         <a href="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" data-toggle="lightbox" data-title="{{ $galerifoto->keterangan }}">
-                                            <img src="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" class="img-fluid img-thumbnail mb-2" style="object-fit: cover; width: 100%; height: 200px;" alt="white sample"/>
+                                            <img src="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" class="card-img-top img-fluid img-thumbnail" style="object-fit: cover; width: 100%; height: 200px;" alt="{{ $galerifoto->keterangan }}">
                                         </a>
-                                        <a href="/dashboard/galeri-foto/{{ $galerifoto->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                        <form action="/dashboard/galeri-foto/{{ $galerifoto->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $galerifoto->id }}">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" onclick="konfirmasiHapus(event, {{ $galerifoto->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
-                                        </form>
+                                        <div class="card-body d-flex flex-column">
+                                            <p class="card-text">{{ $galerifoto->keterangan }}</p>
+                                            <div class="mt-auto">
+                                                <a href="/dashboard/galeri-foto/{{ $galerifoto->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                                <form action="/dashboard/galeri-foto/{{ $galerifoto->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $galerifoto->id }}">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="submit" onclick="konfirmasiHapus(event, {{ $galerifoto->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
-                                @php $count++; @endphp
-                                @if($count % 4 == 0 || $loop->last)
-                                    </div>
-                                @endif
-                                @if($count >= 12)
-                                    @break
-                                @endif
+                                </div>
                             @endforeach
                         </div>
                     
