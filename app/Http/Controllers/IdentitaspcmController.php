@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Direktorikeanggotaan;
 use App\Models\Identitaspcm;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -104,19 +105,23 @@ class IdentitaspcmController extends Controller
     public function sejarah()
     {
         return view('sejarah', [
-            "identitaspcms" => Identitaspcm::all()
+            "identitaspcms" => Identitaspcm::all(),
+            'pengaturan'=> Setting::first()
         ]);
     }
     public function katasambutan()
     {
         return view('katasambutan', [
-            "identitaspcms" => Identitaspcm::all()
+            "identitaspcms" => Identitaspcm::all(),
+            "direktorikeanggotaans" => Direktorikeanggotaan::where('jabatan', 'Ketua')->get(),
+            'pengaturan'=> Setting::first()
         ]);
     }
     public function visimisi()
     {
         return view('visimisi', [
-            "identitaspcms" => Identitaspcm::all()
+            "identitaspcms" => Identitaspcm::all(),
+            'pengaturan'=> Setting::first()
         ]);
     }
 }

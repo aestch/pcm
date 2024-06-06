@@ -16,15 +16,16 @@
                 <a href="/kata-sambutan" class="dropdown-item">Kata Sambutan Ketua PCM</a>
                 <a href="/visi-dan-misi" class="dropdown-item">Visi dan Misi</a>
                 <a href="/struktur-pimpinan" class="dropdown-item">Struktur Pimpinan</a>
+                <a href="/ortom" class="dropdown-item">Ortom</a>
             </div>
         </div>
-        <div class="nav-item dropdown">
+        {{-- <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Ortom</a>
           <div class="dropdown-menu fade-up m-0">
               <a href="/pimpinan-ranting-muhammadiyah" class="dropdown-item">Pimpinan Ranting Muhammadiyah</a>
               <a href="/pimpinan-cabang-aisyiyah" class="dropdown-item">Pimpinan Cabang Aisyiyah Batam Kota</a>
           </div>
-        </div>
+        </div> --}}
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Direktori</a>
           <div class="dropdown-menu fade-up m-0">

@@ -55,9 +55,17 @@ Route::get('/kata-sambutan', [IdentitaspcmController::class, 'katasambutan']);
 Route::get('/visi-dan-misi', [IdentitaspcmController::class, 'visimisi']);
 
 Route::get('/struktur-pimpinan', function(){
-    return view('strukturpimpinan');
+    return view('strukturpimpinan',[
+        'pengaturan'=> Setting::first()
+    ]);
 });
 
+Route::get('/ortom', function(){
+    return view('ortom', [
+        'pengaturan'=> Setting::first(),
+        'ortoms' => Ortom::latest()->paginate(10)
+    ]);
+});
 Route::get('/pimpinan-ranting-muhammadiyah', function(){
     return view('pimpinanrantingmuhammadiyah');
 });
