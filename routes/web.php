@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KomentarberitaController;
+use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\UangKasController;
 use App\Http\Controllers\OrtomController;
 use App\Http\Controllers\KajianController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Models\Agenda;
 use App\Models\Amalusaha;
+use App\Models\Carousel;
 use App\Models\Direktorikeanggotaan;
 use App\Models\Kajian;
 use App\Models\Komentarberita;
@@ -166,6 +168,7 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('/dashboard/kajian', KajianController::class);
         Route::resource('/dashboard/ortom', OrtomController::class);
         Route::resource('/dashboard/pengaturan', SettingController::class);
+        Route::resource('/dashboard/carousel', CarouselController::class);
     });
 
     Route::middleware(['role:3'])->group(function() {

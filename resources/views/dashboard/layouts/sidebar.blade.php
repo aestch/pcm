@@ -345,7 +345,13 @@
             <li class="nav-item">
                 <a href="/dashboard/pengaturan" class="nav-link {{ Request::is('dashboard/pengaturan*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-cog"></i>
-                    <p>Pengaturan</p>
+                    <p>Pengaturan Situs</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/dashboard/carousel" class="nav-link {{ Request::is('dashboard/carousel*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-images"></i>
+                    <p>Carousel</p>
                 </a>
             </li><br><br>
             @endif
