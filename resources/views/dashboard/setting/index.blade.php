@@ -48,7 +48,7 @@
                           <th>Nama Website</th>
                           <th>Logo</th>
                           <th>No Telpon</th>
-                          <th>Email</th>
+                          <th>Email</th> 
                           <th>Footer</th>
                           <th>Aksi</th>
                         </tr>

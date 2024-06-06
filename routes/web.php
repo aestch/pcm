@@ -33,6 +33,7 @@ use App\Models\Komentarberita;
 use App\Models\Mediasosial;
 use App\Models\Ortom;
 use App\Models\Saldo;
+use App\Models\Setting;
 use App\Models\UangKas;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
@@ -133,15 +134,13 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware(['auth', 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-// Route::get('/dashboard', function(){
-//     return view('dashboard.index');
-// })->middleware('auth');
 Route::get('/dashboard', function(){
     // Ambil total_kas dari model Saldo
     $total_kas = Saldo::sum('total_saldo'); 
     $total_anggota = Direktorikeanggotaan::count();
     $total_berita = Portalberita::count();
     $total_artikel = Artikel::count();
+    
 
     $user = Auth::user();
     $defaultPassword = '123456';
