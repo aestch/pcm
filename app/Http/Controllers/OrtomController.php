@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ortom;
+use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class OrtomController extends Controller
     public function index()
     {
         return view('dashboard.ortom.index', [
-            'ortoms' => Ortom::latest()->paginate(10)
+            'ortoms' => Ortom::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -23,7 +25,9 @@ class OrtomController extends Controller
      */
     public function create()
     {
-        return view('dashboard.ortom.create');
+        return view('dashboard.ortom.create', [
+            'pengaturan' => Setting::first()
+        ]);
     }
 
     /**
@@ -56,7 +60,8 @@ class OrtomController extends Controller
     {
         $ortom = Ortom::findOrFail($id);
         return view('dashboard.ortom.edit',[
-            'ortom' => $ortom
+            'ortom' => $ortom,
+            'pengaturan' => Setting::first()
         ]);
     }
 

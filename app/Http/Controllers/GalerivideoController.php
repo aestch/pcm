@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Galerivideo;
+use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class GalerivideoController extends Controller
     public function index()
     {
         return view('dashboard.galeri-video.index', [
-            'galerivideos' => Galerivideo::latest()->paginate(10)
+            'galerivideos' => Galerivideo::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -23,7 +25,9 @@ class GalerivideoController extends Controller
      */
     public function create()
     {
-        return view('dashboard.galeri-video.create');
+        return view('dashboard.galeri-video.create', [
+            'pengaturan' => Setting::first()
+        ]);
     }
 
     /**
@@ -51,7 +55,8 @@ class GalerivideoController extends Controller
         // Convert regular YouTube URL to embed URL
         $galerivideo->link_video = $this->convertToEmbedUrl($galerivideo->link_video);
 
-        return view('dashboard.galeri-video.show', compact('galerivideo'));
+        $pengaturan = Setting::first();
+        return view('dashboard.galeri-video.show', compact('galerivideo', 'pengaturan'));
 
         // return view('dashboard.galeri-video.show', [
         //     'galerivideo' => $galerivideo
@@ -86,7 +91,8 @@ class GalerivideoController extends Controller
     {
         $galerivideo = Galerivideo::findOrFail($id);
         return view('dashboard.galeri-video.edit', [
-            'galerivideo' => $galerivideo
+            'galerivideo' => $galerivideo,
+            'pengaturan' => Setting::first()
         ]);
     }
 

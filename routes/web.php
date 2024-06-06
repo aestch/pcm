@@ -141,11 +141,12 @@ Route::get('/dashboard', function(){
     $total_berita = Portalberita::count();
     $total_artikel = Artikel::count();
     
+    $pengaturan = Setting::first();
 
     $user = Auth::user();
     $defaultPassword = '123456';
     $isDefaultPassword = Hash::check($defaultPassword, $user->password);
-    return view('dashboard.index', compact('total_kas', 'total_anggota', 'total_berita', 'total_artikel', 'isDefaultPassword'));
+    return view('dashboard.index', compact('total_kas', 'total_anggota', 'total_berita', 'total_artikel', 'isDefaultPassword', 'pengaturan'));
 })->middleware(['auth', 'role:1,2,3']);
 
 Route::middleware(['auth'])->group(function() {

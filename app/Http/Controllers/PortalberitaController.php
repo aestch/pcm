@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Komentarberita;
+use App\Models\Setting;
 use App\Models\Portalberita;
 use App\Models\Kategoriberita;
 use Illuminate\Http\RedirectResponse;
@@ -19,7 +20,8 @@ class PortalberitaController extends Controller
     public function index()
     {
         return view('dashboard.portal-berita.index', [
-            'portalberitas' => Portalberita::latest()->paginate(10)
+            'portalberitas' => Portalberita::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]); 
     }
 
@@ -29,7 +31,8 @@ class PortalberitaController extends Controller
     public function create()
     {
         $kategoriberitas = Kategoriberita::all();
-        return view('dashboard.portal-berita.create', compact('kategoriberitas'));
+        $pengaturan = Setting::first();
+        return view('dashboard.portal-berita.create', compact('kategoriberitas', 'pengaturan'));
     }
 
     /**
@@ -70,6 +73,7 @@ class PortalberitaController extends Controller
         }])->findOrFail($id);
         return view("dashboard.portal-berita.show", [
                 'portalberita' => $portalberita,
+                'pengaturan' => Setting::first()
         ]);
     }
 
@@ -81,7 +85,8 @@ class PortalberitaController extends Controller
         $portalberita = Portalberita::findOrFail($id);
         return view('dashboard.portal-berita.edit', [
             'portalberita' => $portalberita,
-            'kategoriberitas' => Kategoriberita::all()
+            'kategoriberitas' => Kategoriberita::all(),
+            'pengaturan' => Setting::first()
         ]);
     }
 

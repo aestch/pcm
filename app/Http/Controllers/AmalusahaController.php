@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Amalusaha;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class AmalusahaController extends Controller
@@ -13,7 +14,8 @@ class AmalusahaController extends Controller
     public function index()
     {
         return view('dashboard.amal-usaha.index', [
-            'amalusahas' => Amalusaha::latest()->paginate(3)
+            'amalusahas' => Amalusaha::latest()->paginate(3),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -22,7 +24,9 @@ class AmalusahaController extends Controller
      */
     public function create()
     {
-        return view('dashboard.amal-usaha.create');
+        return view('dashboard.amal-usaha.create', [
+            'pengaturan' => Setting::first()
+        ]);
     }
 
     /**
@@ -55,7 +59,8 @@ class AmalusahaController extends Controller
     {
         $amalusaha = Amalusaha::findOrFail($id);
         return view('dashboard.amal-usaha.edit',[
-            'amalusaha' => $amalusaha
+            'amalusaha' => $amalusaha,
+            'pengaturan' => Setting::first()
         ]);
     }
 

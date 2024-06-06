@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
 use App\Models\Direktorikeanggotaan;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -15,7 +16,8 @@ class DirektorikeanggotaanController extends Controller
     public function index()
     {
         return view('dashboard.direktori-keanggotaan.index', [
-            'direktorikeanggotaans' => Direktorikeanggotaan::latest()->paginate(10)
+            'direktorikeanggotaans' => Direktorikeanggotaan::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -24,7 +26,9 @@ class DirektorikeanggotaanController extends Controller
      */
     public function create()
     {
-        return view('dashboard.direktori-keanggotaan.create');
+        return view('dashboard.direktori-keanggotaan.create', [
+            'pengaturan' => Setting::first()
+        ]);
     }
 
     /**
@@ -92,7 +96,8 @@ class DirektorikeanggotaanController extends Controller
     {
         $direktorikeanggotaan = Direktorikeanggotaan::findOrFail($id);
         return view('dashboard.direktori-keanggotaan.edit', [
-            'direktorikeanggotaan' => $direktorikeanggotaan
+            'direktorikeanggotaan' => $direktorikeanggotaan,
+            'pengaturan' => Setting::first()
         ]);
     }
 

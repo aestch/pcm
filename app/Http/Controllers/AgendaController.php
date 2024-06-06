@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class AgendaController extends Controller
@@ -13,7 +14,8 @@ class AgendaController extends Controller
     public function index()
     {
         return view('dashboard.agenda.index', [
-            'agendas' => Agenda::latest()->paginate(10)
+            'agendas' => Agenda::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -22,7 +24,9 @@ class AgendaController extends Controller
      */
     public function create()
     {
-        return view('dashboard.agenda.create');
+        return view('dashboard.agenda.create', [
+            'pengaturan' => Setting::first()
+        ]);
     }
 
     /**
@@ -57,7 +61,8 @@ class AgendaController extends Controller
     {
         $agenda = Agenda::findOrFail($id);
         return view('dashboard.agenda.edit',[
-            'agenda' => $agenda
+            'agenda' => $agenda,
+            'pengaturan' => Setting::first()
         ]);
     }
 

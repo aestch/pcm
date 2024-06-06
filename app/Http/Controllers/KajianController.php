@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bidangkajian;
 use App\Models\Kajian;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,8 @@ class KajianController extends Controller
     public function index()
     {
         return view('dashboard.kajian.index', [
-            'kajians' => Kajian::latest()->paginate(10)
+            'kajians' => Kajian::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -27,7 +29,8 @@ class KajianController extends Controller
     public function create()
     {
         $bidangkajians = Bidangkajian::all();
-        return view('dashboard.kajian.create', compact('bidangkajians'));
+        $pengaturan =  Setting::first();
+        return view('dashboard.kajian.create', compact('bidangkajians', 'pengaturan'));
     }
 
     /**
@@ -65,6 +68,7 @@ class KajianController extends Controller
         $kajian = Kajian::findOrFail($id);
         return view("dashboard.kajian.show", [
             'kajian' => $kajian,
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -76,7 +80,8 @@ class KajianController extends Controller
         $kajian = Kajian::findOrFail($id);
         return view('dashboard.kajian.edit', [
             'kajian' => $kajian,
-            'bidangkajians' => Bidangkajian::all()
+            'bidangkajians' => Bidangkajian::all(),
+            'pengaturan' => Setting::first()
         ]);
     }
 

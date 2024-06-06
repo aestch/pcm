@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Arsipadministrasi;
 use App\Models\Kategoriarsip;
+use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class ArsipadministrasiController extends Controller
     public function index()
     {
         return view('dashboard.arsip-administrasi.index', [
-            'arsipadministrasis' => Arsipadministrasi::latest()->paginate(10)
+            'arsipadministrasis' => Arsipadministrasi::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -25,7 +27,8 @@ class ArsipadministrasiController extends Controller
     public function create()
     {
         $kategoriarsips = Kategoriarsip::all();
-        return view('dashboard.arsip-administrasi.create', compact('kategoriarsips'));
+        $pengaturan = Setting::first();
+        return view('dashboard.arsip-administrasi.create', compact('kategoriarsips','pengaturan'));
     }
 
     /**
@@ -60,7 +63,8 @@ class ArsipadministrasiController extends Controller
         $arsipadministrasi = Arsipadministrasi::findOrFail($id);
         return view('dashboard.arsip-administrasi.edit', [
             'arsipadministrasi' => $arsipadministrasi,
-            'kategoriarsips' => Kategoriarsip::all()
+            'kategoriarsips' => Kategoriarsip::all(),
+            'pengaturan' => Setting::first()
         ]);
     }
 

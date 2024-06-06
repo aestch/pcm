@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Arsipfile;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +17,8 @@ class ArsipfileController extends Controller
     public function index()
     {
         return view('dashboard.arsip-files.index', [
-            'arsipfiles' => Arsipfile::latest()->paginate(10)
+            'arsipfiles' => Arsipfile::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -25,7 +27,9 @@ class ArsipfileController extends Controller
      */
     public function create()
     {
-        return view('dashboard.arsip-files.create');
+        return view('dashboard.arsip-files.create', [
+            'pengaturan' => Setting::first()
+        ]);
     }
 
     /**
@@ -68,7 +72,8 @@ class ArsipfileController extends Controller
     {
         $arsipfile = Arsipfile::findOrFail($id);
         return view('dashboard.arsip-files.edit', [
-            'arsipfile' => $arsipfile
+            'arsipfile' => $arsipfile,
+            'pengaturan' => Setting::first()
         ]);
     }
 

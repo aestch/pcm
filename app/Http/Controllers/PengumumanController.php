@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
@@ -13,7 +14,8 @@ class PengumumanController extends Controller
     public function index()
     {
         return view('dashboard.pengumuman.index', [
-            'pengumumans' => Pengumuman::latest()->paginate(10)
+            'pengumumans' => Pengumuman::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -22,7 +24,9 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        return view('dashboard.pengumuman.create');
+        return view('dashboard.pengumuman.create', [
+            'pengaturan' => Setting::first()
+        ]);
     }
 
     /**
@@ -55,7 +59,8 @@ class PengumumanController extends Controller
     {
         $pengumuman = Pengumuman::findOrFail($id);
         return view('dashboard.pengumuman.edit',[
-            'pengumuman' => $pengumuman
+            'pengumuman' => $pengumuman,
+            'pengaturan' => Setting::first()
         ]);
     }
 

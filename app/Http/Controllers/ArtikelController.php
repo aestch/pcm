@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artikel;
+use App\Models\Setting;
 use App\Models\Kategoriartikel;
 use App\Models\Komentarartikel;
 use Illuminate\Http\RedirectResponse;
@@ -18,7 +19,8 @@ class ArtikelController extends Controller
     public function index()
     {
         return view('dashboard.artikel.index', [
-            'artikels' => Artikel::latest()->paginate(10)
+            'artikels' => Artikel::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -28,7 +30,8 @@ class ArtikelController extends Controller
     public function create()
     {
         $kategoriartikels = Kategoriartikel::all();
-        return view('dashboard.artikel.create', compact('kategoriartikels'));
+        $pengaturan = Setting::first();
+        return view('dashboard.artikel.create', compact('kategoriartikels', 'pengaturan'));
     }
 
     /**
@@ -69,6 +72,7 @@ class ArtikelController extends Controller
         $artikel = Artikel::findOrFail($id);
         return view("dashboard.artikel.show", [
             'artikel' => $artikel,
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -80,7 +84,8 @@ class ArtikelController extends Controller
         $artikel = Artikel::findOrFail($id);
         return view('dashboard.artikel.edit', [
             'artikel' => $artikel,
-            'kategoriartikels' => Kategoriartikel::all()
+            'kategoriartikels' => Kategoriartikel::all(),
+            'pengaturan' => Setting::first()
         ]);
     }
 

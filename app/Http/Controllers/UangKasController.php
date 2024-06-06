@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Saldo;
+use App\Models\Setting;
 use App\Models\UangKas;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -18,7 +19,8 @@ class UangKasController extends Controller
         $allsaldo = Saldo::sum('total_saldo');
         return view('dashboard.kas.index', [
             'kass' => UangKas::latest()->paginate(10),
-            'allsaldo' => $allsaldo
+            'allsaldo' => $allsaldo,
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -27,7 +29,9 @@ class UangKasController extends Controller
      */
     public function create()
     {
-        return view('dashboard.kas.create');
+        return view('dashboard.kas.create', [
+            'pengaturan' => Setting::first()
+        ]);
     }
 
     /**
@@ -63,7 +67,8 @@ class UangKasController extends Controller
     {
         $kas = UangKas::findOrFail($id);
         return view('dashboard.kas.edit',[
-            'kas' => $kas
+            'kas' => $kas,
+            'pengaturan' => Setting::first()
         ]);
     }
 

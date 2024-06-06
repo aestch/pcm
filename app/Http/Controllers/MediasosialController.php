@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mediasosial;
+use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -15,7 +16,8 @@ class MediasosialController extends Controller
     public function index()
     {
         return view('dashboard.media-sosial.index', [
-            'mediasosials' => Mediasosial::latest()->paginate(10)
+            'mediasosials' => Mediasosial::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -24,7 +26,9 @@ class MediasosialController extends Controller
      */
     public function create()
     {
-        return view('dashboard.media-sosial.create');
+        return view('dashboard.media-sosial.create', [
+            'pengaturan' => Setting::first()
+        ]);
     }
 
     /**
@@ -57,7 +61,8 @@ class MediasosialController extends Controller
     {
         $mediasosial = Mediasosial::findOrFail($id);
         return view('dashboard.media-sosial.edit',[
-            'mediasosial' => $mediasosial
+            'mediasosial' => $mediasosial,
+            'pengaturan' => Setting::first()
         ]);
     }
 

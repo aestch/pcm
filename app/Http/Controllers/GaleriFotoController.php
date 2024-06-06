@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Galerifoto;
+use App\Models\Setting;
 // import type redirect response
 use Illuminate\Http\RedirectResponse;
 // import facades storage
@@ -18,7 +19,8 @@ class GaleriFotoController extends Controller
     {
         return view('dashboard.galeri-foto.index', [
             'galerifotos' => Galerifoto::latest()->paginate(12),
-            'totalData' => Galerifoto::count()
+            'totalData' => Galerifoto::count(),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -27,7 +29,9 @@ class GaleriFotoController extends Controller
      */
     public function create()
     {
-        return view('dashboard.galeri-foto.create');
+        return view('dashboard.galeri-foto.create', [
+            'pengaturan' => Setting::first()
+        ]);
     }
 
     /**
@@ -70,7 +74,8 @@ class GaleriFotoController extends Controller
     {   
         $galerifoto = Galerifoto::findOrFail($id);
         return view('dashboard.galeri-foto.edit', [
-            'galerifoto' => $galerifoto
+            'galerifoto' => $galerifoto,
+            'pengaturan' => Setting::first()
         ]);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Identitaspcm;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -15,7 +16,8 @@ class IdentitaspcmController extends Controller
     public function index()
     {
         return view('dashboard.identitas-pcm.index', [
-            'identitaspcms' => Identitaspcm::latest()->paginate(10)
+            'identitaspcms' => Identitaspcm::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]);
     }
 
@@ -23,8 +25,11 @@ class IdentitaspcmController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('dashboard.identitas-pcm.create');
+    {   
+        
+        return view('dashboard.identitas-pcm.create',[
+            'pengaturan' => Setting::first()
+        ]);
     }
 
     /**
@@ -51,6 +56,7 @@ class IdentitaspcmController extends Controller
         $identitaspcm = Identitaspcm::findOrFail($id);
         return view("dashboard.identitas-pcm.show", [
                 'identitaspcm' => $identitaspcm,
+                'pengaturan' => Setting::first()
         ]);
     }
 
@@ -61,7 +67,8 @@ class IdentitaspcmController extends Controller
     {
         $identitaspcm = Identitaspcm::findOrFail($id);
         return view('dashboard.identitas-pcm.edit',[
-            'identitaspcm' => $identitaspcm
+            'identitaspcm' => $identitaspcm,
+            'pengaturan' => Setting::first()
         ]);
     }
 

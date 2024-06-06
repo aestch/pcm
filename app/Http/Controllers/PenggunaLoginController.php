@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -18,14 +19,16 @@ class PenggunaLoginController extends Controller
         //     'users' => User::all()
         // ]);
         return view('dashboard.pengguna-login.index', [
-            'users' => User::latest()->paginate(10)
+            'users' => User::latest()->paginate(10),
+            'pengaturan' => Setting::first()
         ]); 
     }
 
     public function create()
     {
         $roles = Role::all();
-        return view('dashboard.pengguna-login.create', compact('roles'));
+        $pengaturan = Setting::first();
+        return view('dashboard.pengguna-login.create', compact('roles', 'pengaturan'));
     }
 
     public function store(Request $request)
@@ -48,7 +51,8 @@ class PenggunaLoginController extends Controller
         $user = User::findOrFail($id);
         return view('dashboard.pengguna-login.edit', [
             'user' => $user,
-            'roles' => Role::all()
+            'roles' => Role::all(),
+            'pengaturan' => Setting::first()
         ]);
 
     }

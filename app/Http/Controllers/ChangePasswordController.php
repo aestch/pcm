@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Hash;
 class ChangePasswordController extends Controller
 {
@@ -46,7 +47,8 @@ class ChangePasswordController extends Controller
     {
         $user = User::findOrFail($id);
         return view('dashboard.change-password.index', [
-            'user' => $user
+            'user' => $user,
+            'pengaturan' => Setting::first()
         ]);
     }
 
