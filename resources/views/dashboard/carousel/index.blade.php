@@ -51,7 +51,8 @@
                               <td>{{ $carousels->firstItem() + $index }}</td>
                               <td>{{ $carousel->judul }}</td>
                               <td>
-                                  <a href="/dashboard/carousel/{{ $carousel->id }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> Lihat</a>
+                                <a href="/dashboard/carousel/{{ $carousel->id }}/show" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detilCarousel{{ $carousel->id }}" data-bs-whatever="@mdo"><i class="fas fa-eye"></i> Detail</a>
+                                  {{-- <a href="/dashboard/carousel/{{ $carousel->id }}/show" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detilCarousel{{ $carousel->id }}" data-bs-whatever="@mdo"><i class="fas fa-eye"></i> Lihat</a> --}}
                                   <a href="/dashboard/carousel/{{ $carousel->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
                                   <form action="/dashboard/carousel/{{ $carousel->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $carousel->id }}">
                                       @method('delete')
@@ -85,7 +86,28 @@
                                   
                               </td>
                           </tr> 
-                          @endforeach
+                          <div class="modal fade" id="detilCarousel{{ $carousel->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">{{ $carousel->judul }}</h5>
+                                        {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <img src="{{ asset('storage/carousel/'. $carousel->image) }}" class="img-fluid rounded mx-auto d-block mb-3" alt="Carousel">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
                       
                       </tbody>
                     </table>
@@ -107,8 +129,13 @@
     <!-- /.content -->
 </div>
 
+<!-- Menggunakan Bootstrap dari CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<!-- Menggunakan jQuery dari CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 @endsection
+
 @section('scripts')
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
