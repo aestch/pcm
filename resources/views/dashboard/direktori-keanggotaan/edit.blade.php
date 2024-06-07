@@ -231,6 +231,7 @@
                             <option value="Ketua" {{ $direktorikeanggotaan->jabatan == 'Ketua' ? 'selected' : '' }}>Ketua</option>
                             <option value="Wakil Ketua" {{ $direktorikeanggotaan->jabatan == 'Wakil Ketua' ? 'selected' : ''}}>Wakil Ketua</option>
                             <option value="Sekretaris" {{ $direktorikeanggotaan->jabatan == 'Sekretaris' ? 'selected' : '' }}>Sekretaris</option>
+                            <option value="Bendahara" {{ $direktorikeanggotaan->jabatan == 'Bendahara' ? 'selected' : '' }}>Bendahara</option>
                             <option value="Anggota" {{ $direktorikeanggotaan->jabatan == 'Anggota' ? 'selected' : '' }}>Anggota</option>
                         </select>
                         @error('jabatan')

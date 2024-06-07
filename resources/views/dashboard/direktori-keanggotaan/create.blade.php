@@ -224,6 +224,7 @@
                             <option value="Ketua">Ketua</option>
                             <option value="Wakil Ketua">Wakil Ketua</option>
                             <option value="Sekretaris">Sekretaris</option>
+                            <option value="Bendahara">Bendahara</option>
                             <option value="Anggota">Anggota</option>
                         </select>
                         @error('jabatan')
