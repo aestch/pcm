@@ -173,4 +173,11 @@ class DirektorikeanggotaanController extends Controller
 
         return redirect('/dashboard/direktori-keanggotaan')->with('success', 'Keanggotaan telah dihapus!');
     }
+
+    public function pengajuan()
+    {
+        return view('pengajuan', [
+            'pengaturan' => Setting::first()
+        ]);
+    }
 }

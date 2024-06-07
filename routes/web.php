@@ -75,8 +75,13 @@ Route::get('/pimpinan-cabang-aisyiyah', function(){
 });
 
 Route::get('/direktori-keanggotaan', function(){
-    return view('direktorikeanggotaan');
+    return view('direktorikeanggotaan', [
+        'pengaturan'=> Setting::first(),
+        'direktorikeanggotaans' => Direktorikeanggotaan::latest()->paginate(10)
+    ]);
 });
+
+Route::get('/direktori-keanggotaan/gabung', [DirektorikeanggotaanController::class, 'pengajuan']);
 
 Route::get('/direktori-laporan-keuangan', function(){
     return view('direktorilaporankeuangan');

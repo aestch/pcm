@@ -10,7 +10,7 @@
         <div class="col-lg-10 mt-5">
            <h1 class="text-center">Organisasi Otonom</h1> <hr>
             <br>
-            <div class="card-body">
+            <div class="card-body"> 
                 
                   <div class="table-responsive">
                     <table id="clientside" class="table table-hover table-striped table-bordered dt-responsive nowrap" style="width:100%">
