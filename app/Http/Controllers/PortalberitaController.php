@@ -156,7 +156,7 @@ class PortalberitaController extends Controller
             "active" => 'kategoriberitas',
             "kategoriberitas" => Portalberita::latest()->paginate(7)->withQueryString(),
             'pengaturan'=> Setting::first(),
-            'amalusaha' => Amalusaha::first()
+            'amalusaha' => Amalusaha::first(),
         ]);
     }
 
