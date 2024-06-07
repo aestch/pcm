@@ -207,35 +207,9 @@
                               </div>
                               @enderror
                           </div>
-                          <div class="form-group">
-                              <label for="jabatan">Jabatan</label>
-                              <select name="jabatan" id="" class="form-control" required>
-                                  <option value="">--Pilih Jabatan--</option>
-                                  <option value="Ketua">Ketua</option>
-                                  <option value="Wakil Ketua">Wakil Ketua</option>
-                                  <option value="Sekretaris">Sekretaris</option>
-                                  <option value="Anggota">Anggota</option>
-                              </select>
-                              @error('jabatan')
-                              <div class="invalid-feedback">
-                                  {{ $message }}
-                              </div>
-                              @enderror
-                          </div>  
-                          <div class="form-group">
-                              <label for="status">Status</label>
-                              <select name="status" id="" class="form-control" required>
-                                  <option value="">--Pilih Status--</option>
-                                  <option value="Menunggu Persetujuan">Menunggu Persetujuan</option>
-                                  <option value="Disetujui">Disetujui</option>
-                                  <option value="Ditolak">Ditolak</option>
-                              </select>
-                              @error('status')
-                              <div class="invalid-feedback">
-                                  {{ $message }}
-                              </div>
-                              @enderror
-                          </div>  
+                              
+                         
+
       
                       </div>
                       <!-- /.card-body -->

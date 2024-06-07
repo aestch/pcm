@@ -78,7 +78,7 @@ Route::get('/pimpinan-cabang-aisyiyah', function(){
 Route::get('/direktori-keanggotaan', function(){
     return view('direktorikeanggotaan', [
         'pengaturan'=> Setting::first(),
-        'direktorikeanggotaans' => Direktorikeanggotaan::latest()->paginate(10)
+        'direktorikeanggotaans' => Direktorikeanggotaan::where('status', 'Disetujui')->paginate(10)
     ]);
 });
 
