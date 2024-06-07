@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Galerivideo;
 use App\Models\Setting;
+use App\Models\Amalusaha;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -134,7 +135,8 @@ class GalerivideoController extends Controller
     {
         return view('galerivideo', [
             'galerivideos' => Galerivideo::latest()->paginate(10),
-            'pengaturan'=> Setting::first() 
+            'pengaturan'=> Setting::first(),
+            'amalusaha' => Amalusaha::first()
         ]);
     }
 }

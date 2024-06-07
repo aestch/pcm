@@ -47,7 +47,8 @@ use Illuminate\Support\Facades\Hash;
 Route::get('/', function () {
     return view('home',[
         'carousels' => Carousel::all(),
-        'pengaturan'=> Setting::first()
+        'pengaturan'=> Setting::first(),
+        'amalusaha' => Amalusaha::first()
     ]);
 });
 
@@ -59,14 +60,16 @@ Route::get('/visi-dan-misi', [IdentitaspcmController::class, 'visimisi']);
 
 Route::get('/struktur-pimpinan', function(){
     return view('strukturpimpinan',[
-        'pengaturan'=> Setting::first()
+        'pengaturan'=> Setting::first(),
+        'amalusaha' => Amalusaha::first()
     ]);
 });
 
 Route::get('/ortom', function(){
     return view('ortom', [
         'pengaturan'=> Setting::first(),
-        'ortoms' => Ortom::latest()->paginate(10)
+        'ortoms' => Ortom::latest()->paginate(10),
+        'amalusaha' => Amalusaha::first()
     ]);
 });
 Route::get('/pimpinan-ranting-muhammadiyah', function(){
@@ -80,21 +83,23 @@ Route::get('/pimpinan-cabang-aisyiyah', function(){
 Route::get('/direktori-keanggotaan', function(){
     return view('direktorikeanggotaan', [
         'pengaturan'=> Setting::first(),
-        'direktorikeanggotaans' => Direktorikeanggotaan::where('status', 'Disetujui')->paginate(10)
+        'direktorikeanggotaans' => Direktorikeanggotaan::where('status', 'Disetujui')->paginate(10),
+        'amalusaha' => Amalusaha::first()
     ]);
 });
 
 Route::get('/direktori-keanggotaan/gabung', [DirektorikeanggotaanController::class, 'pengajuan']);
 Route::post('/direktori-keanggotaan/gabung', [DirektorikeanggotaanController::class, 'kirim']);
 
-Route::get('/direktori-laporan-keuangan', function(){
-    return view('direktorilaporankeuangan');
-});
+// Route::get('/direktori-laporan-keuangan', function(){
+//     return view('direktorilaporankeuangan');
+// });
 
 Route::get('/direktori-arsip-administrasi', function(){
     return view('direktoriarsipadministrasi',[
         'pengaturan'=> Setting::first(),
-        'arsipadministrasis' => Arsipadministrasi::latest()->paginate(10)
+        'arsipadministrasis' => Arsipadministrasi::latest()->paginate(10),
+        'amalusaha' => Amalusaha::first()
     ]);
 });
 
@@ -150,8 +155,9 @@ Route::get('/agenda', function(){
 
 Route::get('/download-file', function(){
     return view('downloadfile', [
+        'arsipfiles' => Arsipfile::latest()->paginate(10),
         'pengaturan'=> Setting::first(),
-        'arsipfiles' => Arsipfile::latest()->paginate(10)
+        'amalusaha' => Amalusaha::first()
     ]);
 });
 

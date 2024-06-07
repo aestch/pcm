@@ -65,7 +65,7 @@
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Amal Usaha</a>
           <div class="dropdown-menu fade-up m-0">
-              <a href="https://polibatam.ac.id" target="__blank" class="dropdown-item">SMK Muhammadiyah Plus Batam Kota</a>
+              <a href="{{ $amalusaha->link_amal }}" target="__blank" class="dropdown-item">{{ $amalusaha->nama_amal }}</a>
               <a href="/download-file" class="dropdown-item">Arsip File</a>
           </div>
         </div>

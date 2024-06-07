@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Komentarberita;
 use App\Models\Setting;
+use App\Models\Amalusaha;
 use App\Models\Portalberita;
 use App\Models\Kategoriberita;
 use Illuminate\Http\RedirectResponse;
@@ -153,7 +154,9 @@ class PortalberitaController extends Controller
         return view('berita', [
             "title" => "All News" . $title,
             "active" => 'kategoriberitas',
-            "kategoriberitas" => Portalberita::latest()->paginate(7)->withQueryString()
+            "kategoriberitas" => Portalberita::latest()->paginate(7)->withQueryString(),
+            'pengaturan'=> Setting::first(),
+            'amalusaha' => Amalusaha::first()
         ]);
     }
 

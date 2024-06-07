@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Direktorikeanggotaan;
 use App\Models\Identitaspcm;
 use App\Models\Setting;
+use App\Models\Amalusaha;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -106,7 +107,8 @@ class IdentitaspcmController extends Controller
     {
         return view('sejarah', [
             "identitaspcms" => Identitaspcm::all(),
-            'pengaturan'=> Setting::first()
+            'pengaturan'=> Setting::first(),
+            'amalusaha' => Amalusaha::first()
         ]);
     }
     public function katasambutan()
@@ -114,14 +116,16 @@ class IdentitaspcmController extends Controller
         return view('katasambutan', [
             "identitaspcms" => Identitaspcm::all(),
             "direktorikeanggotaans" => Direktorikeanggotaan::where('jabatan', 'Ketua')->get(),
-            'pengaturan'=> Setting::first()
+            'pengaturan'=> Setting::first(),
+            'amalusaha' => Amalusaha::first()
         ]);
     }
     public function visimisi()
     {
         return view('visimisi', [
             "identitaspcms" => Identitaspcm::all(),
-            'pengaturan'=> Setting::first()
+            'pengaturan'=> Setting::first(),
+            'amalusaha' => Amalusaha::first()
         ]);
     }
 }

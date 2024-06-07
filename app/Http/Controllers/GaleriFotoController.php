@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Galerifoto;
+use App\Models\Amalusaha;
 use App\Models\Setting;
 // import type redirect response
 use Illuminate\Http\RedirectResponse;
@@ -146,7 +147,8 @@ class GaleriFotoController extends Controller
     {
         return view('galerifoto', [
             "galerifotos" => Galerifoto::latest()->paginate(12)->withQueryString(),
-            'pengaturan'=> Setting::first()
+            'pengaturan'=> Setting::first(),
+            'amalusaha' => Amalusaha::first()
         ]);
     }
 
