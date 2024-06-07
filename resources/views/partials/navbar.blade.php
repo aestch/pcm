@@ -19,19 +19,12 @@
                 <a href="/ortom" class="dropdown-item">Ortom</a>
             </div>
         </div>
-        {{-- <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Ortom</a>
-          <div class="dropdown-menu fade-up m-0">
-              <a href="/pimpinan-ranting-muhammadiyah" class="dropdown-item">Pimpinan Ranting Muhammadiyah</a>
-              <a href="/pimpinan-cabang-aisyiyah" class="dropdown-item">Pimpinan Cabang Aisyiyah Batam Kota</a>
-          </div>
-        </div> --}}
+
         <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Direktori</a>
           <div class="dropdown-menu fade-up m-0">
-              <a href="/direktori-keanggotaan" class="dropdown-item">Direktori Keanggotaan</a>
-              <a href="/direktori-laporan-keuangan" class="dropdown-item">Direktori Laporan Keuangan</a>
-              <a href="/direktori-arsip-administrasi" class="dropdown-item">Direktori Arsip Administrasi</a>
+              <a href="/direktori-keanggotaan" class="dropdown-item">Keanggotaan</a>
+              <a href="/direktori-arsip-administrasi" class="dropdown-item">Arsip Administrasi</a>
           </div>
       </div>
       <div class="nav-item dropdown">

@@ -20,6 +20,7 @@ use App\Http\Controllers\GalerivideoController;
 use App\Http\Controllers\PenggunaLoginController;
 use App\Http\Controllers\DirektorikeanggotaanController;
 use App\Http\Controllers\IdentitaspcmController;
+use App\Models\Arsipadministrasi;
 use App\Models\Artikel;
 use App\Models\Portalberita;
 use Illuminate\Support\Facades\Route;
@@ -90,7 +91,10 @@ Route::get('/direktori-laporan-keuangan', function(){
 });
 
 Route::get('/direktori-arsip-administrasi', function(){
-    return view('direktoriarsipadministrasi');
+    return view('direktoriarsipadministrasi',[
+        'pengaturan'=> Setting::first(),
+        'arsipadministrasis' => Arsipadministrasi::latest()->paginate(10)
+    ]);
 });
 
 // Route::get('/galeri-foto', function(){
