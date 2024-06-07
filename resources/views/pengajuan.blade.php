@@ -258,5 +258,38 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showFileName() {
+            const input = document.querySelector('#ktam');
+            const fileNameDisplay = document.querySelector('.file-name');
+    
+            // Cek apakah ada file yang dipilih
+            if (input.files && input.files.length > 0) {
+                const fileName = input.files[0].name;
+                fileNameDisplay.textContent = fileName;
+            }
+        }
+    </script>
+    
+    <script>
+        function previewImage() {
+            const image = document.querySelector('#foto_diri');
+            const imgPreview = document.querySelector('.img-preview');
+    
+            // Cek apakah ada file yang dipilih
+            if (image.files && image.files[0]) {
+                const oFReader = new FileReader();
+    
+                oFReader.onload = function (oFREvent) {
+                    // Menampilkan gambar yang dipilih ke dalam img-preview
+                    imgPreview.style.display = 'block';
+                    imgPreview.src = oFREvent.target.result;
+                };
+    
+                // Membaca file gambar yang dipilih
+                oFReader.readAsDataURL(image.files[0]);
+            }
+        }
+    </script>
 </body>
 </html>

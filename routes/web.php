@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\KomentarberitaController;
 use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\UangKasController;
 use App\Http\Controllers\OrtomController;
 use App\Http\Controllers\KajianController;
@@ -82,6 +83,7 @@ Route::get('/direktori-keanggotaan', function(){
 });
 
 Route::get('/direktori-keanggotaan/gabung', [DirektorikeanggotaanController::class, 'pengajuan']);
+Route::post('/direktori-keanggotaan/gabung', [PengajuanController::class, 'kirim'])->withoutMiddleware(['auth', 'role']);
 
 Route::get('/direktori-laporan-keuangan', function(){
     return view('direktorilaporankeuangan');
