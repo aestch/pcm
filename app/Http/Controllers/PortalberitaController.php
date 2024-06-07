@@ -155,6 +155,7 @@ class PortalberitaController extends Controller
             "title" => "All News" . $title,
             "active" => 'kategoriberitas',
             "kategoriberitas" => Portalberita::latest()->paginate(7)->withQueryString(),
+            "portalberitas" => Portalberita::latest()->paginate(7)->withQueryString(),
             'pengaturan'=> Setting::first(),
             'amalusaha' => Amalusaha::first(),
         ]);

@@ -10,56 +10,85 @@
         <div class="col-lg-10 mt-5">
             <h1 class="text-center">Semua Berita</h1><hr>
             <br>
-            <div class="card-body">
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-6">
+                    <form action="/posts">
             
-                <div class="container">
-                    <!-- Menampilkan Total Data -->
-                    <div class="row mb-4">
-                        <div class="col-md-12">
-                            {{-- <h5>Total Data: {{ $totalData }}</h5> --}}
+                        @if(request('category'))
+                            <input type="hidden" name="category" value="{{ request('category') }}">
+                        @endif
+                        @if(request('author'))
+                            <input type="hidden" name="author" value="{{ request('author') }}">
+                        @endif
+            
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search..." name="search" value="{{ request('search') }}">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                          </div>
+                    </form>
+                </div>
+            </div>
+            
+            @if($portalberitas->count())
+            <div class="card mb-3">
+                @if($portalberitas[0]->image)
+                <div style="max-height: 400px; overflow:hidden;">
+                    <img src="{{ asset('storage/portal-berita/' . $portalberitas[0]->image) }}" alt="{{ $portalberitas[0]->kategoriberita->kategori_berita }}" class="img-fluid">
+                </div>
+                @else
+                    <img src="https://source.unsplash.com/1200x400?{{ $portalberitas[0]->kategoriberita->kategori_berita }}" class="card-img-top" alt="{{ $portalberitas[0]->kategoriberita->kategori_berita }}">
+                @endif
+                
+                <div class="card-body text-center">
+                    <h3 class="card-title"><a href="/berita/{{ $portalberitas[0]->id }}" class="text-decoration-none text-dark">{{ $portalberitas[0]->judul }} </a></h3>
+                    <p>
+                        <small>By. <a href="/posts?category={{ $portalberitas[0]->kategoriberita->id }}" class="text-decoration-none">{{ $portalberitas[0]->kategoriberita->kategori_berita }}</a> {{ $portalberitas[0]->created_at->diffForHumans() }}
+                        </small>
+                    </p>
+                    <p class="card-text">{{ $portalberitas[0]->excerpt }}</p>
+            
+                    <a href="/berita/{{ $portalberitas[0]->id }}" class="text-decoration-none btn btn-primary">Read More</a>
+            
+                </div>
+            </div>
+            
+            
+            
+            <div class="container">
+                <div class="row">
+                    @foreach($portalberitas->skip(1) as $portalberita)
+                    <div class="col-md-4 bt-3">
+                        <div class="card">
+                            <div class="position-absolute bg-dark text-white px-2 py-2" style="background-color: rgba(0, 0, 0, 0.7); border-radius: 4px;
+                            "><a href="/posts?category={{ $portalberitas[0]->kategoriberita->id }}" class="text-decoration-none text-white">{{ $portalberita->kategoriberita->kategori_berita }}</a></div>
+                            @if($portalberita->image)
+                                <img src="{{ asset('storage/portal-berita/' . $portalberita->image) }}" alt="{{ $portalberita->kategoriberita->kategoriberita }}" class="img-fluid">
+                            @else
+                                <img src="https://source.unsplash.com/500x300?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
+                            @endif
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $portalberita->judul }}</h5>
+                                <p>
+                                    <small class="text-muted">By. <a href="/posts?author={{ $portalberita->judul }}" class="text-decoration-none"> {{ $portalberita->judul }}</a> {{ $portalberita->created_at->diffForHumans() }}
+                                    </small>
+                                </p>
+                                <a href="/posts/{{ $portalberita->id }}" class="btn btn-primary">Read More</a>
+                            </div>
                         </div>
                     </div>
-                
-                    <div class="row">
-                        @foreach($portalberitas as $index => $galerifoto)
-                            <div class="col-md-3 mb-4">
-                                <div class="card h-100">
-                                    <a href="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" data-toggle="lightbox" data-title="{{ $galerifoto->keterangan }}" data-bs-toggle="modal" data-bs-target="#detilFoto{{ $galerifoto->id }}" data-bs-whatever="@mdo">
-                                        <img src="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" class="card-img-top img-fluid img-thumbnail" style="object-fit: cover; width: 100%; height: 200px;" alt="{{ $galerifoto->keterangan }}">
-                                    </a>
-                                    <div class="card-body d-flex flex-column">
-                                        <p class="card-text">{{ $galerifoto->keterangan }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="detilFoto{{ $galerifoto->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">{{ $galerifoto->keterangan }}</h5>
-                                            {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="{{ asset('storage/galeri-foto/'. $galerifoto->image) }}" class="img-fluid rounded mx-auto d-block mb-3" alt="Foto Diri">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                
-                    <!-- Pagination Links -->
-                    <div class="d-flex justify-content-center mt-4">
-                        {{ $portalberitas->links() }}
-                    </div>
+                    @endforeach
+                    
                 </div>
+            </div>
+            
+            @else
+            
+            <p class="text-center fs-4">No Post Found.</p>
+            
+            @endif
+            
+            <div class="d-flex justify-content-end">
+                {{ $portalberitas->links() }}
             </div>
         </div>
     </div>
