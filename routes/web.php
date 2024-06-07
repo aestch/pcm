@@ -61,6 +61,7 @@ Route::get('/visi-dan-misi', [IdentitaspcmController::class, 'visimisi']);
 Route::get('/struktur-pimpinan', function(){
     return view('strukturpimpinan',[
         'pengaturan'=> Setting::first(),
+        'direktorikeanggotaans' => Direktorikeanggotaan::where('status', 'Disetujui')->paginate(10),
         'amalusaha' => Amalusaha::first()
     ]);
 });
@@ -72,13 +73,13 @@ Route::get('/ortom', function(){
         'amalusaha' => Amalusaha::first()
     ]);
 });
-Route::get('/pimpinan-ranting-muhammadiyah', function(){
-    return view('pimpinanrantingmuhammadiyah');
-});
+// Route::get('/pimpinan-ranting-muhammadiyah', function(){
+//     return view('pimpinanrantingmuhammadiyah');
+// });
 
-Route::get('/pimpinan-cabang-aisyiyah', function(){
-    return view('pimpinancabangaisyiyah');
-});
+// Route::get('/pimpinan-cabang-aisyiyah', function(){
+//     return view('pimpinancabangaisyiyah');
+// });
 
 Route::get('/direktori-keanggotaan', function(){
     return view('direktorikeanggotaan', [
@@ -137,13 +138,13 @@ Route::get('/berita-persyarikatan', function(){
     return view('beritapersyarikatan');
 });
 
-Route::get('/berita-nasional', function(){
-    return view('beritanasional');
-});
+// Route::get('/berita-nasional', function(){
+//     return view('beritanasional');
+// });
 
-Route::get('/berita-mancanegara', function(){
-    return view('beritamancanegara');
-});
+// Route::get('/berita-mancanegara', function(){
+//     return view('beritamancanegara');
+// });
 
 Route::get('/pengumuman', function(){
     return view('pengumuman');
