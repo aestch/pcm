@@ -33,9 +33,8 @@
     @yield('css')
 
     <!-- Bootstrap CSS -->
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
-    {{-- bootstrap icon --}}
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> --}}
+   <!-- Tambahkan link ke file CSS SweetAlert -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
 </head>
 
 <body>
@@ -102,6 +101,29 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <!-- Tambahkan link ke file JavaScript SweetAlert di bagian bawah body -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+    <script>
+        //message with sweetalert
+        @if(session('success'))
+            Swal.fire({
+                icon: "success",
+                title: "BERHASIL",
+                text: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        @elseif(session('error'))
+            Swal.fire({
+                icon: "error",
+                title: "GAGAL!",
+                text: "{{ session('error') }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        @endif
+      
+      </script>
     @yield('scripts')
 </body>
 

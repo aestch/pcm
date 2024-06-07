@@ -22,7 +22,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="/dashboard/direktori-keanggotaan" method="post" enctype="multipart/form-data">
+                    <form action="/direktori-keanggotaan/gabung" method="post" enctype="multipart/form-data">
                       @csrf
                       <div class="card-body">
                           <div class="form-group">

@@ -83,7 +83,7 @@ Route::get('/direktori-keanggotaan', function(){
 });
 
 Route::get('/direktori-keanggotaan/gabung', [DirektorikeanggotaanController::class, 'pengajuan']);
-Route::post('/direktori-keanggotaan/gabung', [PengajuanController::class, 'kirim'])->withoutMiddleware(['auth', 'role']);
+Route::post('/direktori-keanggotaan/gabung', [DirektorikeanggotaanController::class, 'kirim']);
 
 Route::get('/direktori-laporan-keuangan', function(){
     return view('direktorilaporankeuangan');
@@ -194,7 +194,7 @@ Route::middleware(['auth'])->group(function() {
     });
 
     Route::middleware(['role:2'])->group(function() {
-        Route::resource('/dashboard/direktori-keanggotaan', DirektorikeanggotaanController::class);
+        Route::resource('/dashboard/direktori-keanggotaan', DirektorikeanggotaanController::class)->except('kirim');
         Route::resource('/dashboard/arsip-administrasi', ArsipadministrasiController::class);
         Route::resource('/dashboard/arsip-files', ArsipfileController::class);
     });

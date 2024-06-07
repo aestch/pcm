@@ -222,6 +222,6 @@ class DirektorikeanggotaanController extends Controller
         // create direktorikeanggotaan
         Direktorikeanggotaan::create($validateData);
 
-        return redirect('/direktori-keanggotaan')->with('success', 'Keanggotaan baru berhasil ditambahkan!');
+        return redirect('/direktori-keanggotaan')->with('success', 'Silakan pantau website ini sampai admin menyetujui pengajuan Anda. Nama Anda akan muncul setelah disetujui.');
     }
 }
