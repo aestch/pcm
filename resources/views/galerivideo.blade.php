@@ -1,49 +1,92 @@
 @extends('layouts.main')
-
+@section('css')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" />
+@endsection
 @section('container')
 
 <div class="container">
     <div class="row justify-content-center mb-5">
-        <div class="col-lg-10">
-            <h1 class="mt-2">Galeri Video</h1>
+        <div class="col-lg-10 mt-5">
+            <h1 class="text-center">Galeri Video</h1><hr>
             <br>
-            <!-- Include DataTables CSS -->
-            <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-            
-            <table id="videoTable" class="table table-responsive table-bordered table-striped table-hoverphp">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Judul Video</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($galerivideos as $galerivideo)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $galerivideo->judul_video }}</td>
-                        <td><a href="{{ $galerivideo->link_video }}" target="_blank"><i class="fas fa-link"></i> Lihat Video</a></td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="clientside" class="table table-hover table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                            <thead>
+                            <tr>
+                            <th>No</th>
+                            <th>Judul Video</th>
+                            <th>Aksi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($galerivideos as $index => $galerivideo)
+                                <tr>
+                                    <td>{{ $galerivideos->firstItem() + $index }}</td>
+                                    <td>{{ $galerivideo->judul_video }}</td>
+                                    <td>
+                                        <a href="{{ $galerivideo->link_video }}" target="_blank" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> Detail</a>
+                                        
+                                        
+                                        <script>
+                                            function konfirmasiHapus(event, userId) {
+                                                Swal.fire({
+                                                    title: 'Konfirmasi',
+                                                    text: 'Apakah Anda yakin ingin menghapus?',
+                                                    icon: 'question',
+                                                    showCancelButton: true,
+                                                    confirmButtonText: 'Ya',
+                                                    cancelButtonText: 'Batal'
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        // Cari form berdasarkan data-user-id
+                                                        const form = document.querySelector(`.form-hapus[data-user-id='${userId}']`);
+                                                        if (form) {
+                                                            form.submit();
+                                                        }
+                                                    }
+                                                });
+                                                // Cegah aksi default dari tombol submit
+                                                event.preventDefault();
+                                            }
+                                        </script>
+                                        
+                                        
+                                    </td>
+                                </tr> 
+                                @endforeach
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-left mt-2">
+                        {{ $galerivideos->links() }}
+                    </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Include jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Include DataTables JS -->
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<!-- Include Font Awesome (for icons) -->
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-<!-- Initialize DataTables -->
+
+@endsection
+
+@section('scripts')
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#videoTable').DataTable();
+        $('#clientside').DataTable({
+            "paging": false,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": false,
+            "responsive": true,
+            "lengthMenu": [10, 20, 50, 100],
+            "pageLength": 10
+        });
     });
 </script>
-
 @endsection

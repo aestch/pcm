@@ -1,5 +1,8 @@
 @extends('layouts.main')
-
+@section('css')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" />
+@endsection
 @section('container')
 
 <div class="container">
@@ -111,4 +114,22 @@
     </div>
 </div>
    
+@endsection
+@section('scripts')
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#clientside').DataTable({
+            "paging": false,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": false,
+            "responsive": true,
+            "lengthMenu": [10, 20, 50, 100],
+            "pageLength": 10
+        });
+    });
+</script>
 @endsection

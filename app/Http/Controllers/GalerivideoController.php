@@ -133,7 +133,8 @@ class GalerivideoController extends Controller
     public function video()
     {
         return view('galerivideo', [
-            'galerivideos' => Galerivideo::latest()->paginate(10)
+            'galerivideos' => Galerivideo::latest()->paginate(10),
+            'pengaturan'=> Setting::first() 
         ]);
     }
 }

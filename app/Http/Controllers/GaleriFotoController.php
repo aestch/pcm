@@ -145,7 +145,8 @@ class GaleriFotoController extends Controller
     public function foto()
     {
         return view('galerifoto', [
-            "galerifotos" => Galerifoto::latest()->paginate(12)->withQueryString()
+            "galerifotos" => Galerifoto::latest()->paginate(12)->withQueryString(),
+            'pengaturan'=> Setting::first()
         ]);
     }
 
