@@ -66,7 +66,7 @@
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Amal Usaha</a>
           <div class="dropdown-menu fade-up m-0">
               <a href="https://polibatam.ac.id" target="__blank" class="dropdown-item">SMK Muhammadiyah Plus Batam Kota</a>
-              <a href="/download-file" class="dropdown-item">Download File</a>
+              <a href="/download-file" class="dropdown-item">Arsip File</a>
           </div>
         </div>
 

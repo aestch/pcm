@@ -21,6 +21,7 @@ use App\Http\Controllers\PenggunaLoginController;
 use App\Http\Controllers\DirektorikeanggotaanController;
 use App\Http\Controllers\IdentitaspcmController;
 use App\Models\Arsipadministrasi;
+use App\Models\Arsipfile;
 use App\Models\Artikel;
 use App\Models\Portalberita;
 use Illuminate\Support\Facades\Route;
@@ -148,7 +149,10 @@ Route::get('/agenda', function(){
 });
 
 Route::get('/download-file', function(){
-    return view('downloadfile');
+    return view('downloadfile', [
+        'pengaturan'=> Setting::first(),
+        'arsipfiles' => Arsipfile::latest()->paginate(10)
+    ]);
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
