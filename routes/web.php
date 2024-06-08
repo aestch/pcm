@@ -126,16 +126,17 @@ Route::get('/bidang-muamallah', function(){
     return view('bidangmuamallah');
 });
 
-Route::get('/tajuk', function(){
-    return view('tajuk');
-});
 
-Route::get('/opini', function(){
-    return view('opini');
-});
+
+// portal berita
 Route::get('/berita', [PortalberitaController::class, 'berita']);
 Route::get('/berita/{id}', [PortalberitaController::class, 'show_guest']);
 Route::post('/berita/{id}', [PortalberitaController::class, 'comment_anonymous']);
+
+// artikel
+Route::get('/artikel', [ArtikelController::class, 'artikel']);
+Route::get('/artikel/{id}', [ArtikelController::class, 'show_guest']);
+Route::post('/artikel/{id}', [ArtikelController::class, 'comment_anonymous']);
 
 Route::get('/berita-persyarikatan', function(){
     return view('beritapersyarikatan');

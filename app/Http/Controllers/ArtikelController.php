@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Amalusaha;
 use App\Models\Artikel;
 use App\Models\Setting;
 use App\Models\Kategoriartikel;
@@ -150,6 +151,58 @@ class ArtikelController extends Controller
         }])->findOrFail($id);
         return view("dashboard.artikel.show", [
                 'artikel' => $artikel,
+        ]);
+
+        // return redirect('/dashboard/portal-berita/')->with('success', 'Komentar berhasil ditambahkan!');
+    }
+
+    public function artikel()
+    {
+        $title = '';
+        if(request('kategoriartikel')){
+            $kategoriartikel = Kategoriartikel::firstWhere('judul', request('kategoriartikel'));
+            $title = ' in ' . $kategoriartikel->kategori_artikel;
+        }
+
+
+        return view('artikel', [
+            "title" => "Semua Berita" . $title,
+            "active" => 'kategoriartikels',
+            "kategoriartikels" => Artikel::latest()->paginate(7)->withQueryString(),
+            "artikels" => Artikel::latest()->paginate(7)->withQueryString(),
+            'pengaturan'=> Setting::first(),
+            'amalusaha' => Amalusaha::first(),
+        ]);
+    }
+    public function show_guest($id)
+    {
+        // $artikel = artikel::findOrFail($id);
+        $artikel = Artikel::with(['Komentarartikel' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
+        return view("lihatartikel", [
+                'artikel' => $artikel,
+                'pengaturan' => Setting::first(),
+                'amalusaha' => Amalusaha::first(),
+        ]);
+    }
+
+    public function comment_anonymous(Request $request, $id)
+    {
+
+        $validateData = $request->validate([
+            'komentar_artikel' => 'required',
+            'artikel_id' => 'required',
+        ]);
+
+        Komentarartikel::create($validateData);
+        $artikel = Artikel::with(['Komentarartikel' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
+        return view("lihatartikel", [
+                'artikel' => $artikel,
+                'pengaturan' => Setting::first(),
+                'amalusaha' => Amalusaha::first(),
         ]);
 
         // return redirect('/dashboard/portal-berita/')->with('success', 'Komentar berhasil ditambahkan!');
