@@ -135,6 +135,7 @@ Route::get('/opini', function(){
 });
 Route::get('/berita', [PortalberitaController::class, 'berita']);
 Route::get('/berita/{id}', [PortalberitaController::class, 'show_guest']);
+Route::post('/berita/{id}', [PortalberitaController::class, 'comment_anonymous']);
 
 Route::get('/berita-persyarikatan', function(){
     return view('beritapersyarikatan');
