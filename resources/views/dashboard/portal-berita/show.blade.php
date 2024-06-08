@@ -117,7 +117,7 @@
           <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
-      </section>
+    </section>
     <!-- /.content -->
 </div>
 @endsection

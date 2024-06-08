@@ -12,18 +12,18 @@
             <br>
             <div class="row justify-content-center mb-3">
                 <div class="col-md-6">
-                    <form action="/posts">
+                    <form action="/berita">
             
                         @if(request('category'))
                             <input type="hidden" name="category" value="{{ request('category') }}">
                         @endif
-                        @if(request('author'))
+                        {{-- @if(request('author'))
                             <input type="hidden" name="author" value="{{ request('author') }}">
-                        @endif
+                        @endif --}}
             
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Search..." name="search" value="{{ request('search') }}">
-                            <button class="btn btn-primary" type="submit">Search</button>
+                            <input type="text" class="form-control" placeholder="Cari..." name="search" value="{{ request('search') }}">
+                            <button class="btn btn-primary" type="submit">Cari</button>
                           </div>
                     </form>
                 </div>
@@ -42,12 +42,12 @@
                 <div class="card-body text-center">
                     <h3 class="card-title"><a href="/berita/{{ $portalberitas[0]->id }}" class="text-decoration-none text-dark">{{ $portalberitas[0]->judul }} </a></h3>
                     <p>
-                        <small>By. <a href="/posts?category={{ $portalberitas[0]->kategoriberita->id }}" class="text-decoration-none">{{ $portalberitas[0]->kategoriberita->kategori_berita }}</a> {{ $portalberitas[0]->created_at->diffForHumans() }}
+                        <small><a href="/berita?category={{ $portalberitas[0]->kategoriberita->id }}" class="text-decoration-none">{{ $portalberitas[0]->kategoriberita->kategori_berita }}</a> {{ $portalberitas[0]->created_at->locale('id')->diffForHumans() }}
                         </small>
                     </p>
                     <p class="card-text">{{ $portalberitas[0]->excerpt }}</p>
             
-                    <a href="/berita/{{ $portalberitas[0]->id }}" class="text-decoration-none btn btn-primary">Read More</a>
+                    <a href="/berita/{{ $portalberitas[0]->id }}" class="text-decoration-none btn btn-primary">Baca Selengkapnya</a>
             
                 </div>
             </div>
@@ -57,10 +57,10 @@
             <div class="container">
                 <div class="row">
                     @foreach($portalberitas->skip(1) as $portalberita)
-                    <div class="col-md-4 bt-3">
+                    <div class="col-md-4 bt-3 mb-3">
                         <div class="card">
                             <div class="position-absolute bg-dark text-white px-2 py-2" style="background-color: rgba(0, 0, 0, 0.7); border-radius: 4px;
-                            "><a href="/posts?category={{ $portalberitas[0]->kategoriberita->id }}" class="text-decoration-none text-white">{{ $portalberita->kategoriberita->kategori_berita }}</a></div>
+                            "><a href="/berita?category={{ $portalberitas[0]->kategoriberita->id }}" class="text-decoration-none text-white">{{ $portalberita->kategoriberita->kategori_berita }}</a></div>
                             @if($portalberita->image)
                                 <img src="{{ asset('storage/portal-berita/' . $portalberita->image) }}" alt="{{ $portalberita->kategoriberita->kategoriberita }}" class="img-fluid">
                             @else
@@ -69,10 +69,10 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $portalberita->judul }}</h5>
                                 <p>
-                                    <small class="text-muted">By. <a href="/posts?author={{ $portalberita->judul }}" class="text-decoration-none"> {{ $portalberita->judul }}</a> {{ $portalberita->created_at->diffForHumans() }}
+                                    <small class="text-muted"> <a href="/berita?author={{ $portalberita->id }}" class="text-decoration-none"> {{ $portalberita->excerpt }}</a> {{ $portalberita->created_at->locale('id')->diffForHumans() }}
                                     </small>
                                 </p>
-                                <a href="/posts/{{ $portalberita->id }}" class="btn btn-primary">Read More</a>
+                                <a href="/berita/{{ $portalberita->id }}" class="btn btn-primary">Baca Selengkapnya</a>
                             </div>
                         </div>
                     </div>

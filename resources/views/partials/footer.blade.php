@@ -23,7 +23,6 @@
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-light mb-4">Direktori</h4>
                 <a class="btn btn-link" href="/direktori-keanggotaan">Direktori Keanggotaan</a>
-                <a class="btn btn-link" href="/direktori-laporan-keuangan">Direktori Laporan Keuangan</a>
                 <a class="btn btn-link" href="/direktori-arsip-administrasi">Direktori Arsip Administrasi</a>
             </div>
         </div>
@@ -32,7 +31,7 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">{{ $pengaturan->footer }}</a>, All Right Reserved.
+                    &copy; <a class="border-bottom" href="/">{{ $pengaturan->footer }}</a>, All Right Reserved.
                 </div>
             </div>
         </div>

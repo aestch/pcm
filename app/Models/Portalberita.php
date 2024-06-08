@@ -13,6 +13,24 @@ class Portalberita extends Model
         'id'
     ];
 
+    // protected $with = ['category'];
+
+    // public function scopeFilter($query, array $filters)
+    // {
+
+    //     $query->when($filters['search'] ?? false, function($query, $search) {
+    //         return $query->where('judul', 'like', '%' . $search . '%')
+    //         ->orWhere('body', 'like', '%' . $search . '%');
+    //     });
+
+    //     $query->when($filters['kategoriberita'] ?? false, function($query, $kategoriberita){
+    //         return $query->whereHas('kategoriberita', function($query) use ($kategoriberita) {
+    //             $query->where('slug', $kategoriberita);
+    //         });
+    //     });
+
+    // }
+
     public function kategoriberita()
     {
         return $this->belongsTo(Kategoriberita::class);

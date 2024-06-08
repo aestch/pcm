@@ -146,10 +146,6 @@ class PortalberitaController extends Controller
             $title = ' in ' . $kategoriberita->kategori_berita;
         }
 
-        // if(request('author')){
-        //     $author = User::firstWhere('username', request('author'));
-        //     $title = ' by '. $author->name;
-        // }
 
         return view('berita', [
             "title" => "All News" . $title,
@@ -194,6 +190,19 @@ class PortalberitaController extends Controller
 
     //     return response()->json(['success' => true, 'comment' => $comment]);
     // }
+
+    public function show_guest($id)
+    {
+        // $portalberita = Portalberita::findOrFail($id);
+        $portalberita = Portalberita::with(['Komentarberita' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
+        return view("lihatberita", [
+                'portalberita' => $portalberita,
+                'pengaturan' => Setting::first(),
+                'amalusaha' => Amalusaha::first(),
+        ]);
+    }
 
 
 }
