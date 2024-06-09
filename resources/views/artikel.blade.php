@@ -12,20 +12,20 @@
             <br>
             <div class="row justify-content-center mb-3">
                 <div class="col-md-6">
-                    <form action="/artikel">
+                    {{-- <form action="/artikel">
             
                         @if(request('category'))
                             <input type="hidden" name="category" value="{{ request('category') }}">
                         @endif
-                        {{-- @if(request('author'))
+                        @if(request('author'))
                             <input type="hidden" name="author" value="{{ request('author') }}">
-                        @endif --}}
+                        @endif
             
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Cari..." name="search" value="{{ request('search') }}">
                             <button class="btn btn-primary" type="submit">Cari</button>
                           </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
             
