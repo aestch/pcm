@@ -23,6 +23,7 @@ use App\Http\Controllers\IdentitaspcmController;
 use App\Models\Arsipadministrasi;
 use App\Models\Arsipfile;
 use App\Models\Artikel;
+use App\Models\Pengumuman;
 use App\Models\Portalberita;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -54,8 +55,11 @@ Route::get('/', function () {
     $amalusaha = Amalusaha::first();
     
     $pengaturan = Setting::first();
+    $pengumuman = Pengumuman::latest()->paginate(4);
+    $agenda = Agenda::latest()->paginate(4);
+    $mediasosial = Mediasosial::all();
 
-    return view('home', compact('total_kas', 'total_anggota', 'total_berita', 'total_artikel', 'pengaturan', 'carousels', 'amalusaha'));
+    return view('home', compact('total_kas', 'total_anggota', 'total_berita', 'total_artikel', 'pengaturan', 'carousels', 'amalusaha', 'pengumuman', 'agenda', 'mediasosial'));
 });
 // Route::get('/', function () {
 //     return view('home',[

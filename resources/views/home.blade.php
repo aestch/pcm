@@ -34,170 +34,80 @@
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
-                        <i class="fa fa-user-check fa-2x text-primary"></i>
+                        <i class="fa fa-users fa-2x text-primary"></i>
                     </div>
                     <h1 class="display-1 text-light mb-0">01</h1>
                 </div>
-                <h5>Creative Designers</h5>
+                <h5>Total Anggota</h5>
+                <h5>{{ $total_anggota }}</h5>
             </div>
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
-                        <i class="fa fa-check fa-2x text-primary"></i>
+                        <i class="fa fa-coins fa-2x text-primary"></i>
                     </div>
                     <h1 class="display-1 text-light mb-0">02</h1>
                 </div>
-                <h5>Quality Products</h5>
+                <h5>Total Saldo Kas</h5>
+                <h5>Rp {{ number_format($total_kas, 2, ',', '.') }}</h5>
             </div>
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
-                        <i class="fa fa-drafting-compass fa-2x text-primary"></i>
+                        <i class="fa fa-newspaper fa-2x text-primary"></i>
                     </div>
                     <h1 class="display-1 text-light mb-0">03</h1>
                 </div>
-                <h5>Free Consultation</h5>
+                <h5>Total Berita</h5>
+                <h5>{{ $total_berita }}</h5>
             </div>
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <div class="d-flex align-items-center justify-content-center bg-light" style="width: 60px; height: 60px;">
-                        <i class="fa fa-headphones fa-2x text-primary"></i>
+                        <i class="fa fa-book fa-2x text-primary"></i>
                     </div>
                     <h1 class="display-1 text-light mb-0">04</h1>
                 </div>
-                <h5>Customer Support</h5>
+                <h5>Total Artikel</h5>
+                <h5>{{ $total_artikel }}</h5>
             </div>
         </div>
     </div>
 </div>
 <!-- Feature Start -->
 
-
-
-<!-- About Start -->
-<div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
-    <div class="container about px-lg-0">
-        <div class="row g-0 mx-lg-0">
-            <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
-                <div class="position-relative h-100">
-                    <img class="position-absolute img-fluid w-100 h-100" src="img/about.jpg" style="object-fit: cover;" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
-                <div class="p-lg-5 pe-lg-0">
-                    <div class="section-title text-start">
-                        <h1 class="display-5 mb-4">About Us</h1>
-                    </div>
-                    <p class="mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
-                    <div class="row g-4 mb-4 pb-2">
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
-                                    <i class="fa fa-users fa-2x text-primary"></i>
-                                </div>
-                                <div class="ms-3">
-                                    <h2 class="text-primary mb-1" data-toggle="counter-up">1234</h2>
-                                    <p class="fw-medium mb-0">Happy Clients</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="d-flex align-items-center">
-                                <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
-                                    <i class="fa fa-check fa-2x text-primary"></i>
-                                </div>
-                                <div class="ms-3">
-                                    <h2 class="text-primary mb-1" data-toggle="counter-up">1234</h2>
-                                    <p class="fw-medium mb-0">Projects Done</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="" class="btn btn-primary py-3 px-5">Explore More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- About End -->
-
-
-<!-- Service Start -->
+<!-- Pengumuman Start -->
 <div class="container-xxl py-5">
     <div class="container">
         <div class="section-title text-center">
-            <h1 class="display-5 mb-5">Our Services</h1>
+            <h1 class="display-5 mb-5">Pengumuman PCM Batam Kota</h1>
         </div>
         <div class="row g-4">
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="img/service-1.jpg" alt="">
-                    </div>
-                    <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">General Carpentry</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
+            <div class="container mt-5">
+                <!-- Pengumuman Cards -->
+                <div class="row justify-content-center">
+                    @foreach ($pengumuman as $item)
+                        <div class="col-lg-8">
+                            <div class="card mb-3">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="card-title mb-0 text-white">{{ $item->judul_pengumuman }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">{!! $item->isi_pengumuman !!}</p>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <small>Tanggal: {{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</small><br>
+                                    <small>Waktu: {{ \Carbon\Carbon::parse($item->waktu)->format('H:i A') }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="img/service-2.jpg" alt="">
-                    </div>
-                    <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">Furniture Manufacturing</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="img/service-3.jpg" alt="">
-                    </div>
-                    <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">Furniture Remodeling</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="service-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="img/service-4.jpg" alt="">
-                    </div>
-                    <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">Wooden Floor</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="img/service-5.jpg" alt="">
-                    </div>
-                    <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">Wooden Furniture</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid" src="img/service-6.jpg" alt="">
-                    </div>
-                    <div class="p-4 text-center border border-5 border-light border-top-0">
-                        <h4 class="mb-3">Custom Work</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
+        
+                <!-- Pagination Links -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        {{ $pengumuman->links() }}
                     </div>
                 </div>
             </div>
@@ -206,9 +116,80 @@
 </div>
 <!-- Service End -->
 
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="section-title text-center">
+            <h1 class="display-5 mb-5">Agenda Persyarikatan</h1>
+        </div>
+        <div class="row g-4">
+            <div class="container mt-5">
+                <!-- Agenda Cards -->
+                <div class="row justify-content-center">
+                    @foreach ($agenda as $item)
+                        <div class="col-lg-8">
+                            <div class="card mb-3">
+                                {{-- <div class="card-header bg-primary text-white">
+                                    <h5 class="card-title mb-0">{{ $item->nama_agenda }}</h5>
+                                </div> --}}
+                                <div class="card-body bg-primary text-white">
+                                    <p class="card-text">{!! $item->nama_agenda !!}</p>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <small>Tanggal: {{ \Carbon\Carbon::parse($item->tgl_agenda)->format('d-m-Y') }}</small><br>
+                                    <small>Waktu: {{ \Carbon\Carbon::parse($item->start_time)->format('H:i A') }} - {{ \Carbon\Carbon::parse($item->end_time)->format('H:i A') }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+        
+                <!-- Pagination Links -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        {{ $pengumuman->links() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="section-title text-center">
+            <h1 class="display-5 mb-5">Media Sosial</h1>
+        </div>
+        <div class="row g-4">
+            <div class="container mt-5">
+                <!-- Agenda Cards -->
+                <div class="row justify-content-center">
+                    <div class="row">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($mediasosial as $item)
+                                    <tr>
+                                        <td>{{ $item->nama_medsos }}</td>
+                                        <td><a href="{{ $item->link_medsos }}" target="_blank"><i class="fas fa-link"></i> Kunjungi Link</a></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <!-- Feature Start -->
-<div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+{{-- <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
     <div class="container feature px-lg-0">
         <div class="row g-0 mx-lg-0">
             <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.5s">
@@ -272,12 +253,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Feature End -->
 
 
 <!-- Projects Start -->
-<div class="container-xxl py-5">
+{{-- <div class="container-xxl py-5">
     <div class="container">
         <div class="section-title text-center">
             <h1 class="display-5 mb-5">Our Projects</h1>
@@ -384,12 +365,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Projects End -->
 
 
 <!-- Quote Start -->
-<div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+{{-- <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
     <div class="container quote px-lg-0">
         <div class="row g-0 mx-lg-0">
             <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
@@ -434,12 +415,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Quote End -->
 
 
 <!-- Team Start -->
-<div class="container-xxl py-5">
+{{-- <div class="container-xxl py-5">
     <div class="container">
         <div class="section-title text-center">
             <h1 class="display-5 mb-5">Team Members</h1>
@@ -511,12 +492,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Team End -->
 
 
 <!-- Testimonial Start -->
-<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+{{-- <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container">
         <div class="section-title text-center">
             <h1 class="display-5 mb-5">Testimonial</h1>
@@ -548,6 +529,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Testimonial End -->
 @endsection
