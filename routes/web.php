@@ -78,7 +78,7 @@ Route::get('/visi-dan-misi', [IdentitaspcmController::class, 'visimisi']);
 Route::get('/struktur-pimpinan', function(){
     return view('strukturpimpinan',[
         'pengaturan'=> Setting::first(),
-        'direktorikeanggotaans' => Direktorikeanggotaan::where('status', 'Disetujui')->paginate(10),
+        'direktorikeanggotaans' => Direktorikeanggotaan::where('status', 'Disetujui')->where('jabatan', '!=', 'Anggota')->paginate(10),
         'amalusaha' => Amalusaha::first()
     ]);
 });
@@ -94,7 +94,7 @@ Route::get('/ortom', function(){
 Route::get('/direktori-keanggotaan', function(){
     return view('direktorikeanggotaan', [
         'pengaturan'=> Setting::first(),
-        'direktorikeanggotaans' => Direktorikeanggotaan::where('status', 'Disetujui')->paginate(10),
+        'direktorikeanggotaans' => Direktorikeanggotaan::where('status', 'Disetujui')->where('jabatan', 'Anggota')->paginate(10),
         'amalusaha' => Amalusaha::first()
     ]);
 });
