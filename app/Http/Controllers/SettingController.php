@@ -43,7 +43,7 @@ class SettingController extends Controller
             'logo' => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'no_telp'=> 'required|max:20',
             'email'=> 'required|max:40',
-            'alamat'=> 'required|max:80',
+            'alamat'=> 'required|max:100',
             'footer'=> 'required|max:80',
         ]);
 
@@ -110,7 +110,7 @@ class SettingController extends Controller
             'logo' => 'nullable|image|mimes:jpeg,jpg,png|max:2048', // Make logo optional
             'no_telp'=> 'required|max:20',
             'email'=> 'required|max:40',
-            'alamat'=> 'required|max:80',
+            'alamat'=> 'required|max:100',
             'footer'=> 'required|max:80',
         ];
 

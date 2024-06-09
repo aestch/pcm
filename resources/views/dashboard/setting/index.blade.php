@@ -49,6 +49,7 @@
                           <th>Logo</th>
                           <th>No Telpon</th>
                           <th>Email</th> 
+                          <th>Alamat</th> 
                           <th>Footer</th>
                           <th>Aksi</th>
                         </tr>
@@ -75,6 +76,7 @@
                                 </td>
                                 <td>{{ $pengaturan->no_telp }}</td>
                                 <td>{{ $pengaturan->email }}</td>
+                                <td>{{ $pengaturan->alamat }}</td>
                                 <td>{{ $pengaturan->footer }}</td>
                                 <td>
                                     <a href="/dashboard/pengaturan/{{ $pengaturan->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>

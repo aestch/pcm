@@ -3,7 +3,7 @@
         <div class="row g-5">
             <div class="col-lg-4 col-md-6">
                 <h4 class="text-light mb-4">Alamat</h4>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Rexvin Newtown, Belian, Batam Kota, Kepulauan Riau 29465</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>{{ $pengaturan->alamat }}</p>
                 <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>{{ $pengaturan->no_telp }}</p>
                 <p class="mb-2"><i class="fa fa-envelope me-3"></i>{{ $pengaturan->email }}</p>
                 {{-- <div class="d-flex pt-2">
