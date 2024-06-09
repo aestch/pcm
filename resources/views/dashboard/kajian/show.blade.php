@@ -71,39 +71,39 @@
                         }
                     </script>
 
-                    {{-- <h4>Komentar <i class="fas fa-comments"></i></h4><hr>
+                      <h4>Komentar <i class="fas fa-comments"></i></h4><hr>
 
-                    <form action="/dashboard/artikel/{{ $artikel->id }}/comment" method="post">
-                        @csrf
-                        <div class="mb-3">
-                        <label for="komentar_artikel" class="form-label">Tambahkan Komentar</label>
-                        <input type="hidden" name="artikel_id" value="{{ $artikel->id }}">
-                        <textarea class="form-control @error('komentar_artikel') is-invalid @enderror" id="komentar_artikel" name="komentar_artikel" rows="3" placeholder="Tuliskan Komentar...." required>{{ old('komentar_artikel') }}</textarea>
-                        @error('komentar_artikel')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        </div>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-comments"></i> Komentar</button>
-                    </form>
-                    <hr>
+                      <form action="/dashboard/kajian/{{ $kajian->id }}/comment" method="post">
+                          @csrf
+                          <div class="mb-3">
+                          <label for="komentar_kajian" class="form-label">Tambahkan Komentar</label>
+                          <input type="hidden" name="kajian_id" value="{{ $kajian->id }}">
+                          <textarea class="form-control @error('komentar_kajian') is-invalid @enderror" id="komentar_kajian" name="komentar_kajian" rows="3" placeholder="Tuliskan Komentar...." required>{{ old('komentar_kajian') }}</textarea>
+                          @error('komentar_kajian')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                          @enderror
+                          </div>
+                          <button type="submit" class="btn btn-primary"><i class="fas fa-comments"></i> Komentar</button>
+                      </form>
+                      <hr>
 
-                    @if (count($artikel->Komentarartikel) > 0)
-                        <ul class="list-group">
-                            @foreach ($artikel->komentarartikel->sortByDesc('created_at') as $comment)
-                                <li class="list-group-item my-2">
-                                    <div class="comment-container">
-                                        <i class="fas fa-user-secret"></i>
-                                        <span class="comment-content">
-                                            <strong>Anonym</strong> - {{ $comment->komentar_artikel }}
-                                        </span>
-                                    </div>
-                                    <small>{{ $comment->created_at->locale('id')->diffForHumans() }}</small>
-                                </li>
-                            @endforeach
-                        </ul>
-                    @else 
-                        <div class="alert alert-warning">Belum ada komentar. Jadilah yang pertama berkomentar!</div>
-                    @endif --}}
+                      @if (count($kajian->Komentarkajian) > 0)
+                          <ul class="list-group">
+                              @foreach ($kajian->komentarkajian->sortByDesc('created_at') as $comment)
+                                  <li class="list-group-item my-2">
+                                      <div class="comment-container">
+                                          <i class="fas fa-user-secret"></i>
+                                          <span class="comment-content">
+                                              <strong>Anonym</strong> - {{ $comment->komentar_kajian }}
+                                          </span>
+                                      </div>
+                                      <small>{{ $comment->created_at->locale('id')->diffForHumans() }}</small>
+                                  </li>
+                              @endforeach
+                          </ul>
+                      @else 
+                          <div class="alert alert-warning">Belum ada komentar. Jadilah yang pertama berkomentar!</div>
+                      @endif
                 
                 </div>
                 

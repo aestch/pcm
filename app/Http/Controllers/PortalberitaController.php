@@ -171,6 +171,8 @@ class PortalberitaController extends Controller
         }])->findOrFail($id);
         return view("dashboard.portal-berita.show", [
                 'portalberita' => $portalberita,
+                'pengaturan'=> Setting::first(),
+                'amalusaha' => Amalusaha::first(),
         ]);
 
         // return redirect('/dashboard/portal-berita/')->with('success', 'Komentar berhasil ditambahkan!');

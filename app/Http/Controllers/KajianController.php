@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bidangkajian;
 use App\Models\Amalusaha;
 use App\Models\Kajian;
+use App\Models\Komentarkajian;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -133,6 +134,27 @@ class KajianController extends Controller
         return redirect('/dashboard/kajian')->with('success', 'Kajian telah dihapus!');
     }
 
+    public function comment(Request $request, $id)
+    {
+
+        $validateData = $request->validate([
+            'komentar_kajian' => 'required',
+            'kajian_id' => 'required',
+        ]);
+
+        Komentarkajian::create($validateData);
+        $kajian = Kajian::with(['komentarkajian' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
+        return view("dashboard.kajian.show", [
+                'kajian' => $kajian,
+                'pengaturan'=> Setting::first(),
+                'amalusaha' => Amalusaha::first(),
+        ]);
+
+        // return redirect('/dashboard/portal-berita/')->with('success', 'Komentar berhasil ditambahkan!');
+    }
+
     public function kajian()
     {
         $title = '';
@@ -154,11 +176,11 @@ class KajianController extends Controller
 
     public function show_guest($id)
     {
-        $kajian = Kajian::with(['Komentarartikel' => function($query) {
+        $kajian = Kajian::with(['Komentarkajian' => function($query) {
             $query->orderBy('created_at', 'desc');
         }])->findOrFail($id);
-        return view("lihatartikel", [
-                'artikel' => $artikel,
+        return view("lihatkajian", [
+                'kajian' => $kajian,
                 'pengaturan' => Setting::first(),
                 'amalusaha' => Amalusaha::first(),
         ]);
@@ -168,16 +190,16 @@ class KajianController extends Controller
     {
 
         $validateData = $request->validate([
-            'komentar_artikel' => 'required',
-            'artikel_id' => 'required',
+            'komentar_kajian' => 'required',
+            'kajian_id' => 'required',
         ]);
 
-        Komentarartikel::create($validateData);
-        $artikel = Artikel::with(['Komentarartikel' => function($query) {
+        Komentarkajian::create($validateData);
+        $kajian = Kajian::with(['Komentarkajian' => function($query) {
             $query->orderBy('created_at', 'desc');
         }])->findOrFail($id);
-        return view("lihatartikel", [
-                'artikel' => $artikel,
+        return view("lihatkajian", [
+                'kajian' => $kajian,
                 'pengaturan' => Setting::first(),
                 'amalusaha' => Amalusaha::first(),
         ]);

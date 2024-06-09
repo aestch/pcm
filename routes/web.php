@@ -196,6 +196,7 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('/dashboard/agenda', AgendaController::class);
         Route::resource('/dashboard/pengumuman', PengumumanController::class);
         Route::resource('/dashboard/kajian', KajianController::class);
+        Route::post('/dashboard/kajian/{id}/comment', [KajianController::class, 'comment']);
         Route::resource('/dashboard/ortom', OrtomController::class);
         Route::resource('/dashboard/pengaturan', SettingController::class);
         Route::resource('/dashboard/carousel', CarouselController::class);
