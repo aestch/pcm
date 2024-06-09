@@ -138,17 +138,10 @@ Route::get('/artikel', [ArtikelController::class, 'artikel']);
 Route::get('/artikel/{id}', [ArtikelController::class, 'show_guest']);
 Route::post('/artikel/{id}', [ArtikelController::class, 'comment_anonymous']);
 
-Route::get('/berita-persyarikatan', function(){
-    return view('beritapersyarikatan');
-});
-
-// Route::get('/berita-nasional', function(){
-//     return view('beritanasional');
-// });
-
-// Route::get('/berita-mancanegara', function(){
-//     return view('beritamancanegara');
-// });
+// kajian
+Route::get('/kajian', [KajianController::class, 'kajian']);
+Route::get('/kajian/{id}', [KajianController::class, 'show_guest']);
+Route::post('/kajian/{id}', [KajianController::class, 'comment_anonymous']);
 
 Route::get('/pengumuman', function(){
     return view('pengumuman');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bidangkajian;
+use App\Models\Amalusaha;
 use App\Models\Kajian;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -130,5 +131,57 @@ class KajianController extends Controller
         $kajian->delete();
 
         return redirect('/dashboard/kajian')->with('success', 'Kajian telah dihapus!');
+    }
+
+    public function kajian()
+    {
+        $title = '';
+        if(request('kajian')){
+            $kajian = Bidangkajian::firstWhere('judul', request('bidangkajian'));
+            $title = ' in ' . $bidangkajian->bidang_kajian;
+        }
+
+
+        return view('kajian', [
+            "title" => "Semua Kajian" . $title,
+            "active" => 'bidangkajians',
+            "bidangkajians" => Kajian::latest()->paginate(7)->withQueryString(),
+            "kajians" => Kajian::latest()->paginate(7)->withQueryString(),
+            'pengaturan'=> Setting::first(),
+            'amalusaha' => Amalusaha::first(),
+        ]);
+    }
+
+    public function show_guest($id)
+    {
+        $kajian = Kajian::with(['Komentarartikel' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
+        return view("lihatartikel", [
+                'artikel' => $artikel,
+                'pengaturan' => Setting::first(),
+                'amalusaha' => Amalusaha::first(),
+        ]);
+    }
+
+    public function comment_anonymous(Request $request, $id)
+    {
+
+        $validateData = $request->validate([
+            'komentar_artikel' => 'required',
+            'artikel_id' => 'required',
+        ]);
+
+        Komentarartikel::create($validateData);
+        $artikel = Artikel::with(['Komentarartikel' => function($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->findOrFail($id);
+        return view("lihatartikel", [
+                'artikel' => $artikel,
+                'pengaturan' => Setting::first(),
+                'amalusaha' => Amalusaha::first(),
+        ]);
+
+        // return redirect('/dashboard/portal-berita/')->with('success', 'Komentar berhasil ditambahkan!');
     }
 }

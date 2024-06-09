@@ -34,21 +34,17 @@
             <a href="/galeri-video" class="dropdown-item">Galeri Video</a>
         </div>
         </div>
-        <div class="nav-item dropdown">
+        {{-- <div class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Kajian</a>
           <div class="dropdown-menu fade-up m-0">
               <a href="/bidang-aqidah" class="dropdown-item">Bidang Aqidah</a>
               <a href="/bidang-ibadah" class="dropdown-item">Bidang Ibadah</a>
               <a href="/bidang-muamallah" class="dropdown-item">Bidang Muamallah</a>
           </div>
-        </div>
-        {{-- <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Artikel</a>
-          <div class="dropdown-menu fade-up m-0">
-              <a href="/tajuk" class="dropdown-item">Tajuk</a>
-              <a href="/opini" class="dropdown-item">Opini</a>
-          </div>
         </div> --}}
+        <li class="nav-item">
+          <a href="/kajian" class="nav-link"> Kajian</a>
+        </li>
         <li class="nav-item">
           <a href="/artikel" class="nav-link"> Artikel</a>
         </li>
