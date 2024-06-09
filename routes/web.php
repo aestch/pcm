@@ -45,12 +45,25 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 Route::get('/', function () {
-    return view('home',[
-        'carousels' => Carousel::all(),
-        'pengaturan'=> Setting::first(),
-        'amalusaha' => Amalusaha::first()
-    ]);
+    // Ambil total_kas dari model Saldo
+    $total_kas = Saldo::sum('total_saldo'); 
+    $total_anggota = Direktorikeanggotaan::count();
+    $total_berita = Portalberita::count();
+    $total_artikel = Artikel::count();
+    $carousels = Carousel::all();
+    $amalusaha = Amalusaha::first();
+    
+    $pengaturan = Setting::first();
+
+    return view('home', compact('total_kas', 'total_anggota', 'total_berita', 'total_artikel', 'pengaturan', 'carousels', 'amalusaha'));
 });
+// Route::get('/', function () {
+//     return view('home',[
+//         'carousels' => Carousel::all(),
+//         'pengaturan'=> Setting::first(),
+//         'amalusaha' => Amalusaha::first()
+//     ]);
+// });
 
 Route::get('/sejarah', [IdentitaspcmController::class, 'sejarah']);
 
@@ -73,13 +86,6 @@ Route::get('/ortom', function(){
         'amalusaha' => Amalusaha::first()
     ]);
 });
-// Route::get('/pimpinan-ranting-muhammadiyah', function(){
-//     return view('pimpinanrantingmuhammadiyah');
-// });
-
-// Route::get('/pimpinan-cabang-aisyiyah', function(){
-//     return view('pimpinancabangaisyiyah');
-// });
 
 Route::get('/direktori-keanggotaan', function(){
     return view('direktorikeanggotaan', [
@@ -92,10 +98,6 @@ Route::get('/direktori-keanggotaan', function(){
 Route::get('/direktori-keanggotaan/gabung', [DirektorikeanggotaanController::class, 'pengajuan']);
 Route::post('/direktori-keanggotaan/gabung', [DirektorikeanggotaanController::class, 'kirim']);
 
-// Route::get('/direktori-laporan-keuangan', function(){
-//     return view('direktorilaporankeuangan');
-// });
-
 Route::get('/direktori-arsip-administrasi', function(){
     return view('direktoriarsipadministrasi',[
         'pengaturan'=> Setting::first(),
@@ -104,15 +106,8 @@ Route::get('/direktori-arsip-administrasi', function(){
     ]);
 });
 
-// Route::get('/galeri-foto', function(){
-//     return view('galerifoto');
-// });
 Route::get('/galeri-foto', [GaleriFotoController::class, 'foto']);
 Route::get('/galeri-video', [GalerivideoController::class, 'video']);
-
-// Route::get('/galeri-video', function(){
-//     return view('galerivideo');
-// });
 
 Route::get('/bidang-aqidah', function(){
     return view('bidangaqidah');

@@ -38,7 +38,7 @@ class CarouselController extends Controller
     {
         // validate form
         $request->validate([
-            'judul'=> 'required|max:80',
+            'judul'=> 'required|max:150',
             'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ]);
 
@@ -84,7 +84,7 @@ class CarouselController extends Controller
         $carousel = Carousel::findOrFail($id);
      
          $rules = [
-             'judul'=> 'required|max:80',
+             'judul'=> 'required|max:150',
              'image' => 'image|max:2048', // Validasi untuk gambar
          ];
      
