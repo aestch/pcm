@@ -76,4 +76,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Amalusaha::class);
     }
+    public function carousel()
+    {
+        return $this->hasMany(Carousel::class);
+    }
 }

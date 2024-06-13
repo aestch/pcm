@@ -40,16 +40,18 @@ class CarouselController extends Controller
         $request->validate([
             'judul'=> 'required|max:150',
             'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'user_id' => 'required',
         ]);
 
         // upload image
         $image = $request->file('image');
         $image->storeAs('public/carousel', $image->hashName());
 
-        // create galerifoto
+        // create carousel
         Carousel::create([
             'judul' => $request->input('judul'),
             'image' => $image->hashName(),
+            'user_id' => auth()->user()->id, // mengambil id pengguna yang sedang login
         ]);
 
         // redirect to index
@@ -86,6 +88,7 @@ class CarouselController extends Controller
          $rules = [
              'judul'=> 'required|max:150',
              'image' => 'image|max:2048', // Validasi untuk gambar
+             'user_id' => 'required',
          ];
      
          $request->validate($rules);
