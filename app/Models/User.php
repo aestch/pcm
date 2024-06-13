@@ -84,4 +84,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Setting::class);
     }
+    public function mediasosial()
+    {
+        return $this->hasMany(Mediasosial::class);
+    }
 }

@@ -39,6 +39,7 @@ class MediasosialController extends Controller
         $validateData = $request->validate([
             'nama_medsos' => 'required',
             'link_medsos' => 'required',
+            'user_id' => 'required',
         ]);
 
         Mediasosial::create($validateData);
@@ -75,6 +76,7 @@ class MediasosialController extends Controller
         $validateData = $request->validate([
             'nama_medsos' => 'required',
             'link_medsos' => 'required',
+            'user_id' => 'required',
         ]);
 
         $mediasosial->update($validateData);
