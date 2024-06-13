@@ -207,6 +207,7 @@
                               </div>
                               @enderror
                           </div>
+                          <input type="hidden" name="user_id" value="2">
                               
                          
 

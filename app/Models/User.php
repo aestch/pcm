@@ -116,4 +116,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Arsipadministrasi::class);
     }
+    public function direktorikeanggotaan()
+    {
+        return $this->hasMany(Direktorikeanggotaan::class);
+    }
 }
