@@ -45,6 +45,7 @@ class SettingController extends Controller
             'email'=> 'required|max:40',
             'alamat'=> 'required|max:100',
             'footer'=> 'required|max:80',
+            'user_id' => 'required',
         ]);
 
         // upload favicon
@@ -69,6 +70,7 @@ class SettingController extends Controller
             'email' => $request->input('email'),
             'alamat' => $request->input('alamat'),
             'footer' => $request->input('footer'),
+            'user_id' => auth()->user()->id, // mengambil id pengguna yang sedang login
         ]);
 
         // redirect to index
@@ -112,6 +114,7 @@ class SettingController extends Controller
             'email'=> 'required|max:40',
             'alamat'=> 'required|max:100',
             'footer'=> 'required|max:80',
+            'user_id' => 'required',
         ];
 
         $request->validate($rules);
@@ -149,6 +152,7 @@ class SettingController extends Controller
         $pengaturan->email = $request->input('email');
         $pengaturan->alamat = $request->input('alamat');
         $pengaturan->footer = $request->input('footer');
+        $pengaturan->user_id = auth()->user()->id; // mengambil id pengguna yang sedang login;
         
         // Save changes
         $pengaturan->save();

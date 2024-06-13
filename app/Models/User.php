@@ -80,4 +80,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Carousel::class);
     }
+    public function setting()
+    {
+        return $this->hasMany(Setting::class);
+    }
 }

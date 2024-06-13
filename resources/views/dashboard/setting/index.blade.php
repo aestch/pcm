@@ -80,7 +80,7 @@
                                 <td>{{ $pengaturan->footer }}</td>
                                 <td>
                                     <a href="/dashboard/pengaturan/{{ $pengaturan->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                    <form action="/dashboard/pengaturan/{{ $pengaturan->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $pengaturan->id }}">
+                                    {{-- <form action="/dashboard/pengaturan/{{ $pengaturan->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $pengaturan->id }}">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" onclick="konfirmasiHapus(event, {{ $pengaturan->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
@@ -107,7 +107,7 @@
                                             // Cegah aksi default dari tombol submit
                                             event.preventDefault();
                                         }
-                                    </script>
+                                    </script> --}}
                                     
                                     
                                 </td>
