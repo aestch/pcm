@@ -17,4 +17,9 @@ class Arsipadministrasi extends Model
     {
         return $this->belongsTo(Kategoriarsip::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

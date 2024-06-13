@@ -40,6 +40,7 @@ class ArsipadministrasiController extends Controller
             'tgl_arsip' => 'required',
             'no_surat' => 'required',
             'kategoriarsip_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         Arsipadministrasi::create($validateData);
@@ -79,6 +80,7 @@ class ArsipadministrasiController extends Controller
             'tgl_arsip' => 'required',
             'no_surat' => 'required',
             'kategoriarsip_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         // Perbarui data arsipadministrasi

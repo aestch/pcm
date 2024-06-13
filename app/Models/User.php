@@ -112,4 +112,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Kajian::class);
     }
+    public function arsipadministrasi()
+    {
+        return $this->hasMany(Arsipadministrasi::class);
+    }
 }
