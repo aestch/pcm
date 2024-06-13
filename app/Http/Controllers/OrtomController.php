@@ -38,6 +38,7 @@ class OrtomController extends Controller
         $validateData = $request->validate([
             'nama_ortom' => 'required',
             'nama_ketua' => 'required',
+            'user_id' => 'required',
         ]);
 
         Ortom::create($validateData);
@@ -74,6 +75,7 @@ class OrtomController extends Controller
         $validateData = $request->validate([
             'nama_ortom' => 'required',
             'nama_ketua' => 'required',
+            'user_id' => 'required',
         ]);
 
         $ortom->update($validateData);
