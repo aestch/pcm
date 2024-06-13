@@ -22,4 +22,9 @@ class Artikel extends Model
     {
         return $this->hasMany(Komentarartikel::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

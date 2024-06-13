@@ -86,6 +86,7 @@
                         <input id="body" type="hidden" name="body" value="{{ old('body') }}">
                         <trix-editor input="body"></trix-editor>
                     </div>
+                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"> 
 
                 </div>
                 <!-- /.card-body -->

@@ -45,6 +45,7 @@ class ArtikelController extends Controller
             'image' => 'required|image|mimes:jpg,png,jpeg,heic|max:2048',
             'body' => 'required',
             'kategoriartikel_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         // upload image 
@@ -102,6 +103,7 @@ class ArtikelController extends Controller
             'image' => 'nullable|image|mimes:jpg,png,jpeg,heic|max:2048',
             'body' => 'required',
             'kategoriartikel_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         // Hapus image lama jika ada image baru yang diunggah
@@ -151,6 +153,7 @@ class ArtikelController extends Controller
         }])->findOrFail($id);
         return view("dashboard.artikel.show", [
                 'artikel' => $artikel,
+                'pengaturan'=> Setting::first(),
         ]);
 
         // return redirect('/dashboard/portal-berita/')->with('success', 'Komentar berhasil ditambahkan!');

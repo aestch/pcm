@@ -104,4 +104,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Portalberita::class);
     }
+    public function artikel()
+    {
+        return $this->hasMany(Artikel::class);
+    }
 }
