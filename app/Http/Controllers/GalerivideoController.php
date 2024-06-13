@@ -39,6 +39,7 @@ class GalerivideoController extends Controller
         $validateData = $request->validate([
             'judul_video' => 'required',
             'link_video' => 'required',
+            'user_id' => 'required',
         ]);
 
         Galerivideo::create($validateData);
@@ -107,6 +108,7 @@ class GalerivideoController extends Controller
         $validateData = $request->validate([
             'judul_video' => 'required',
             'link_video' => 'required',
+            'user_id' => 'required',
         ]);
 
         // Perbarui data galerivideo

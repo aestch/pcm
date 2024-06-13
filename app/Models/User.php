@@ -96,4 +96,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Galerifoto::class);
     }
+    public function galerivideo()
+    {
+        return $this->hasMany(Galerivideo::class);
+    }
 }
