@@ -13,4 +13,9 @@ class Amalusaha extends Model
         'nama_amal',
         'link_amal',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

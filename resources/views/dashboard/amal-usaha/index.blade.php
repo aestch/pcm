@@ -59,7 +59,7 @@
                                 <td><a href="{{ $amalusaha->link_amal }}" class="text-decoration-none text-hover-black" target="_blank"> <i class="fas fa-link"></i> Kunjungi Link</a></td>
                                 <td>
                                     <a href="/dashboard/amal-usaha/{{ $amalusaha->id }}/edit" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                    <form action="/dashboard/amal-usaha/{{ $amalusaha->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $amalusaha->id }}">
+                                    {{-- <form action="/dashboard/amal-usaha/{{ $amalusaha->id }}" method="post" class="d-inline form-hapus" data-user-id="{{ $amalusaha->id }}">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" onclick="konfirmasiHapus(event, {{ $amalusaha->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
@@ -86,7 +86,7 @@
                                             // Cegah aksi default dari tombol submit
                                             event.preventDefault();
                                         }
-                                    </script>
+                                    </script> --}}
                                     
                                     
                                 </td>

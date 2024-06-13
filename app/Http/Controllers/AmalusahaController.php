@@ -37,6 +37,7 @@ class AmalusahaController extends Controller
         $validateData = $request->validate([
             'nama_amal' => 'required',
             'link_amal' => 'required',
+            'user_id' => 'required',
         ]);
 
         Amalusaha::create($validateData);
@@ -73,6 +74,7 @@ class AmalusahaController extends Controller
         $validateData = $request->validate([
             'nama_amal' => 'required',
             'link_amal' => 'required',
+            'user_id' => 'required',
         ]);
 
         $amalusaha->update($validateData);
