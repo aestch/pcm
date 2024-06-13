@@ -42,7 +42,7 @@
                 <div class="card-body text-center">
                     <h3 class="card-title"><a href="/berita/{{ $portalberitas[0]->id }}" class="text-decoration-none text-dark">{{ $portalberitas[0]->judul }} </a></h3>
                     <p>
-                        <small><a href="/berita?category={{ $portalberitas[0]->kategoriberita->id }}" class="text-decoration-none">{{ $portalberitas[0]->kategoriberita->kategori_berita }}</a> {{ $portalberitas[0]->created_at->locale('id')->diffForHumans() }}
+                        <small><a href="" class="text-decoration-none">{{ $portalberitas[0]->kategoriberita->kategori_berita }}</a> {{ $portalberitas[0]->created_at->locale('id')->diffForHumans() }}
                         </small>
                     </p>
                     <p class="card-text">{{ $portalberitas[0]->excerpt }}</p>

@@ -100,4 +100,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Galerivideo::class);
     }
+    public function portalberita()
+    {
+        return $this->hasMany(Portalberita::class);
+    }
 }

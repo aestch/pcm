@@ -46,6 +46,7 @@ class PortalberitaController extends Controller
             'image' => 'nullable|required|image|mimes:jpg,png,jpeg,heic|max:2048',
             'body' => 'required',
             'kategoriberita_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         // upload image 
@@ -103,6 +104,7 @@ class PortalberitaController extends Controller
             'image' => 'nullable|image|mimes:jpg,png,jpeg,heic|max:2048',
             'body' => 'required',
             'kategoriberita_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         // Hapus image lama jika ada image baru yang diunggah

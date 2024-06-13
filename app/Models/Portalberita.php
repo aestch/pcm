@@ -40,4 +40,9 @@ class Portalberita extends Model
     {
         return $this->hasMany(Komentarberita::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
