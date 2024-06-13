@@ -42,7 +42,7 @@
                 <div class="card-body text-center">
                     <h3 class="card-title"><a href="/artikel/{{ $artikels[0]->id }}" class="text-decoration-none text-dark">{{ $artikels[0]->judul }} </a></h3>
                     <p>
-                        <small><a href="/artikel?category={{ $artikels[0]->kategoriartikel->id }}" class="text-decoration-none">{{ $artikels[0]->kategoriartikel->kategori_artikel }}</a> {{ $artikels[0]->created_at->locale('id')->diffForHumans() }}
+                        <small><a href="" class="text-decoration-none">{{ $artikels[0]->kategoriartikel->kategori_artikel }}</a> {{ $artikels[0]->created_at->locale('id')->diffForHumans() }}
                         </small>
                     </p>
                     <p class="card-text">{{ $artikels[0]->excerpt }}</p>

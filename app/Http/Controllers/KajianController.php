@@ -45,6 +45,7 @@ class KajianController extends Controller
             'image' => 'required|image|mimes:jpg,png,jpeg,heic|max:2048',
             'body' => 'required',
             'bidangkajian_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         // upload image 
@@ -99,6 +100,7 @@ class KajianController extends Controller
             'image' => 'nullable|image|mimes:jpg,png,jpeg,heic|max:2048',
             'body' => 'required',
             'bidangkajian_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         // Hapus image lama jika ada image baru yang diunggah

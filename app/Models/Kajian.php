@@ -22,4 +22,9 @@ class Kajian extends Model
     {
         return $this->hasMany(Komentarkajian::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
