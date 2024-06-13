@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('role_id'); // Menambahkan kolom role_id
             $table->foreign('role_id')->references('id')->on('roles'); // Menambahkan foreign key constraint
         });
-    }
+    } 
 
     /**
      * Reverse the migrations.

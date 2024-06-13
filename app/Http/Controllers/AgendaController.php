@@ -39,6 +39,7 @@ class AgendaController extends Controller
             'tgl_agenda' => 'required',
             'start_time' => 'required',
             'end_time' => 'required',
+            'user_id' => 'required',
         ]);
 
         Agenda::create($validateData);
@@ -77,6 +78,7 @@ class AgendaController extends Controller
             'tgl_agenda' => 'required',
             'start_time' => 'required',
             'end_time' => 'required',
+            'user_id' => 'required',
         ]);
 
         $agenda->update($validateData);

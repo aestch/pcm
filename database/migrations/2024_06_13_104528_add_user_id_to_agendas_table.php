@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('settings', function (Blueprint $table) {
-            $table->string('alamat');
+        Schema::table('agendas', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id'); // Menambahkan kolom user_id
+            $table->foreign('user_id')->references('id')->on('users'); // Menambahkan foreign key constraint
         });
     }
 
@@ -21,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('settings', function (Blueprint $table) {
+        Schema::table('agendas', function (Blueprint $table) {
             //
         });
     }

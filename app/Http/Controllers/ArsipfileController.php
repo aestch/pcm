@@ -41,7 +41,7 @@ class ArsipfileController extends Controller
             'nama_file' => 'required|max:50',
             'tgl_arsipfile' => 'required',
             'upload_arsipfile' => 'required|file|mimes:pdf|max:3096',
-            'user_id' => 'required',
+            'user_id' => 'required', 
         ]);
 
         // upload arsip file
