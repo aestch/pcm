@@ -37,6 +37,7 @@ class PengumumanController extends Controller
         $validateData = $request->validate([
             'judul_pengumuman' => 'required|max:255',
             'isi_pengumuman' => 'required',
+            'user_id' => 'required',
         ]);
 
         Pengumuman::create($validateData);
@@ -73,6 +74,7 @@ class PengumumanController extends Controller
         $validateData = $request->validate([
             'judul_pengumuman' => 'required|max:255',
             'isi_pengumuman' => 'required',
+            'user_id' => 'required',
         ]);
 
         $pengumuman->update($validateData);
