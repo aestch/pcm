@@ -16,7 +16,7 @@
               </style>
             <div class="container">
                 @foreach($direktorikeanggotaans as $anggota)
-                    <center><img src="{{ asset('storage/foto-diri/'. $anggota->foto_diri) }}" alt="" class="card-img-top img-fluid mb-5"></center>
+                    <center><img src="{{ asset('storage/foto-diri/'. $anggota->foto_diri) }}" alt="" class=" img-fluid mb-5" style="border: 2px solid white; padding: 5px;"></center>
                 @endforeach
 
                 <div class="row">
