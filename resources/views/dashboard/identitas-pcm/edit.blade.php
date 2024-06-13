@@ -60,6 +60,7 @@
                         <input id="visimisi" type="hidden" name="visimisi" value="{{ old('visimisi', $identitaspcm->visimisi) }}">
                         <trix-editor input="visimisi"></trix-editor>
                     </div>
+                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"> 
 
                 </div>
                 <!-- /.card-body -->

@@ -43,6 +43,7 @@ class IdentitaspcmController extends Controller
             'sejarah' => 'required',
             'kata_sambutan' => 'required',
             'visimisi' => 'required',
+            'user_id' => 'required',
         ]);
 
         Identitaspcm::create($validateData);
@@ -84,6 +85,7 @@ class IdentitaspcmController extends Controller
             'sejarah' => 'required',
             'kata_sambutan' => 'required',
             'visimisi' => 'required',
+            'user_id' => 'required',
         ]);
 
         $identitaspcm->update($validateData);
