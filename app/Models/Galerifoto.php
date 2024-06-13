@@ -12,5 +12,11 @@ class Galerifoto extends Model
     protected $fillable = [
         'image',
         'keterangan',
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

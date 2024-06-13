@@ -92,4 +92,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Identitaspcm::class);
     }
+    public function galerifoto()
+    {
+        return $this->hasMany(Galerifoto::class);
+    }
 }

@@ -63,7 +63,7 @@
                         </div>
                         @enderror
                     </div>
-                 
+                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
                 </div>
                 <!-- /.card-body -->

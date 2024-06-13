@@ -58,6 +58,28 @@
                                                     @csrf
                                                     <button type="submit" onclick="konfirmasiHapus(event, {{ $galerifoto->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button>
                                                 </form>
+                                                <script>
+                                                  function konfirmasiHapus(event, userId) {
+                                                      Swal.fire({
+                                                          title: 'Konfirmasi',
+                                                          text: 'Apakah Anda yakin ingin menghapus?',
+                                                          icon: 'question',
+                                                          showCancelButton: true,
+                                                          confirmButtonText: 'Ya',
+                                                          cancelButtonText: 'Batal'
+                                                      }).then((result) => {
+                                                          if (result.isConfirmed) {
+                                                              // Cari form berdasarkan data-user-id
+                                                              const form = document.querySelector(`.form-hapus[data-user-id='${userId}']`);
+                                                              if (form) {
+                                                                  form.submit();
+                                                              }
+                                                          }
+                                                      });
+                                                      // Cegah aksi default dari tombol submit
+                                                      event.preventDefault();
+                                                  }
+                                              </script>
                                             </div>
                                         </div>
                                     </div>

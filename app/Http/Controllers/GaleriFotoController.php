@@ -54,6 +54,7 @@ class GaleriFotoController extends Controller
         Galerifoto::create([
             'image' => $image->hashName(),
             'keterangan' => $request->input('keterangan'),
+            'user_id' => auth()->user()->id, // mengambil id pengguna yang sedang login
         ]);
 
         // redirect to index
@@ -91,6 +92,7 @@ class GaleriFotoController extends Controller
          $rules = [
              'image' => 'image|max:2048', // Validasi untuk gambar
              'keterangan'=> 'required|max:50',
+             'user_id' => 'required',
          ];
      
          $request->validate($rules);
