@@ -13,14 +13,15 @@ class Artikel extends Model
         'id'
     ];
 
-    public function kategoriartikel()
+    public function kategori()
     {
-        return $this->belongsTo(Kategoriartikel::class);
+        return $this->belongsTo(Kategoriartikel::class, 'kategoriartikel_id'); // Nama foreign key di tabel artikel
     }
 
-    public function komentarartikel()
+    // Relasi ke model Komentarartikel
+    public function komentar()
     {
-        return $this->hasMany(Komentarartikel::class);
+        return $this->hasMany(Komentarartikel::class, 'artikel_id'); // Nama foreign key di tabel komentar artikel
     }
 
     public function user()

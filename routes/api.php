@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 Route::apiResource('/identitas-pcm',  App\Http\Controllers\Api\IdentitaspcmController::class);
 Route::apiResource('/galeri-foto',  App\Http\Controllers\Api\GaleriFotoController::class);
 Route::apiResource('/direktori-keanggotaan',  App\Http\Controllers\Api\DirektoriKeanggotaanController::class);
+Route::apiResource('/artikel',  App\Http\Controllers\Api\ArtikelController::class);
