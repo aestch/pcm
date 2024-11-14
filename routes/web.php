@@ -182,6 +182,10 @@ Route::get('/dashboard', function(){
 
 Route::middleware(['auth'])->group(function() {
     Route::middleware(['role:1'])->group(function() {
+        Route::resource('/dashboard/kas', UangKasController::class);
+        Route::resource('/dashboard/direktori-keanggotaan', DirektorikeanggotaanController::class)->except('kirim');
+        Route::resource('/dashboard/arsip-administrasi', ArsipadministrasiController::class);
+        Route::resource('/dashboard/arsip-files', ArsipfileController::class);
         Route::resource('/dashboard/pengguna-login', PenggunaLoginController::class)->middleware('no_cache');
         Route::resource('/dashboard/identitas-pcm', IdentitaspcmController::class);
         Route::resource('/dashboard/galeri-foto', GaleriFotoController::class);
@@ -202,13 +206,12 @@ Route::middleware(['auth'])->group(function() {
     });
 
     Route::middleware(['role:3'])->group(function() {
-        Route::resource('/dashboard/kas', UangKasController::class);
+        //
     });
 
     Route::middleware(['role:2'])->group(function() {
-        Route::resource('/dashboard/direktori-keanggotaan', DirektorikeanggotaanController::class)->except('kirim');
-        Route::resource('/dashboard/arsip-administrasi', ArsipadministrasiController::class);
-        Route::resource('/dashboard/arsip-files', ArsipfileController::class);
+       //
+        
     });
 
     Route::get('/dashboard/{id}/change-password', [ChangePasswordController::class, 'edit']);

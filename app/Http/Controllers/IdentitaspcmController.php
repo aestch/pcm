@@ -15,8 +15,14 @@ class IdentitaspcmController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
+    public function index(Request $request)
+    {   
+
+        $identitaspcm = Identitaspcm::latest();
+        if ($request->wantsJson()) {
+            return response()->json($identitaspcm->get(), 200);
+        } 
+
         return view('dashboard.identitas-pcm.index', [
             'identitaspcms' => Identitaspcm::latest()->paginate(10),
             'pengaturan' => Setting::first()

@@ -58,12 +58,18 @@ class DirektorikeanggotaanController extends Controller
         ]);
 
         // upload image foto diri
-        if($request->hasFile('foto_diri')) {
+        if ($request->hasFile('foto_diri')) {
             $foto_diri = $request->file('foto_diri');
             $foto_diriName = hash('sha256', $foto_diri->getClientOriginalName()) . '.' . $foto_diri->getClientOriginalExtension();
-            $foto_diri->storeAs('public/foto-diri', $foto_diriName);
+        
+            $path = $foto_diri->storeAs('storage/foto-diri', $foto_diriName);
+        
+            // Tambahkan log ini untuk memastikan path penyimpanan
+            \Log::info("File disimpan di: " . $path);
+        
             $validateData['foto_diri'] = $foto_diriName;
         }
+        
 
         // upload image KTAM
         if($request->hasFile('ktam')) {

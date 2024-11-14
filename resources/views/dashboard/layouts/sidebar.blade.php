@@ -79,7 +79,7 @@
             </a>
           </li>
           @endif
-          @if(auth()->user()->role_id=='2')
+          @if(auth()->user()->role_id=='1')
           <li class="nav-item">
             <a href="/dashboard/direktori-keanggotaan" class="nav-link {{ Request::is('dashboard/direktori-keanggotaan*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-users"></i>
@@ -168,7 +168,7 @@
             </a>
           </li>
           @endif
-          @if( auth()->user()->role_id=='3')
+          @if( auth()->user()->role_id=='1'')
           <li class="nav-item">
             <a href="/dashboard/kas" class="nav-link {{ Request::is('dashboard/kas*') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-credit-card"></i>
@@ -242,7 +242,7 @@
             @endif
     
             <!-- Direktori dan Arsip -->
-            @if(auth()->user()->role_id == '2')
+            @if(auth()->user()->role_id=='1')
             <li class="nav-header text-secondary text-bold">DIREKTORI DAN ARSIP</li>
             <li class="nav-item">
                 <a href="/dashboard/direktori-keanggotaan" class="nav-link {{ Request::is('dashboard/direktori-keanggotaan*') ? 'active' : '' }}">
@@ -322,7 +322,7 @@
             @endif
     
             <!-- Keuangan dan Kas -->
-            @if(auth()->user()->role_id == '3')
+            @if(auth()->user()->role_id=='1')
             <li class="nav-header text-secondary text-bold">KEUANGAN DAN KAS</li>
             <li class="nav-item">
                 <a href="/dashboard/kas" class="nav-link {{ Request::is('dashboard/kas*') ? 'active' : '' }}">
