@@ -15,3 +15,10 @@ Route::apiResource('/agenda',  App\Http\Controllers\Api\AgendaController::class)
 Route::apiResource('/amal-usaha',  App\Http\Controllers\Api\AmalusahaController::class);
 Route::apiResource('/arsip-files',  App\Http\Controllers\Api\ArsipfileController::class);
 Route::apiResource('/carousel',  App\Http\Controllers\Api\CarouselController::class);
+Route::apiResource('/galeri-video',  App\Http\Controllers\Api\GalerivideoController::class);
+Route::apiResource('/kajian',  App\Http\Controllers\Api\KajianController::class);
+Route::apiResource('/media-sosial',  App\Http\Controllers\Api\MediasosialController::class);
+Route::apiResource('/ortom',  App\Http\Controllers\Api\OrtomController::class);
+Route::apiResource('/pengumuman',  App\Http\Controllers\Api\PengumumanController::class);
+Route::apiResource('/portal-berita',  App\Http\Controllers\Api\PortalberitaController::class);
+Route::apiResource('/setting',  App\Http\Controllers\Api\SettingController::class);
