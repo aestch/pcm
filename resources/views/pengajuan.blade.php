@@ -82,7 +82,7 @@
                           </div>  
                           <div class="form-group">
                               <label for="cabang">Cabang</label>
-                              <input type="text" class="form-control @error('cabang') is-invalid @enderror" id="cabang" name="cabang" value="Batam Center" readonly required>
+                              <input type="text" class="form-control @error('cabang') is-invalid @enderror" id="cabang" name="cabang" value="Batam Center" required>
       
                               @error('cabang')
                               <div class="invalid-feedback">

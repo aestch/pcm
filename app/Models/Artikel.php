@@ -18,10 +18,20 @@ class Artikel extends Model
         return $this->belongsTo(Kategoriartikel::class, 'kategoriartikel_id'); // Nama foreign key di tabel artikel
     }
 
+    public function kategoriartikel()
+    {
+        return $this->belongsTo(Kategoriartikel::class);
+    }
+
     // Relasi ke model Komentarartikel
     public function komentar()
     {
         return $this->hasMany(Komentarartikel::class, 'artikel_id'); // Nama foreign key di tabel komentar artikel
+    }
+
+    public function komentarartikel()
+    {
+        return $this->hasMany(Komentarartikel::class); 
     }
 
     public function user()

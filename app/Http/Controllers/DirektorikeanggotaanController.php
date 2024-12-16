@@ -62,7 +62,7 @@ class DirektorikeanggotaanController extends Controller
             $foto_diri = $request->file('foto_diri');
             $foto_diriName = hash('sha256', $foto_diri->getClientOriginalName()) . '.' . $foto_diri->getClientOriginalExtension();
         
-            $path = $foto_diri->storeAs('storage/foto-diri', $foto_diriName);
+            $path = $foto_diri->storeAs('<public>storage/foto-diri', $foto_diriName);
         
             // Tambahkan log ini untuk memastikan path penyimpanan
             \Log::info("File disimpan di: " . $path);
