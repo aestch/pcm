@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 16, 2024 at 06:51 PM
+-- Generation Time: Dec 17, 2024 at 10:16 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.13
 
@@ -870,7 +870,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('HQVnqmWY96P1zCN1jhENvGOJl6cRzdg4mfJk4GmZ', 17, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiOENJMFk1eldHREhzMERSdFFPdXYwQjZ4MXV0dnluYzJsOFd1UkZEOCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvYXJzaXAtZmlsZXMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxNzt9', 1734374836);
+('HQVnqmWY96P1zCN1jhENvGOJl6cRzdg4mfJk4GmZ', 17, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiOENJMFk1eldHREhzMERSdFFPdXYwQjZ4MXV0dnluYzJsOFd1UkZEOCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJuZXciO2E6MDp7fXM6Mzoib2xkIjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvYXJzaXAtZmlsZXMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxNzt9', 1734374836),
+('im0HJyaTh8BjPSEMBEA4YrIdbxqZfLkYGz12171W', 17, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTWhORTJlYTlMNE5zNFVCY3ExSGJtcVp2R21KVGZYRXNtR1EzNGdpcyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE3O30=', 1734429477);
 
 -- --------------------------------------------------------
 
@@ -898,7 +899,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `title`, `favicon`, `nama_website`, `logo`, `no_telp`, `email`, `footer`, `created_at`, `updated_at`, `alamat`, `user_id`) VALUES
-(3, 'PCM Batam Kota | Situs Resmi PCM', '7OicfqRMEoXhbKpQmU4Ew22fPJtstUeel3qrjWvy.png', 'Pimpinan Cabang Muhammadiyah', 'JLZQlh9yqdEzNG8bulI05ZrfICNMhjaZL3m4Y4hy.png', '+62 858-3562-2206', 'pcmbatamkota.official@gmail.com', 'Pimpinan Cabang Muhammadiyah Batam Kota', NULL, '2024-12-16 12:50:29', 'Jl. Rexvin Boulevard, Belian, Batam Kota, no 74', 8);
+(3, 'PCM Batam Kota | Situs Resmi PCM', '7OicfqRMEoXhbKpQmU4Ew22fPJtstUeel3qrjWvy.png', 'Pimpinan Cabang Muhammadiyah', 'pywUOY5CLWDK5VHwpW8z05wVqNULqQoQXECTMtrx.png', '+62 858-3562-2206', 'pcmbatamkota.official@gmail.com', 'Pimpinan Cabang Muhammadiyah Batam Kota', NULL, '2024-12-17 09:50:00', 'Jl. Rexvin Boulevard, Belian, Batam Kota, no 74', 17);
 
 -- --------------------------------------------------------
 
