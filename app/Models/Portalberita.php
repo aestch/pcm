@@ -45,4 +45,8 @@ class Portalberita extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function savedByUsers()
+    {
+        return $this->hasMany(SavedPortalBerita::class, 'portalberita_id');
+    }
 }
